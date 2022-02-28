@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Quản Lý Điểm</title>
+    <title>Điểm Danh Môn ...</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +12,7 @@
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                     <div class=" d-flex  header-logo">
                         <div class="logo col-md-2 col-2 col-sm-2 text-center">
                             <a href="">
-                                <img src="../assets/image/logo-small.png" alt="logo" class="img-logo">
+                                <img src="../../assets/image/logo-small.png" alt="logo" class="img-logo">
                             </a>
                         </div>
                         <div class="menu-toggle col-md-4 col-4 col-sm-4 text-center">
@@ -66,31 +66,36 @@
                         <li class="nav-item mt-2">
                             <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip"
                                 data-bs-placement="right" title="Trang chủ">
+                                <i class="fa-regular fa-check"></i>
                                 <span class="ms-2">Điểm Danh</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
                             <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle"
                                 data-bs-toggle="tooltip" data-bs-placement="right" title="Đăng ký học">
+                                <i class="fa-regular fa-rectangle-list"></i>
                                 <span class="ms-2 ">Quản Lý Học Phần</span> </a>
 
                         </li>
                         <li class="nav-item mt-2">
                             <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
                                 data-bs-placement="right" title="Quản Lý Giảng Viên">
+                                <i class="fa-solid fa-money-check-dollar"></i>
                                 <span class="ms-2">Tra Cứu Học Phí</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
                             <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
                                 data-bs-placement="right" title="Quản Lý Sinh Viên">
+                                <i class="fa-solid fa-book"></i>
                                 <span class="ms-2 ">Xem Tài Liệu</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
                             <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
                                 data-bs-placement="right" title="Quản Lý Môn Học">
-                                <span class="ms-2 ">Tra Cứu Môn Học</span>
+                                <i class="fa-solid fa-list-ol"></i>
+                                <span class="ms-2 ">Tra Cứu Lịch Thi</span>
                             </a>
                         </li>
                     </ul>
@@ -99,49 +104,48 @@
             </div>
             <div class="col py-3">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xl-3 col-md-3">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body"> Môn học 1
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href=" ">Chi tiết</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-3">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body"> Môn học 1
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href=" ">Chi tiết</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-3">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body"> Môn học 1
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href=" ">Chi tiết</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-3">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body"> Môn học 1
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href=" ">Chi tiết</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <p class="text-center fw-bold fs-1">Điểm Danh</p>
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Tên Môn Học</th>
+                                <th scope="col">Ngày</th>
+                                <th scope="col">Thời Gian</th>
+                                <th scope="col">Tình Trạng</th>
+                                <th scope="col">Điểm Danh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr">
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>Đã Điểm Danh</td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                                            checked>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>Chưa điểm danh</td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -167,7 +171,7 @@
             <a class="text-white" href="#">Thuy Loi University</a>
         </div>
     </footer>
-    <script src="../assets/Js/toggle.js" async defer></script>
+    <script src="../../assets/js/toggle.js"></script>
 </body>
 
 </html>
