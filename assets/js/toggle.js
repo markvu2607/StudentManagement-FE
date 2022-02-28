@@ -1,7 +1,6 @@
 var sideBar = document.querySelector(".sidebar");
 const x = sideBar.style.width;
 document.getElementById("show").onclick = function () {
-  console.log("vao day ne");
   var showText = document.querySelectorAll(".ms-1");
   for (let i = 0; i < showText.length; i++) {
     if (showText[i].style.display == "inline") {
