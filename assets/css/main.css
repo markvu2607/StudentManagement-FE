@@ -6,6 +6,9 @@
 body {
   font-family: "Quicksand", sans-serif;
 }
+body .d {
+  margin: 0 auto;
+}
 .header-logo .logo .img-logo {
   width: 50px;
   height: 40px;
