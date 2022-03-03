@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 :root {
-  --background-headsidebar: #2b3643;
+  --background-headsidebar: #292444;
   --text-color: #b4bcc8;
 }
 body {
   font-family: "Quicksand", sans-serif;
+}
+body .d {
+  margin: 0 auto;
 }
 .header-logo .logo .img-logo {
   width: 50px;
@@ -72,7 +75,7 @@ a {
 }
 .news span {
   padding: 10px;
-  color: #2b3643;
+  color: #292444;
 }
 .news i {
   color: #f09b0a;
