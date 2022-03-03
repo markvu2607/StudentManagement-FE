@@ -8,4 +8,4 @@
 
 ### Page Quản Trị Viên
 
-- Chưa có
+- 60%
