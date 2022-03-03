@@ -13,6 +13,19 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./assets/css/login.css">
     <title>Login</title>
+    <script>
+        const user = JSON.parse(localStorage.getItem("user"))
+        if (!user) {
+
+        } else if (user.role == "1") {
+            console.log("first")
+            window.location = "./quantrivien/trangchuquantrivien.html"
+        } else if (user.role == "2") {
+            window.location = "./giangvien/trangchugiangvien.html"
+        } else if (user.role == "3") {
+            window.location = "./sinhvien/trangchusinhvien.html"
+        }
+    </script>
 </head>
 
 <body>
@@ -40,21 +53,39 @@
 
         $("#btnSubmit").click(function (e) {
             e.preventDefault();
-            let username = $('input[id=username]').val(); // get the content of what user typed ( in textarea ) 
-            let password = $('input[id=password]').val(); // get the content of what user typed ( in textarea ) 
+            let username = $('input[id=username]')
+                .val(); // get the content of what user typed ( in textarea ) 
+            let password = $('input[id=password]')
+                .val(); // get the content of what user typed ( in textarea ) 
             if (username == "" || password === "") {
                 alert('vui lòng nhập vào tài khoản hoặc mật khẩu');
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "https://server-student-managemment.herokuapp.com/login",
-                    data: { "username": username, "password": password },
+                    url: "https://server-student-managemment.herokuapp.com/api/login",
+                    data: {
+                        "username": username,
+                        "password": password
+                    },
                     dataType: "json",
                     success: function (result) {
-                        if (result.error === 'Account not exist' || result.error === "Password incorrect") {
-                            alert("login không thành công, kiểm tra tên đăng nhập hoặc mật khẩu")
+                        if (result.error === 'Account not exist' || result.error ===
+                            "Password incorrect") {
+                            alert(
+                                "login không thành công, kiểm tra tên đăng nhập hoặc mật khẩu"
+                            )
                         } else {
-                            window.location = "index.html"
+                            const user = {
+                                username: result.tenDangNhap,
+                                role: result.chucNang,
+                                status: result.trangThai
+                            }
+                            window.localStorage.setItem("user", JSON.stringify(user))
+                            if (result.chucNang == "1") {
+                                window.location = "quantrivien/trangchuquantrivien.html"
+                            } else {
+                                window.location = "https://www.google.com/"
+                            }
                         }
 
                     },
@@ -62,10 +93,10 @@
                         alert("khong thể kết nối se");
                     }
 
-                });//end ajax   
+                }); //end ajax   
             }
-        });//end click function
-    });//end ready function
+        }); //end click function
+    }); //end ready function
 </script>
 
 </html>
