@@ -13,7 +13,17 @@
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="../js/constants.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/quantrivien.js"></script>
 </head>
+
+<script>
+    const user = JSON.parse(localStorage.getItem("user"))
+    if (!user || user.role !== "1") {
+        window.location = "../login.html"
+    }
+</script>
 
 <body>
     <div class="top-side " style="background-color: #292444;">
@@ -41,7 +51,7 @@
                                 aria-expanded="false">
                                 <span><i class="bi bi-person-circle"></i></span>
                                 <!-- <span class=""><?php echo $user['username'] ?></span>  -->
-                                <span class="d-none d-sm-inline mx-1">Role:</span>
+                                <span class="d-none d-sm-inline mx-1">Role: Admin</span>
                             </a>
                             <!-- <?php }?> -->
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
@@ -50,7 +60,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../Logout.php">Đóng phiên làm việc</a></li>
+                                <li><a class="dropdown-item" onclick="onLogout()">Đóng phiên làm việc</a></li>
                             </ul>
                         </div>
                     </div>
@@ -65,108 +75,109 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <ul class="navbar-nav nav-pills mt-3" id="menu">
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Lớp Học">
+                            <a class="nav-link align-middle px-0" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Lớp Học">
                                 <i class="fa-solid fa-list-ul"></i>
-                                <span class="ms-2">Quản Lý Lớp Học </span>
+                                <span class="ms-2" onclick="renderQLLopHoc()">Quản Lý Lớp Học </span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Môn Học">
+                            <a class="nav-link align-middle px-0" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Môn Học">
                                 <i class="fa-solid fa-book"></i>
-                                <span class="ms-2">Quản Lý Môn Học </span>
+                                <span class="ms-2" onclick="renderQLMonHoc()">Quản Lý Môn Học </span>
                             </a>
                         </li>
 
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Bảng Tin">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Bảng Tin">
                                 <i class="fa-solid fa-chalkboard-user"></i>
-                                <span class="ms-2">Quản Lý Bảng Tin</span>
+                                <span class="ms-2" onclick="renderQLBangTin()">Quản Lý Bảng Tin</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Lịch Thi">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Lịch Thi">
                                 <i class="fa-solid fa-clipboard-list"></i>
-                                <span class="ms-2 ">Quản Lý Lịch Thi</span>
+                                <span class="ms-2 " onclick="renderQLLichThi()">Quản Lý Lịch Thi</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Khoa">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Khoa">
                                 <i class="fa-regular fa-rectangle-list"></i>
-                                <span class="ms-2 ">Quản Lý Khoa</span>
+                                <span class="ms-2 " onclick="renderQLKhoa()">Quản Lý Khoa</span>
                             </a>
                         </li>
 
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Tài Khoản">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Tài Khoản">
                                 <i class="fa-solid fa-user-group"></i>
-                                <span class="ms-2 ">Quản Lý Tài Khoản</span>
+                                <span class="ms-2 " onclick="renderQLTaiKhoan()">Quản Lý Tài Khoản</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Học Phí">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Học Phí">
                                 <i class="fa-solid fa-money-check-dollar"></i>
-                                <span class="ms-2 ">Quản Lý Học Phí</span>
+                                <span class="ms-2 " onclick="renderQLHocPhi()">Quản Lý Học Phí</span>
                             </a>
                         </li>
 
 
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Thông Tin Sinh Viên">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Thông Tin Sinh Viên">
                                 <i class="fa-solid fa-folder-minus"></i>
-                                <span class="ms-2 ">Thông Tin Sinh Viên</span>
+                                <span class="ms-2 " onclick="renderQLSinhVien()">Thông Tin Sinh Viên</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Thống Kê Điểm">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Thống Kê Điểm">
                                 <i class="fa-solid fa-clipboard-check"></i>
-                                <span class="ms-2 ">Thống Kê Điểm</span>
+                                <span class="ms-2 " onclick="renderThongKeDiem()">Thống Kê Điểm</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Thống Kê Học Bổng">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Thống Kê Học Bổng">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
-                                <span class="ms-2 ">Thống Kê Học Bổng</span>
+                                <span class="ms-2 " onclick="renderThongKeHocBong()">Thống Kê Học Bổng</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Điểm Rèn Luyện">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Điểm Rèn Luyện">
                                 <i class="fa-solid fa-list-ol"></i>
-                                <span class="ms-2 ">Điểm Rèn Luyện</span>
+                                <span class="ms-2 " onclick="renderDiemRenLuyen()">Điểm Rèn Luyện</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Chương Trình Đào Tạo">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Chương Trình Đào Tạo">
                                 <i class="fa-solid fa-book-open"></i>
-                                <span class="ms-2 ">Chương Trình Đào Tạo</span>
+                                <span class="ms-2 " onclick="renderChuongTrinhDaoTao()">Chương Trình Đào Tạo</span>
                             </a>
                         </li>
 
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
-                                data-bs-placement="right" title="Quản Lý Sinh Viên Trong KTX">
+                            <a class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right"
+                                title="Quản Lý Sinh Viên Trong KTX">
                                 <i class="fa-solid fa-graduation-cap"></i>
-                                <span class="ms-2 ">Quản Lý Sinh Viên Trong KTX</span>
+                                <span class="ms-2 " onclick="renderSinhVienTrongKTX()">Quản Lý Sinh Viên Trong
+                                    KTX</span>
                             </a>
                         </li>
                     </ul>
@@ -176,15 +187,10 @@
                 </div>
             </div>
             <div class="col py-3">
-                <div class="container">
-                    <H1 class="text-center">Bảng Tin</H1>
-                    <div>
-                        <ul>
-                            <li>
-                                <h3>Nội Dung</h3>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="main container">
+                    <script>
+                        renderQLBangTin()
+                    </script>
                 </div>
             </div>
         </div>

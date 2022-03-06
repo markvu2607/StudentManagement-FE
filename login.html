@@ -12,13 +12,13 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./assets/css/login.css">
+    <script src="./js/constants.js"></script>
     <title>Login</title>
     <script>
         const user = JSON.parse(localStorage.getItem("user"))
         if (!user) {
 
         } else if (user.role == "1") {
-            console.log("first")
             window.location = "./quantrivien/trangchuquantrivien.html"
         } else if (user.role == "2") {
             window.location = "./giangvien/trangchugiangvien.html"
@@ -62,7 +62,7 @@
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "https://server-student-managemment.herokuapp.com/api/login",
+                    url: `${HOST}/api/login`,
                     data: {
                         "username": username,
                         "password": password
