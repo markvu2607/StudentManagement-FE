@@ -175,30 +175,161 @@
 
                 </div>
             </div>
-            <div class="col py-3">
+            <div class="col">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-md-4">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body"> Thêm Tài Khoản
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="themtaikhoan.html">Chi
-                                        tiết</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    <div class="row text-center py-3"><h3>Quản Lý Tài Khoản</h3></div>
+                    <div class="row py-3">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" style="border-radius: 15px" placeholder="Tên đăng nhập">
+                        </div>
+                        <div class="col-3 col-md-auto">
+                            <button class="btn btn-primary">Tìm Kiếm</button>
+                        </div>
+                        <div class="col col col-lg-2">
+                            <div class="container">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Thêm
+                                </button>
+                            </div>
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Thêm Tài Khoản</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>                           
+                                        <!-- Modal body -->
+                                            <div class="modal-body ">
+                                                <form class="row g-3">
+                                                    <div class="col-md-12">
+                                                        <label for="malop" class="form-label">Mã tài khoản</label>
+                                                        <input type="text" class="form-control" id="malop">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="TenLop" class="form-label">Tên đăng nhập*</label>
+                                                        <input type="text" class="form-control" id="TenLop">
+                                                    </div>
+                                                    <div class="col-12">
+                                                      <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
+                                                      <input type="text" class="form-control" id="Tenmonhoc">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="inputState" class="form-label">Chức năng*</label>
+                                                        <select id="inputState" class="form-select">
+                                                          <option selected>Choose...</option>
+                                                          <option>...</option>
+                                                        </select>
+                                                      </div>
+                                                    <div class="col-md-12">
+                                                      <label for="inputState" class="form-label">Trạng thái*</label>
+                                                      <select id="inputState" class="form-select">
+                                                        <option selected>Choose...</option>
+                                                        <option>...</option>
+                                                      </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" style="width: 15%" data-bs-dismiss="modal">Lưu</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-4">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body"> Sửa Tài Khoản
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="suataikhoan.html ">Chi tiết</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    <div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 50px !important;">
+                        <table class="table table-hover mt-5 " style="margin-top: 5px !important;">
+                            <thead >
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã tài khoản</th>
+                                    <th scope="col">Tên đăng nhập</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>1951081459</td>
+                                    <td>BestYasuoVietNam</td>
+                                    <td>
+                                        <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i class="fa-solid fa-wrench"></i>
+                                            <div class="modal" id="myModaldata">
+                                                <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Sửa Tài Khoản</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                        </div>                           
+                                                        <!-- Modal body -->
+                                                            <div class="modal-body ">
+                                                                <form class="row g-3">
+                                                                    <div class="col-md-12">
+                                                                        <label for="malop" class="form-label">Mã tài khoản</label>
+                                                                        <input type="text" class="form-control" id="malop">
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <label for="TenLop" class="form-label">Tên đăng nhập*</label>
+                                                                        <input type="text" class="form-control" id="TenLop">
+                                                                    </div>
+                                                                    <div class="col-12">
+                                                                      <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
+                                                                      <input type="text" class="form-control" id="Tenmonhoc">
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <label for="inputState" class="form-label">Chức năng*</label>
+                                                                        <select id="inputState" class="form-select">
+                                                                          <option selected>Choose...</option>
+                                                                          <option>...</option>
+                                                                        </select>
+                                                                      </div>
+                                                                    <div class="col-md-12">
+                                                                      <label for="inputState" class="form-label">Trạng thái*</label>
+                                                                      <select id="inputState" class="form-select">
+                                                                        <option selected>Choose...</option>
+                                                                        <option>...</option>
+                                                                      </select>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" style="width: 15%" data-bs-dismiss="modal">Lưu</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </i></a> 
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-ban"></i>
+                                            <div class="modal" id="myModal3">
+                                                <div class="modal-dialog modal-dialog-centered" style="max-width: 400px !important">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Cảnh Báo</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                        </div>                           
+                                                        <!-- Modal body -->
+                                                            <div class="modal-body ">
+                                                                <form class="row g-3 py-3">
+                                                                    Bạn có muốn dừng tài khoản này không?
+                                                                </form>
+                                                            </div>
+                                                
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary text-center" style="width: 30%" data-bs-dismiss="modal">Đồng ý</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </i></a> 
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
