@@ -3,7 +3,7 @@
 </div>
 <div class="row py-3">
     <div class="col-md-4">
-        <input type="text" class="form-control" style="border-radius: 15px" placeholder="...?">
+        <input type="text" class="form-control" style="border-radius: 15px" placeholder="">
     </div>
     <div class="col-3 col-md-auto">
         <button class="btn btn-primary">Thống Kê</button>
@@ -23,43 +23,78 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
-                        <form class="row g-3">
+                        <form class="row g-3 needs-validation" novalidate>
                             <div class="col-md-6">
                                 <label for="malop" class="form-label">Mã lịch thi</label>
-                                <input type="text" class="form-control" id="malop">
+                                <input type="text" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào mã lịch thi
+                                </div>
                             </div>
+
                             <div class="col-md-6">
-                                <label for="TenLop" class="form-label">Tên sinh viên</label>
-                                <input type="text" class="form-control" id="TenLop">
+                                <label for="malop" class="form-label">Mã sinh viên</label>
+                                <input type="text" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào mã sinh viên
+                                </div>
                             </div>
+
                             <div class="col-md-6">
-                                <label for="Tenmonhoc" class="form-label">Mã môn học</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <label for="malop" class="form-label">Mã môn học</label>
+                                <input type="text" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào mã môn học
+                                </div>
                             </div>
+
                             <div class="col-md-6">
-                                <label for="Phonghoc" class="form-label">Kỳ học*</label>
-                                <input type="text" class="form-control" id="Phonghoc">
+                                <label for="malop" class="form-label">Kỳ học</label>
+                                <input type="text" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào kỳ học
+                                </div>
                             </div>
+
                             <div class="col-md-6">
-                                <label for="Phonghoc" class="form-label">Số báo danh*</label>
-                                <input type="text" class="form-control" id="Phonghoc">
+                                <label for="malop" class="form-label">Số báo danh</label>
+                                <input type="text" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào số báo danh
+                                </div>
                             </div>
+
                             <div class="col-md-6">
-                                <label for="Phonghoc" class="form-label">Thời gian*</label>
-                                <input type="text" class="form-control" id="Phonghoc">
+                                <label for="malop" class="form-label">Thời gian</label>
+                                <input type="time" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập thời gian
+                                </div>
                             </div>
+
+
                             <div class="col-md-6">
-                                <label for="Phonghoc" class="form-label">Ngày thi*</label>
-                                <input type="text" class="form-control" id="Phonghoc">
+                                <label for="malop" class="form-label">Ngày thi</label>
+                                <input type="date" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào ngày thi
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="malop" class="form-label">Phòng thi</label>
+                                <input type="text" class="form-control" id="malop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào phòng thi
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button style="float: right;" class="btn btn-primary" type="submit">Submit form</button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="width: 15%"
-                            data-bs-dismiss="modal">Lưu</button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -94,43 +129,46 @@
                                     </div>
                                     <!-- Modal body -->
                                     <div class="modal-body ">
-                                        <form class="row g-3">
+                                        <form class="row g-3 needs-validation" novalidate>
                                             <div class="col-md-6">
                                                 <label for="malop" class="form-label">Mã lịch thi</label>
-                                                <input type="text" class="form-control" id="malop">
+                                                <input type="text" class="form-control" id="malop" required>
+                                                <div class="invalid-feedback">
+                                                    Vui lòng nhập vào mã lịch thi
+                                                </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="TenLop" class="form-label">Tên sinh viên</label>
-                                                <input type="text" class="form-control" id="TenLop">
+                                                <input type="text" class="form-control" id="TenLop" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Tenmonhoc" class="form-label">Mã môn học</label>
-                                                <input type="text" class="form-control" id="Tenmonhoc">
+                                                <input type="text" class="form-control" id="Tenmonhoc" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Phonghoc" class="form-label">Kỳ học*</label>
-                                                <input type="text" class="form-control" id="Phonghoc">
+                                                <input type="text" class="form-control" id="Phonghoc" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Phonghoc" class="form-label">Số báo danh*</label>
-                                                <input type="text" class="form-control" id="Phonghoc">
+                                                <input type="text" class="form-control" id="Phonghoc" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Phonghoc" class="form-label">Thời gian*</label>
-                                                <input type="text" class="form-control" id="Phonghoc">
+                                                <input type="text" class="form-control" id="Phonghoc" required>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Phonghoc" class="form-label">Ngày thi*</label>
-                                                <input type="text" class="form-control" id="Phonghoc">
+                                                <input type="text" class="form-control" id="Phonghoc" required>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" style="float:right"
+                                                    type="submit">Lưu</button>
                                             </div>
                                         </form>
                                     </div>
 
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" style="width: 15%"
-                                            data-bs-dismiss="modal">Lưu</button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -141,3 +179,25 @@
         </tbody>
     </table>
 </div>
+
+
+<script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()</script>

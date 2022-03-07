@@ -16,6 +16,7 @@
         </div>
         <div class="modal" id="myModal">
             <div class="modal-dialog modal-dialog-centered" style="max-width: 800px !important">
+
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Thêm Lớp</h4>
@@ -23,55 +24,97 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="malop" class="form-label">Mã lớp</label>
-                                <input type="text" class="form-control" id="malop">
+                        <form class="row g-3 needs-validation" novalidate>
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Mã Lớp</label>
+                                <input type="text" class="form-control" id="maLop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào mã lớp
+                                </div>
+                                <!-- <div class="valid-tooltip">
+                                    Looks good!
+                                </div> -->
                             </div>
-                            <div class="col-md-6">
-                                <label for="TenLop" class="form-label">Tên lớp*</label>
-                                <input type="text" class="form-control" id="TenLop">
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Tên Lớp</label>
+                                <input type="text" class="form-control" id="tenLop" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào tên lớp
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <label for="Tenmonhoc" class="form-label">Tên môn học*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+
+                            <div class="col-md-12 position-relative">
+                                <label for="validationTooltip01" class="form-label">Tên Môn Học</label>
+                                <input type="text" class="form-control" id="tenMonHoc" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào tên môn học
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="Phonghoc" class="form-label">Phòng học*</label>
-                                <input type="text" class="form-control" id="Phonghoc">
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Phòng Học</label>
+                                <input type="text" class="form-control" id="phongHoc" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào tên phòng học
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="Tengiaovien" class="form-label">Tên GV*</label>
-                                <input type="text" class="form-control" id="Tengiaovien">
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Tên Giảng Viên</label>
+                                <input type="text" class="form-control" id="tenGiangVien" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào tên giảng viên
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="Thoigianbatdau" class="form-label">Thời gian bắt đầu*</label>
-                                <input type="text" class="form-control" id="Thoigianbatdau">
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Thời Gian BắT Đầu</label>
+                                <input type="datetime-local" class="form-control" id="thoiGianBatDau" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn thời gian bắt đầu
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="Thoigianketthuc" class="form-label">Thời gian kết thúc*</label>
-                                <input type="text" class="form-control" id="Thoigianketthuc">
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Thời Gian Kết Thúc</label>
+                                <input type="datetime-local" class="form-control" id="thoiGianKetThuc" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn thời gian kết thúc
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="Soluong" class="form-label">Số lượng*</label>
-                                <input type="text" class="form-control" id="Soluong">
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip01" class="form-label">Số Lượng</label>
+                                <input type="number" class="form-control" id="soLuong" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào số lượng
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="inputState" class="form-label">Trạng thái*</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+
+                            <div class="col-md-6 position-relative">
+                                <label for="validationTooltip04" class="form-label">State</label>
+                                <select class="form-select" id="validationTooltip04" required>
+                                    <option selected disabled value="">Trạng Thái Lớp Học</option>
+                                    <option value="0"> Hoạt Động </option>
+                                    <option value="1"> Tạm Dừng </option>
+
                                 </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn trạng thái
+                                </div>
                             </div>
+
+                            <div class="col-12 ">
+                                <button class="btn btn-primary" style="float: right;" type="submit"> Lưu </button>
+                            </div>
+
                         </form>
                     </div>
-
                     <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="width: 15%"
-                            data-bs-dismiss="modal">Lưu</button>
-                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -95,6 +138,102 @@
         <tbody id="listLop">
 
         </tbody>
+
+        <div class="modal" id="myModaldata">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 800px !important">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sửa Thông Tin Lớp</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3 needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Mã Lớp</label>
+                                    <input type="text" class="form-control" id="maLopUpdate" required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Tên Lớp</label>
+                                    <input type="text" class="form-control" id="tenLopUpdate" required>
+
+                                </div>
+                                <div class="col-md-12 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Tên Môn Học</label>
+                                    <input type="text" class="form-control" id="tenMonHocUpdate" required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Phòng Học</label>
+                                    <input type="text" class="form-control" id="phongHocUpdate" required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Tên Giảng Viên</label>
+                                    <input type="text" class="form-control" id="tenGiangVienUpdate" required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Thời Gian BắT Đầu</label>
+                                    <input type="datetime-local" class="form-control" id="thoiGianBatDauUpdate"
+                                        required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Thời Gian Kết Thúc</label>
+                                    <input type="datetime-local" class="form-control" id="thoiGianKetThucUpdate"
+                                        required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip01" class="form-label">Số Lượng</label>
+                                    <input type="number" class="form-control" id="soLuongUpdate" required>
+
+                                </div>
+                                <div class="col-md-6 position-relative mt-2">
+                                    <label for="validationTooltip04" class="form-label">State</label>
+                                    <select class="form-select" id="validationTooltip04" id="trangthaiUpdate" required>
+                                        <option selected disabled value="">Trạng Thái Lớp Học</option>
+                                        <option value="1">Hoạt Động</option>
+                                        <option value="0">Huỷ Bỏ</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-12 ">
+                                    <button class="btn btn-primary mt-2 " style="float: right;" type="submit"> Lưu
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="myModal3">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 400px !important">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cảnh Báo</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body ">
+                        <form class="row g-3 py-3">
+                            Bạn có muốn dừng lớp học này không?
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary text-center" style="width: 30%"
+                            data-bs-dismiss="modal">Đồng ý</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </table>
 </div>
 
@@ -113,98 +252,12 @@
                             <td>${elm.soLuong}</td>
                             <td>${elm.thoiGianBd}</td>
                             <td>${elm.thoiGianKt}</td>
-                            <td>${elm.trangThai ? "Active" : "Stop"}</td>
+                            <td>${elm.trangThai ? "Active" : "Inactive"}</td>
                             <td>
-                                <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i
-                                        class="fa-solid fa-wrench"></i>
-                                    <div class="modal" id="myModaldata">
-                                        <div class="modal-dialog modal-dialog-centered" style="max-width: 800px !important">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Sửa Thông Tin Lớp</h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body ">
-                                                    <form class="row g-3">
-                                                        <div class="col-md-6">
-                                                            <label for="malop" class="form-label">Mã lớp</label>
-                                                            <input type="text" class="form-control" id="malop">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="TenLop" class="form-label">Tên lớp*</label>
-                                                            <input type="text" class="form-control" id="TenLop">
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label for="Tenmonhoc" class="form-label">Tên môn học*</label>
-                                                            <input type="text" class="form-control" id="Tenmonhoc">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="Phonghoc" class="form-label">Phòng học*</label>
-                                                            <input type="text" class="form-control" id="Phonghoc">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="Tengiaovien" class="form-label">Tên GV*</label>
-                                                            <input type="text" class="form-control" id="Tengiaovien">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="Thoigianbatdau" class="form-label">Thời gian bắt
-                                                                đầu*</label>
-                                                            <input type="text" class="form-control" id="Thoigianbatdau">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="Thoigianketthuc" class="form-label">Thời gian kết
-                                                                thúc*</label>
-                                                            <input type="text" class="form-control" id="Thoigianketthuc">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="Soluong" class="form-label">Số lượng*</label>
-                                                            <input type="text" class="form-control" id="Soluong">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="inputState" class="form-label">Trạng thái*</label>
-                                                            <select id="inputState" class="form-select">
-                                                                <option selected>Choose...</option>
-                                                                <option>...</option>
-                                                            </select>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" style="width: 15%"
-                                                        data-bs-dismiss="modal">Lưu</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </i>
+                                <a onClick=updateLopHoc(${elm.idLop}) style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata">
+                                    <i class="fa-solid fa-wrench"></i>
                                 </a>
                                 <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-ban"></i>
-                                    <div class="modal" id="myModal3">
-                                        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px !important">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Cảnh Báo</h4>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body ">
-                                                    <form class="row g-3 py-3">
-                                                        Bạn có muốn dừng lớp học này không?
-                                                    </form>
-                                                </div>
-
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary text-center" style="width: 30%"
-                                                        data-bs-dismiss="modal">Đồng ý</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </i>
                                 </a>
                             </td>
                         </tr>`
@@ -213,4 +266,44 @@
             document.querySelector("#listLop").innerHTML = html
         })
         .catch(err => console.log("Error: ", err))
+
+    const updateLopHoc = (id) => {
+        console.log(id);
+        fetch(`${HOST}/api/lop/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                // console.log(document.querySelector(".modal-body #maLopUpdate"));
+                document.querySelector(".modal-body #maLopUpdate").value = data.idLop
+                document.querySelector(".modal-body #tenLopUpdate").value = data.tenLop
+                document.querySelector(".modal-body #tenMonHocUpdate").value = data.idmh
+                document.querySelector(".modal-body #phongHocUpdate").value = data.phongHoc
+                document.querySelector(".modal-body #tenGiangVienUpdate").value = data.idgv
+                document.querySelector(".modal-body #thoiGianBatDauUpdate").value = data.thoiGianBd
+                document.querySelector(".modal-body #thoiGianKetThucUpdate").value = data.thoiGianKt
+                document.querySelector(".modal-body #soLuongUpdate").value = data.soLuong
+
+
+            })
+    }
+</script>
+<script>
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>
