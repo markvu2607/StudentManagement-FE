@@ -23,6 +23,84 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
+                        <form class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-12">
+                                <label for="malop" class="form-label">Mã tài khoản</label>
+                                <input type="text" class="form-control" id="maTaiKhoan" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập mã tài khoản
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="TenLop" class="form-label">Tên đăng nhập*</label>
+                                <input type="text" class="form-control" id="tenDangNhap" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập tên đăng nhập
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
+                                <input type="text" class="form-control" id="matKhau" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập mật khẩu
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="inputState" class="form-label">Chức năng*</label>
+                                <select id="chucnang" class="form-select" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn chức năng
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="inputState" class="form-label">Trạng thái*</label>
+                                <select class="form-select" id="trangthai" required>
+                                    <option selected disabled value="">Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn trạng thái
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" style="float: right;" type="submit">Submit form</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 50px !important;">
+    <table class="table table-hover mt-5 " style="margin-top: 5px !important;">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Mã tài khoản</th>
+                <th scope="col">Tên đăng nhập</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody id="listTaiKhoan">
+
+        </tbody>
+
+        <div class="modal" id="myModaldata">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Sửa Tài Khoản</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body ">
                         <form class="row g-3">
                             <div class="col-md-12">
                                 <label for="malop" class="form-label">Mã tài khoản</label>
@@ -52,7 +130,6 @@
                             </div>
                         </form>
                     </div>
-
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" style="width: 15%"
@@ -61,102 +138,98 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 50px !important;">
-    <table class="table table-hover mt-5 " style="margin-top: 5px !important;">
-        <thead>
-            <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Mã tài khoản</th>
-                <th scope="col">Tên đăng nhập</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>1951081459</td>
-                <td>BestYasuoVietNam</td>
-                <td>
-                    <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i
-                            class="fa-solid fa-wrench"></i>
-                        <div class="modal" id="myModaldata">
-                            <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Sửa Tài Khoản</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="modal-body ">
-                                        <form class="row g-3">
-                                            <div class="col-md-12">
-                                                <label for="malop" class="form-label">Mã tài khoản</label>
-                                                <input type="text" class="form-control" id="malop">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="TenLop" class="form-label">Tên đăng nhập*</label>
-                                                <input type="text" class="form-control" id="TenLop">
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
-                                                <input type="text" class="form-control" id="Tenmonhoc">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="inputState" class="form-label">Chức năng*</label>
-                                                <select id="inputState" class="form-select">
-                                                    <option selected>Choose...</option>
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="inputState" class="form-label">Trạng thái*</label>
-                                                <select id="inputState" class="form-select">
-                                                    <option selected>Choose...</option>
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                        </form>
-                                    </div>
 
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" style="width: 15%"
-                                            data-bs-dismiss="modal">Lưu</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </i>
-                    </a>
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-ban"></i>
-                        <div class="modal" id="myModal3">
-                            <div class="modal-dialog modal-dialog-centered" style="max-width: 400px !important">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Cảnh Báo</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="modal-body ">
-                                        <form class="row g-3 py-3">
-                                            Bạn có muốn dừng tài khoản này không?
-                                        </form>
-                                    </div>
-
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary text-center" style="width: 30%"
-                                            data-bs-dismiss="modal">Đồng ý</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+        <div class="modal" id="myModal3">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 400px !important">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cảnh Báo</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body ">
+                        <form class="row g-3 py-3">
+                            Bạn có muốn dừng tài khoản này không?
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary text-center" style="width: 30%"
+                            data-bs-dismiss="modal">Đồng ý</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </table>
 </div>
+
+
+<script>
+    fetch(`${HOST}/api/taikhoan/`)
+        .then(res => res.json())
+        .then(data => {
+            let html = ""
+            let i = 1;
+            data.forEach((elm) => {
+                html += `<tr>
+                            <th scope="row">${i++}</th>
+                            <th >${elm.idtk}</th>
+                            <td>${elm.tenDangNhap}</td>
+                            <td>
+                                <a  onclick=updateTaiKhoan(${elm.idtk}) style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata">
+                                     <i
+                                        class="fa-solid fa-wrench"></i>
+                                   
+                                    </i>
+                                </a>
+                                <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3">
+                                    <i class="fa-solid fa-ban"></i>
+                                   
+                                    </i>
+                                </a>
+                            </td>
+                        </tr>`
+            })
+
+            document.querySelector("#listTaiKhoan").innerHTML = html
+        })
+        .catch(err => console.log("Error: ", err))
+
+
+    const updateTaiKhoan = (id) => {
+        console.log(id);
+        fetch(`${HOST}/api/taikhoan/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                document.querySelector(".modal-body #maTaiKhoan").value = data.idtk
+                document.querySelector(".modal-body #tenDangNhap").value = data.tenDangNhap
+                document.querySelector(".modal-body #matKhau").value = data.matKhau
+                document.querySelector(".modal-body #chucnang").value = data.chucNang
+                document.querySelector(".modal-body #trangthai").value = data.trangThai
+
+            })
+    }
+</script>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
