@@ -23,97 +23,157 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="malop" class="form-label">Mã sinh viên</label>
-                                <input type="text" class="form-control" id="malop">
-                            </div>
+                        <form class="row g-3 needs-validation" novalidate>
+
                             <div class="col-md-6">
                                 <label for="TenLop" class="form-label">Họ và tên*</label>
-                                <input type="text" class="form-control" id="TenLop">
+                                <input type="text" class="form-control" id="hoVaTen" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập họ và tên
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Ngày sinh*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="date" class="form-control" id="ngaySinh" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập nhập vào ngày sinh
+                                </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="Tenmonhoc" class="form-label">Giới tính*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="Tenmonhoc" class="form-label">Mã khoa*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputState" class="form-label">Kí túc xã*</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select id="inputState" id="gioiTinh" class=" form-select" required>
+                                    <option selected disabled value="">--Chọn Giới Tính--</option>
+                                    <option value=""> Nam </option>
+                                    <option value="">Nữ</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn giới tính
+                                </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-4">
+                                <label for="Tenmonhoc" class="form-label">Mã khoa*</label>
+                                <select id="inputState" id="khoa" class="form-select" required>
+                                    <option selected disabled value="">--Chọn Khoa--</option>
+                                    <option value="">Công Nghệ Thông Tin </option>
+                                    <option value="">Công Nghệ Hoá Học</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn khoa
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputState" class="form-label">Kí túc xã*</label>
+                                <select id="inputState" class="form-select " required>
+                                    <option selected disabled value="">--Chọn Ký Túc Xá--</option>
+                                    <option>Có</option>
+                                    <option>không</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn ký túc xá
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Quê quán*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="queQuan" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập vào quê quán
+                                </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Địa chỉ*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="diaChi" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập địa chỉ
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">SĐT*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="soDienThoai" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Căn cước công dân*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="CCCD" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số căn cước công dân
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Tên đăng nhập*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="tenDangNhap" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập tên đăng nhập
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="matKhau" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập mật khẩu
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Họ và tên Bố*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="hoTenBo" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập họ và tên bố
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Năm sinh*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="date" class="form-control" id="namSinhBo" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập năm sinh
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Nghề nghiệp*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="ngheNghiepBo" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập nghề nghiệp
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="Tenmonhoc" class="form-label">SĐT*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <label for="Tenmonhoc" class="form-label">SĐT Bố*</label>
+                                <input type="text" class="form-control" id="sdtBo" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Họ và tên Mẹ*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="hoTenMe" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập họ và tên mẹ
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Năm sinh*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="date" class="form-control" id="namSinhMe" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập năm sinh
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <label for="Tenmonhoc" class="form-label">Nghề nghiệp*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="ngheNghiepMe" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập nghề nghiệp
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="Tenmonhoc" class="form-label">SĐT*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <label for="Tenmonhoc" class="form-label">SĐT Mẹ*</label>
+                                <input type="text" class="form-control" id="sdtMe" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng nhập số điện thoại
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" style="float: right;" type="submit">Lưu</button>
                             </div>
                         </form>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="width: 15%"
-                            data-bs-dismiss="modal">Lưu</button>
                     </div>
                 </div>
             </div>
@@ -126,7 +186,20 @@
             <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Họ và tên</th>
-                <th scope="col"></th>
+                <th scope="col">Năm Sinh</th>
+                <th scope="col">Giới Tính</th>
+                <th scope="col">ở KTX</th>
+                <th scope="col">Quê Quán</th>
+                <th scope="col">Địa Chỉ</th>
+                <th scope="col">Điện Thoại</th>
+                <th scope="col">Tên Bố</th>
+                <th scope="col">Nghề Nghiêp</th>
+                <th scope="col">Số Điện Thoại</th>
+                <th scope="col">Năm Sinh</th>
+                <th scope="col">Tên Mẹ</th>
+                <th scope="col">Nghề Nghiệp</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Năm Sinh</th>
             </tr>
         </thead>
         <tbody id="listSinhVien">
@@ -140,10 +213,39 @@
         .then(res => res.json())
         .then(data => {
             let html = ""
+            let i = 1;
             data.forEach((elm) => {
+                function formatDate(date) {
+                    var d = new Date(date),
+                        month = '' + (d.getMonth() + 1),
+                        day = '' + d.getDate(),
+                        year = d.getFullYear();
+
+                    if (month.length < 2)
+                        month = '0' + month;
+                    if (day.length < 2)
+                        day = '0' + day;
+
+                    return [day, month, year].join('-');
+                }
+                console.log();
                 html += `<tr>
-                            <th scope="row">${elm.idsv}</th>
+                            <th scope="row">${i++}</th>
                             <td>${elm.tensv}</td>
+                            <td>${formatDate(elm.ngaySinh)}</td>
+                            <td>${elm.laNam === 1 ? 'nam' : 'nữ'}</td>
+                            <td>${elm.kyTucXa === 1 ? 'có' : 'không'}</td>
+                            <td>${elm.queQuan}</td>
+                            <td>${elm.sdt}</td>
+                            <td>${elm.cccd}</td>
+                            <td>${elm.tenBo}</td>
+                            <td>${elm.ngheNghiepBo}</td>
+                            <td>${elm.sdtBo}</td>
+                            <td>${elm.namSinhBo}</td>
+                            <td>${elm.tenMe}</td>
+                            <td>${elm.ngheNghiepMe}</td>
+                            <td>${elm.sdtMe}</td>
+                            <td>${elm.namSinhMe}</td>
                             <td>
                                 <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i
                                         class="fa-solid fa-wrench"></i>
@@ -369,3 +471,26 @@
         })
         .catch(err => console.log("Error: ", err))
 </script>
+
+
+<script>
+
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()</script>

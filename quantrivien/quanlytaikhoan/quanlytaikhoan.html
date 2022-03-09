@@ -24,13 +24,7 @@
                     <!-- Modal body -->
                     <div class="modal-body ">
                         <form class="row g-3 needs-validation" novalidate>
-                            <div class="col-md-12">
-                                <label for="malop" class="form-label">Mã tài khoản</label>
-                                <input type="text" class="form-control" id="maTaiKhoan" required>
-                                <div class="invalid-feedback">
-                                    Vui lòng nhập mã tài khoản
-                                </div>
-                            </div>
+
                             <div class="col-md-12">
                                 <label for="TenLop" class="form-label">Tên đăng nhập*</label>
                                 <input type="text" class="form-control" id="tenDangNhap" required>
@@ -49,8 +43,11 @@
                             <div class="col-md-12">
                                 <label for="inputState" class="form-label">Chức năng*</label>
                                 <select id="chucnang" class="form-select" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>...</option>
+                                    <option selected disabled value="">---Chọn Chức Năng---</option>
+                                    <option value="sinhvien"> Sinh Viên </option>
+                                    <option value="giangvien"> Giảng Viên </option>
+                                    <option value="quantrivien"> Quản Trị Viên </option>
+
                                 </select>
                                 <div class="invalid-feedback">
                                     Vui lòng chọn chức năng
@@ -59,15 +56,17 @@
                             <div class="col-md-12">
                                 <label for="inputState" class="form-label">Trạng thái*</label>
                                 <select class="form-select" id="trangthai" required>
-                                    <option selected disabled value="">Choose...</option>
-                                    <option>...</option>
+                                    <option selected disabled value="">---Chọn Trạng Thái---</option>
+                                    <option value="1">Hoạt Động</option>
+                                    <option value="0">Không Hoạt Động</option>
+
                                 </select>
                                 <div class="invalid-feedback">
                                     Vui lòng chọn trạng thái
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary" style="float: right;" type="submit">Submit form</button>
+                                <button class="btn btn-primary" style="float: right;" type="submit">Lưu</button>
                             </div>
                         </form>
                     </div>
@@ -104,28 +103,31 @@
                         <form class="row g-3">
                             <div class="col-md-12">
                                 <label for="malop" class="form-label">Mã tài khoản</label>
-                                <input type="text" class="form-control" id="malop">
+                                <input type="text" class="form-control" id="maTaiKhoanUpdate">
                             </div>
                             <div class="col-md-12">
                                 <label for="TenLop" class="form-label">Tên đăng nhập*</label>
-                                <input type="text" class="form-control" id="TenLop">
+                                <input type="text" class="form-control" id="tenDangNhapUpdate">
                             </div>
                             <div class="col-12">
                                 <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
-                                <input type="text" class="form-control" id="Tenmonhoc">
+                                <input type="text" class="form-control" id="matKhauUpdate">
                             </div>
                             <div class="col-md-12">
                                 <label for="inputState" class="form-label">Chức năng*</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select id="chucnang" class="form-select" required>
+                                    <option selected disabled value="">---Chọn Chức Năng---</option>
+                                    <option value="sinhvien"> Sinh Viên </option>
+                                    <option value="giangvien"> Giảng Viên </option>
+                                    <option value="quantrivien"> Quản Trị Viên </option>
                                 </select>
                             </div>
                             <div class="col-md-12">
                                 <label for="inputState" class="form-label">Trạng thái*</label>
-                                <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select class="form-select" id="trangthai" required>
+                                    <option selected disabled value="">---Chọn Trạng Thái---</option>
+                                    <option value="1">Hoạt Động</option>
+                                    <option value="0">Không Hoạt Động</option>
                                 </select>
                             </div>
                         </form>
@@ -197,15 +199,16 @@
 
 
     const updateTaiKhoan = (id) => {
-        console.log(id);
+
         fetch(`${HOST}/api/taikhoan/${id}`)
             .then(res => res.json())
             .then(data => {
-                document.querySelector(".modal-body #maTaiKhoan").value = data.idtk
-                document.querySelector(".modal-body #tenDangNhap").value = data.tenDangNhap
-                document.querySelector(".modal-body #matKhau").value = data.matKhau
-                document.querySelector(".modal-body #chucnang").value = data.chucNang
-                document.querySelector(".modal-body #trangthai").value = data.trangThai
+                console.log(data);
+                document.querySelector(".modal-body #maTaiKhoanUpdate").value = data.idtk
+                document.querySelector(".modal-body #tenDangNhapUpdate").value = data.tenDangNhap
+                document.querySelector(".modal-body #matKhauUpdate").value = data.matKhau
+                // document.querySelector(".modal-body #chucnang").value = data.chucNang
+                // document.querySelector(".modal-body #trangthai").value = data.trangThai
 
             })
     }
