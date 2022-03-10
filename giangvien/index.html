@@ -13,7 +13,16 @@
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="../js/constants.js"></script>
+    <script src="../js/common.js"></script>
 </head>
+
+<script>
+    const user = JSON.parse(localStorage.getItem("user"))
+    if (!user || user.role !== "giangvien") {
+        window.location = "../login.html"
+    }
+</script>
 
 <body>
     <div class="top-side " style="background-color: #292444;">
@@ -50,7 +59,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="../Logout.php">Đóng phiên làm việc</a></li>
+                                <li><a class="dropdown-item" onclick="onLogout()">Đóng phiên làm việc</a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class=" container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar" style="background-color: #292444;">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">

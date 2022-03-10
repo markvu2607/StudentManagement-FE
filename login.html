@@ -18,12 +18,12 @@
         const user = JSON.parse(localStorage.getItem("user"))
         if (!user) {
 
-        } else if (user.role == "1") {
-            window.location = "./quantrivien/trangchuquantrivien.html"
-        } else if (user.role == "2") {
-            window.location = "./giangvien/trangchugiangvien.html"
-        } else if (user.role == "3") {
-            window.location = "./sinhvien/trangchusinhvien.html"
+        } else if (user.role == "quantrivien") {
+            window.location = "./quantrivien/index.html"
+        } else if (user.role == "giangvien") {
+            window.location = "./giangvien/index.html"
+        } else if (user.role == "sinhvien") {
+            window.location = "./sinhvien/index.html"
         }
     </script>
 </head>
@@ -81,10 +81,12 @@
                                 status: result.trangThai
                             }
                             window.localStorage.setItem("user", JSON.stringify(user))
-                            if (result.chucNang == "1") {
-                                window.location = "quantrivien/trangchuquantrivien.html"
-                            } else {
-                                window.location = "https://www.google.com/"
+                            if (result.chucNang == "quantrivien") {
+                                window.location = "quantrivien/"
+                            } else if (result.chucNang == "giangvien") {
+                                window.location = "giangvien/"
+                            } else if (result.chucNang == "sinhvien") {
+                                window.location = "sinhvien/"
                             }
                         }
 
