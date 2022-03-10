@@ -21,12 +21,37 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>1212342435</td>
-                <td>Cao Thị Bích Ngọc</td>
-            </tr>
+        <tbody id="listSVKTX">
+
         </tbody>
     </table>
 </div>
+
+
+
+<script>
+    fetch(`${HOST}/api/sinhvien/kytucxa`)
+        .then(res => res.json())
+        .then(data => {
+            let html = ""
+            console.log('vao day', data);
+            data.forEach((elm) => {
+                html += `<tr>
+                            <th scope="row">${elm.idsv}</th>
+                            <td>${elm.tensv}</td>
+                            <td>${elm.ngaySinh}</td>
+                            <td>${elm.laNam}</td>
+                            <td>
+                                <a   style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i
+                                        class="fa-solid fa-wrench"></i>
+                                  
+                                </a>
+                            </td>
+                        </tr>`
+            })
+
+            document.querySelector("#listSVKTX").innerHTML = html
+        })
+        .catch(err => console.log("Error: ", err))
+
+</script>

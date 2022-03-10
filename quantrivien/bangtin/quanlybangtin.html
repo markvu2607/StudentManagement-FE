@@ -18,26 +18,29 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
-                        <form class="row g-3">
+                        <form class="row g-3 needs-validation" novalidate>
                             <div class="col-md-12">
-                                <label for="malop" class="form-label">Mã lịch thi</label>
-                                <input type="text" class="form-control" id="malop">
+                                <label for="validationServer01" class="form-label">Tiêu Đề</label>
+                                <input type="text" class="form-control " id="validationServer01" required>
+                                <div class="invalid-feedback">
+                                    nhập vào tiêu đề
+                                </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="malop" class="form-label">Nội dung</label>
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="10" name="content" id="content">
-                                                            </textarea>
+                                <label for="validationServer02" class="form-label">Nội Dung</label>
+                                <textarea type="text" class="form-control" id="validationServer02" required></textarea>
+                                <div class="invalid-feedback">
+                                    Nhập vào nội dung
                                 </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary" style="float: right;" type="submit">Lưu</button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="width: 15%"
-                            data-bs-dismiss="modal">Lưu</button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -48,7 +51,7 @@
         <thead>
             <tr>
                 <th scope="col">STT</th>
-                <th scope="col">Thời gian</th>
+                <th scope="col">Tiêu Đề</th>
                 <th scope="col">Nội Dung</th>
                 <th scope="col"></th>
             </tr>
@@ -91,3 +94,26 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+</script>
