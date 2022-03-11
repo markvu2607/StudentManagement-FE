@@ -49,7 +49,6 @@
         <thead>
             <tr>
                 <th scope="col">STT</th>
-                <th scope="col">Mã khoa</th>
                 <th scope="col">Tên khoa</th>
                 <th scope="col"></th>
             </tr>
@@ -65,15 +64,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Sửa Khoa</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close" id="close" data-bs-dismiss="modal"></button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
                 <form class="row g-3 needs-validation" id="formUpdate" novalidate>
-                    <div class="col-md-12">
-                        <label for="maKhoa" class="form-label">Mã khoa</label>
-                        <input id="maKhoa" readonly type="text" class="form-control">
-                    </div>
+
+                    <input hidden id="maKhoa" readonly type="text" class="form-control">
+
                     <div class="col-md-12">
                         <label for="tenKhoa" class="form-label">Tên khoa*</label>
                         <input type="text" class="form-control" id="tenKhoa" required>
@@ -97,10 +95,10 @@
             .then(res => res.json())
             .then(data => {
                 let html = ""
+                let i = 1;
                 data.forEach((elm) => {
                     html += `<tr>
-                                <th scope="row">${elm.idKhoa}</th>
-                                <td>CSE-CNTT</td>
+                                <th scope="row">${i++}</th>
                                 <td>${elm.tenKhoa}</td>
                                 <td>
                                     <a 
@@ -146,25 +144,51 @@
                         form.classList.add('was-validated')
                     } else {
                         if (form.id == "formAdd") {
-                            fetch(`${HOST}/api/khoa/`, {
+                            let tenKhoa = form.tenKhoa.value.trim()
+                            var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                            if (form.tenKhoa.value.length > 255) {
+                                alert('tên khoa không được quá 255 ký tự')
+                            }
+                            else if (format.test(tenKhoa)) {
+                                alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                            }
+                            else {
+                                fetch(`${HOST}/api/khoa/`, {
                                     method: "POST",
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
-                                        "tenKhoa": form.tenKhoa.value
+                                        "tenKhoa": tenKhoa
                                     }),
                                 })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Them thanh cong")
-                                    renderKhoa()
-                                    document.querySelector("#myModalAdd .btn-close").click()
-                                })
-                                .catch(err => console.log("Error: ", err))
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.message) {
+                                            alert('Khoa đã tồn tại')
+                                        }
+                                        else {
+                                            form.reset()
+                                            alert("Them thanh cong")
+                                            renderKhoa()
+                                            document.querySelector("#myModalAdd .btn-close").click()
+                                        }
+                                    })
+                                    .catch(err => console.log("Error: ", err))
+                            }
+
+
                         } else if (form.id == "formUpdate") {
-                            fetch(`${HOST}/api/khoa/${form.maKhoa.value}`, {
+                            let tenKhoa = form.tenKhoa.value.trim()
+                            var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                            if (form.tenKhoa.value.length > 255) {
+                                alert('tên khoa không được quá 255 ký tự')
+                            }
+                            else if (format.test(tenKhoa)) {
+                                alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                            }
+                            else {
+                                fetch(`${HOST}/api/khoa/${form.maKhoa.value}`, {
                                     method: "PUT",
                                     headers: {
                                         'Content-Type': 'application/json',
@@ -173,14 +197,20 @@
                                         "tenKhoa": form.tenKhoa.value
                                     }),
                                 })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Sua thanh cong")
-                                    renderKhoa()
-                                    document.querySelector("#myModalUpdate .btn-close").click()
-                                })
-                                .catch(err => console.log("Error: ", err))
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.message) {
+                                            alert('Khoa đã tồn tại')
+                                        }
+                                        else {
+                                            form.reset()
+                                            alert("Sửa thành công")
+                                            renderKhoa()
+                                            document.getElementById("close").click()
+                                        }
+                                    })
+                                    .catch(err => console.log("Error: ", err))
+                            }
                         }
                     }
 

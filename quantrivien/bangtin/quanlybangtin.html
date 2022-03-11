@@ -14,7 +14,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Thêm Tin</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <button type="button" class="btn-close" id="close" data-bs-dismiss="modal"></button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
@@ -71,10 +71,9 @@
                                 <th style="text-align:center"  scope="row" >${i++}</th>
                                 <td  style="text-align:center" >${formatDate(elm.thoiGianTao)}</td>
                                 <td >${elm.noiDung}</td>
-                                <td  style="text-align:center" >
-                                    <a 
-                                     type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-trash"></i>
-                                    </a>
+                                <td>
+                                   <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-trash"></i>
+                                   </a>
                                 </td>
                             </tr>
                             
@@ -118,15 +117,6 @@
         }).catch(err => {
             console.error(err)
         });
-
-
-        // .then(res => res.json())
-        // .then(data => {
-        //     alert("Xoá thành công")
-        //     renderBangTin()
-        //     document.querySelector("#myModalAdd .btn-close").click()
-        // })
-        // .catch(err => console.log("Error: ", err))
     }
 
 </script>
@@ -159,23 +149,31 @@
                         form.classList.add('was-validated')
                     } else {
                         if (form.id == "formAdd") {
-                            fetch(`${HOST}/api/bangtin/`, {
-                                method: "POST",
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    "noiDung": form.editor.value
-                                }),
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Them thanh cong")
-                                    renderBangTin()
-                                    document.querySelector("#myModalAdd .btn-close").click()
+                            console.log(form.editor.value.length);
+                            if (form.editor.value.length < 3000) {
+                                fetch(`${HOST}/api/bangtin/`, {
+                                    method: "POST",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "noiDung": form.editor.value
+                                    }),
                                 })
-                                .catch(err => console.log("Error: ", err))
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        form.reset()
+                                        alert("Them thanh cong")
+                                        renderBangTin()
+                                        document.getElementById("close").click()
+                                    })
+                                    .catch(err => console.log("Error: ", err))
+
+                            }
+                            else {
+                                alert('bạn đã nhập quá 3000 từ')
+                            }
+
                         }
                     }
 
