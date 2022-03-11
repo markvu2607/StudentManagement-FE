@@ -27,21 +27,21 @@
                             <div class="col-md-12 position-relative">
                                 <label for="tenMon" class="form-label">Tên môn học</label>
                                 <input type="text" class="form-control" id="tenMon" required>
-                                <div class="invalid-tooltip">
+                                <div class="invalid-feedback">
                                     Vui lòng nhập vào tên môn học
                                 </div>
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="soTinChi" class="form-label">Số Tín Chỉ</label>
                                 <input type="text" class="form-control" id="soTinChi" required>
-                                <div class="invalid-tooltip">
+                                <div class="invalid-feedback">
                                     Vui lòng nhập số tín chỉ
                                 </div>
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="tienHoc" class="form-label">Tiền Học</label>
                                 <input type="text" class="form-control" id="tienHoc" required>
-                                <div class="invalid-tooltip">
+                                <div class="invalid-feedback">
                                     Vui lòng nhập vào tiền học
                                 </div>
                             </div>
@@ -84,28 +84,25 @@
             <!-- Modal body -->
             <div class="modal-body ">
                 <form id="formUpdate" class="row g-3 needs-validation1" novalidate>
-                    <div class="col-md-12">
-                        <label for="maMon" class="form-label">Mã môn học</label>
-                        <input readonly type="text" class="form-control" id="maMon" required>
-                    </div>
+                    <input hidden type="text" class="form-control" id="maMon" required>
                     <div class="col-md-12">
                         <label for="tenMon" class="form-label">Tên môn học*</label>
                         <input type="text" class="form-control" id="tenMon" required>
-                        <div class="invalid-tooltip">
+                        <div class="invalid-feedback">
                             Vui lòng nhập vào tên môn học
                         </div>
                     </div>
                     <div class="col-md-12">
                         <label for="soTinChi" class="form-label">Số tín chỉ*</label>
                         <input type="text" class="form-control" id="soTinChi" required>
-                        <div class="invalid-tooltip">
+                        <div class="invalid-feedback">
                             Vui lòng nhập số tín chỉ
                         </div>
                     </div>
                     <div class="col-md-12">
                         <label for="tienHoc" class="form-label">Tiền học*</label>
                         <input type="text" class="form-control" id="tienHoc" required>
-                        <div class="invalid-tooltip">
+                        <div class="invalid-feedback">
                             Vui lòng nhập vào tiền học
                         </div>
                     </div>
@@ -176,16 +173,16 @@
                     } else {
                         if (form.id == "formAdd") {
                             fetch(`${HOST}/api/monhoc/`, {
-                                    method: "POST",
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        "tenMon": form.tenMon.value,
-                                        "soTinChi": form.soTinChi.value,
-                                        "tienHoc": form.tienHoc.value
-                                    }),
-                                })
+                                method: "POST",
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    "tenMon": form.tenMon.value,
+                                    "soTinChi": form.soTinChi.value,
+                                    "tienHoc": form.tienHoc.value
+                                }),
+                            })
                                 .then(res => res.json())
                                 .then(data => {
                                     form.reset()
@@ -196,16 +193,16 @@
                                 .catch(err => console.log("Error: ", err))
                         } else if (form.id == "formUpdate") {
                             fetch(`${HOST}/api/monhoc/${form.maMon.value}`, {
-                                    method: "PUT",
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        "tenMon": form.tenMon.value,
-                                        "soTinChi": form.soTinChi.value,
-                                        "tienHoc": form.tienHoc.value
-                                    }),
-                                })
+                                method: "PUT",
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    "tenMon": form.tenMon.value,
+                                    "soTinChi": form.soTinChi.value,
+                                    "tienHoc": form.tienHoc.value
+                                }),
+                            })
                                 .then(res => res.json())
                                 .then(data => {
                                     form.reset()

@@ -80,3 +80,11 @@ a {
 .news i {
   color: #f09b0a;
 }
+
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  height: 400px;
+}
+.ck-rounded-corners .ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-editor__main > .ck-editor__editable.ck-rounded-corners {
+  height: 400px;
+}

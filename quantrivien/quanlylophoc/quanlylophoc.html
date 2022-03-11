@@ -24,7 +24,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
-                        <form id="formAdd" class="row g-3 needs-validation" novalidate>
+                        <form id=" " class="row g-3 needs-validation" novalidate>
 
                             <div class="col-md-6 position-relative">
                                 <label for="validationTooltip01" class="form-label">Tên Lớp</label>
@@ -62,7 +62,7 @@
                                 <label for="validationTooltip01" class="form-label">Thời Gian BắT Đầu</label>
                                 <input type="datetime-local" class="form-control" id="thoiGianBatDau" required>
                                 <div class="invalid-feedback">
-                                    Vui lòng chọn thời gian bắt đầu
+                                    Vu i lòng chọn thời gian bắt đầu
                                 </div>
                             </div>
 
@@ -155,7 +155,7 @@
     </table>
 </div>
 
-<div class="modal" id="myModalUpdate">
+<div class="modal" id="myModal">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 800px !important">
         <div class="modal-content">
             <div class="modal-header">
@@ -165,52 +165,63 @@
             <div class="modal-body">
                 <form id="formUpdate" class="row g-3 needs-validation" novalidate>
                     <div class="row">
-                        <div class="col-md-6 position-relative mt-2">
-                            <label for="validationTooltip01" class="form-label">Mã Lớp</label>
-                            <input type="text" class="form-control" id="maLop" readonly required>
+                        <input hidden type="text" class="form-control" id="maLop" readonly required>
 
-                        </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Tên Lớp</label>
                             <input type="text" class="form-control" id="tenLop" required>
-
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào tên lớp
+                            </div>
                         </div>
-                        <div class="col-md-12 position-relative mt-2">
+                        <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Tên Môn Học</label>
                             <input type="text" class="form-control" id="tenMonHoc" required>
-
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào tên môn học
+                            </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Phòng Học</label>
                             <input type="text" class="form-control" id="phongHoc" required>
-
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào phòng học
+                            </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Tên Giảng Viên</label>
                             <input type="text" class="form-control" id="tenGiangVien" required>
-
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào tên giảng viên
+                            </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Thời Gian BắT Đầu</label>
-                            <input type="datetime-local" class="form-control" id="thoiGianBatDau" required>
-
+                            <input type="date" class="form-control" id="thoiGianBatDau" required>
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào thời gian bắt đầu
+                            </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Thời Gian Kết Thúc</label>
-                            <input type="datetime-local" class="form-control" id="thoiGianKetThuc" required>
-
+                            <input type="date" class="form-control" id="thoiGianKetThuc" required>
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào thời gian kết thúc
+                            </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Số Lượng</label>
                             <input type="number" class="form-control" id="soLuong" required>
-
+                            <div class="invalid-feedback">
+                                Vui lòng nhập vào số lượng
+                            </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip04" class="form-label">State</label>
-                            <select class="form-select" id="validationTooltip04" id="trangthai" required>
+                            <select class="form-select" id="validationTooltip04" id="trangThai" required>
                                 <option selected disabled value="">Trạng Thái Lớp Học</option>
-                                <option value="1">Hoạt Động</option>
-                                <option value="0">Huỷ Bỏ</option>
+                                <option value="hoatdong">Hoạt Động</option>
+                                <option value="khonghoatdong    ">Huỷ Bỏ</option>
                             </select>
                         </div>
                     </div>
@@ -229,19 +240,20 @@
             .then(res => res.json())
             .then(data => {
                 let html = ""
+                let i = 1;
                 data.forEach((elm) => {
                     html += `<tr>
-                                <th scope="row" >${elm.idLop}</th>
+                                <th scope="row" >${i++}</th>
                                 <td>${elm.tenLop}</td>
                                 <td>${elm.idmh}</td>
                                 <td>${elm.phongHoc}</td>
                                 <td>${elm.idgv}</td>
                                 <td>${elm.soLuong}</td>
-                                <td>${elm.thoiGianBd}</td>
-                                <td>${elm.thoiGianKt}</td>
-                                <td>${elm.trangThai ? "Active" : "Inactive"}</td>
+                                <td>${formatDate(elm.thoiGianBd)}</td>
+                                <td>${formatDate(elm.thoiGianKt)}</td>
+                                <td>${elm.trangThai === 'hoatdong' ? "Active" : "Inactive"}</td>
                                 <td>
-                                    <a onClick=updateLopHoc(${elm.idLop}) style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate">
+                                    <a onClick=LopHoc(${elm.idLop}) style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
                                         <i class="fa-solid fa-wrench"></i>
                                     </a>
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-ban"></i>
@@ -256,23 +268,24 @@
     }
     renderLop()
 
-    const updateLopHoc = (id) => {
-        console.log(id);
+    const LopHoc = (id) => {
         fetch(`${HOST}/api/lop/${id}`)
             .then(res => res.json())
             .then(data => {
-                document.querySelector(".modal-body #maLopUpdate").value = data.idLop
-                document.querySelector(".modal-body #tenLopUpdate").value = data.tenLop
-                document.querySelector(".modal-body #tenMonHocUpdate").value = data.idmh
-                document.querySelector(".modal-body #phongHocUpdate").value = data.phongHoc
-                document.querySelector(".modal-body #tenGiangVienUpdate").value = data.idgv
-                document.querySelector(".modal-body #thoiGianBatDauUpdate").value = data.thoiGianBd
-                document.querySelector(".modal-body #thoiGianKetThucUpdate").value = data.thoiGianKt
-                document.querySelector(".modal-body #soLuongUpdate").value = data.soLuong
+                document.querySelector("#formUpdate #maLop").value = data.idLop
+                document.querySelector("#formUpdate #tenLop").value = data.tenLop
+                document.querySelector("#formUpdate #tenMonHoc").value = data.idmh
+                document.querySelector("#formUpdate #phongHoc").value = data.phongHoc
+                document.querySelector("#formUpdate #tenGiangVien").value = data.idgv
+                document.querySelector("#formUpdate #soLuong").value = data.soLuong
+                document.querySelector("#formUpdate #thoiGianBatDau").value = formatDate(data.thoiGianBd)
+                document.querySelector("#formUpdate #thoiGianKetThuc").value = formatDate(data.thoiGianKt)
+
             })
     }
 </script>
 <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
         'use strict'
 
@@ -287,6 +300,53 @@
                     event.stopPropagation()
                     if (!form.checkValidity()) {
                         form.classList.add('was-validated')
+                    } else {
+                        if (form.id == "formAdd") {
+                            fetch(`${HOST}/api/lop/`, {
+                                method: "POST",
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    "tenLop": form.tenLop.value
+                                }),
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    form.reset()
+                                    alert("Them thanh cong")
+                                    renderKhoa()
+                                    document.querySelector("#myModalAdd .btn-close").click()
+                                })
+                                .catch(err => console.log("Error: ", err))
+                        } else if (form.id == "formUpdate") {
+
+                            fetch(`${HOST}/api/lop/${form.maLop.value}`, {
+                                method: "PUT",
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    "tenLop": form.tenLop.value,
+                                    'phongHoc': form.phongHoc.value,
+                                    'soLuong': form.soLuong.value,
+                                    'thoiGianBd': form.thoiGianBatDau.value,
+                                    'thoiGianKt': form.thoiGianKetThuc.value,
+                                    // 'trangThai': trangThai,
+                                    'idgv': form.tenGiangVien.value,
+                                    'idmh': form.tenMonHoc.value,
+
+                                }),
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    form.reset()
+                                    alert("Sua thanh cong")
+                                    renderKhoa()
+                                    document.querySelector("#myModal .btn-close").click()
+                                })
+                                .catch(err => console.log("Error: ", err))
+                        }
                     }
 
                 }, false)
