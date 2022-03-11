@@ -3,18 +3,18 @@
 </div>
 <div class="row py-3">
     <div class="col-md-4">
-        <input type="text" class="form-control" style="border-radius: 15px" placeholder="Tên môn học">
+        <input id="searchInput" type="text" class="form-control" style="border-radius: 15px" placeholder="Tên môn học">
     </div>
     <div class="col-3 col-md-auto">
-        <button class="btn btn-primary">Tìm Kiếm</button>
+        <button class="btn btn-primary" onclick="renderMonHoc()">Tìm Kiếm</button>
     </div>
     <div class="col col col-lg-2">
         <div class="container">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModalAdd">
                 Thêm
             </button>
         </div>
-        <div class="modal" id="myModal">
+        <div class="modal" id="myModalAdd">
             <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -23,28 +23,24 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body ">
-                        <form class="row g-3  needs-validation1" novalidate>
-
-
+                        <form id="formAdd" class="row g-3 needs-validation1" novalidate>
                             <div class="col-md-12 position-relative">
-                                <label for="validationTooltip01" class="form-label">Tên môn học</label>
-                                <input type="text" class="form-control" id="validationCustom02" id="tenLop" required>
+                                <label for="tenMon" class="form-label">Tên môn học</label>
+                                <input type="text" class="form-control" id="tenMon" required>
                                 <div class="invalid-tooltip">
                                     Vui lòng nhập vào tên môn học
                                 </div>
                             </div>
-
                             <div class="col-md-12 position-relative">
-                                <label for="validationTooltip01" class="form-label">Số Tín Chỉ</label>
-                                <input type="text" class="form-control" id="validationCustom03" id="tenMonHoc" required>
+                                <label for="soTinChi" class="form-label">Số Tín Chỉ</label>
+                                <input type="text" class="form-control" id="soTinChi" required>
                                 <div class="invalid-tooltip">
                                     Vui lòng nhập số tín chỉ
                                 </div>
                             </div>
-
                             <div class="col-md-12 position-relative">
-                                <label for="validationTooltip01" class="form-label">Tiền Học</label>
-                                <input type="text" class="form-control" id="validationCustom0" id="phongHoc" required>
+                                <label for="tienHoc" class="form-label">Tiền Học</label>
+                                <input type="text" class="form-control" id="tienHoc" required>
                                 <div class="invalid-tooltip">
                                     Vui lòng nhập vào tiền học
                                 </div>
@@ -76,81 +72,89 @@
         <tbody id="listMonHoc">
 
         </tbody>
-        <div class="modal" id="myModaldata">
-            <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Sửa Thông Tin Môn Học</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </table>
+</div>
+<div class="modal" id="myModalUpdate">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa Thông Tin Môn Học</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body ">
+                <form id="formUpdate" class="row g-3 needs-validation1" novalidate>
+                    <div class="col-md-12">
+                        <label for="maMon" class="form-label">Mã môn học</label>
+                        <input readonly type="text" class="form-control" id="maMon" required>
                     </div>
-                    <!-- Modal body -->
-                    <div class="modal-body ">
-                        <form class="row g-3">
-                            <div class="col-md-12">
-                                <label for="malop" class="form-label">Mã môn học</label>
-                                <input readonly type="text" class="form-control" id="maMonUpdate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="TenLop" class="form-label">Tên môn học*</label>
-                                <input type="text" class="form-control" id="tenMonUpdate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="Tenmonhoc" class="form-label">Số tín chỉ*</label>
-                                <input type="text" class="form-control" id="soTinChiUpdate" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="Phonghoc" class="form-label">Tiền học*</label>
-                                <input type="text" class="form-control" id="hocPhiUpdate" required>
-                            </div>
-
-                        </form>
+                    <div class="col-md-12">
+                        <label for="tenMon" class="form-label">Tên môn học*</label>
+                        <input type="text" class="form-control" id="tenMon" required>
+                        <div class="invalid-tooltip">
+                            Vui lòng nhập vào tên môn học
+                        </div>
                     </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" style="width: 15%"
-                            data-bs-dismiss="modal">Lưu</button>
+                    <div class="col-md-12">
+                        <label for="soTinChi" class="form-label">Số tín chỉ*</label>
+                        <input type="text" class="form-control" id="soTinChi" required>
+                        <div class="invalid-tooltip">
+                            Vui lòng nhập số tín chỉ
+                        </div>
                     </div>
-                </div>
+                    <div class="col-md-12">
+                        <label for="tienHoc" class="form-label">Tiền học*</label>
+                        <input type="text" class="form-control" id="tienHoc" required>
+                        <div class="invalid-tooltip">
+                            Vui lòng nhập vào tiền học
+                        </div>
+                    </div>
+                    <div class="col-12 ">
+                        <button class="btn btn-primary" style="float: right;" type="submit"> Lưu </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </table>
+    </div>
 </div>
 
 <script>
-    fetch(`${HOST}/api/monhoc/`)
-        .then(res => res.json())
-        .then(data => {
-            let html = ""
-            data.forEach((elm) => {
-                html += `<tr>
-                            <th scope="row">${elm.idmh}</th>
-                            <td>${elm.tenMon}</td>
-                            <td>${elm.soTinChi}</td>
-                            <td>${elm.tienHoc}</td>
-                            <td>
-                                <a onclick=openUpdateMon(${elm.idmh})  style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i
-                                        class="fa-solid fa-wrench"></i>
-                                  
-                                </a>
-                            </td>
-                        </tr>`
-            })
+    const renderMonHoc = () => {
+        const tuKhoa = document.querySelector("#searchInput").value
+        fetch(`${HOST}/api/monhoc/?tukhoa=${tuKhoa}`)
+            .then(res => res.json())
+            .then(data => {
+                let html = ""
+                data.forEach((elm) => {
+                    html += `<tr>
+                                <th scope="row">${elm.idmh}</th>
+                                <td>${elm.tenMon}</td>
+                                <td>${elm.soTinChi}</td>
+                                <td>${elm.tienHoc}</td>
+                                <td>
+                                    <a onclick=openUpdateMon(${elm.idmh})  style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate"><i
+                                            class="fa-solid fa-wrench"></i>
+                                      
+                                    </a>
+                                </td>
+                            </tr>`
+                })
 
-            document.querySelector("#listMonHoc").innerHTML = html
-        })
-        .catch(err => console.log("Error: ", err))
+                document.querySelector("#listMonHoc").innerHTML = html
+            })
+            .catch(err => console.log("Error: ", err))
+    }
+    renderMonHoc()
 
     const openUpdateMon = (id) => {
 
         fetch(`${HOST}/api/monhoc/${id}`)
             .then(res => res.json())
             .then(data => {
-                document.querySelector(".modal-body #maMonUpdate").value = data.idmh
-                document.querySelector(".modal-body #tenMonUpdate").value = data.tenMon
-                document.querySelector(".modal-body #soTinChiUpdate").value = data.soTinChi
-                document.querySelector(".modal-body #hocPhiUpdate").value = data.tienHoc
-
+                document.querySelector("#formUpdate #maMon").value = data.idmh
+                document.querySelector("#formUpdate #tenMon").value = data.tenMon
+                document.querySelector("#formUpdate #soTinChi").value = data.soTinChi
+                document.querySelector("#formUpdate #tienHoc").value = data.tienHoc
             })
     }
 </script>
@@ -165,12 +169,54 @@
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
                 form.addEventListener('submit', function (event) {
+                    event.preventDefault()
+                    event.stopPropagation()
                     if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
+                        form.classList.add('was-validated')
+                    } else {
+                        if (form.id == "formAdd") {
+                            fetch(`${HOST}/api/monhoc/`, {
+                                    method: "POST",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "tenMon": form.tenMon.value,
+                                        "soTinChi": form.soTinChi.value,
+                                        "tienHoc": form.tienHoc.value
+                                    }),
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    form.reset()
+                                    alert("Them thanh cong")
+                                    renderMonHoc()
+                                    document.querySelector("#myModalAdd .btn-close").click()
+                                })
+                                .catch(err => console.log("Error: ", err))
+                        } else if (form.id == "formUpdate") {
+                            fetch(`${HOST}/api/monhoc/${form.maMon.value}`, {
+                                    method: "PUT",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "tenMon": form.tenMon.value,
+                                        "soTinChi": form.soTinChi.value,
+                                        "tienHoc": form.tienHoc.value
+                                    }),
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    form.reset()
+                                    alert("Sua thanh cong")
+                                    renderMonHoc()
+                                    document.querySelector("#myModalUpdate .btn-close").click()
+                                })
+                                .catch(err => console.log("Error: ", err))
+                        }
                     }
 
-                    form.classList.add('was-validated')
                 }, false)
             })
     })()
@@ -181,7 +227,7 @@
         const maMon = document.getElementById('maMon').value;
         const tenMon = document.getElementById('tenMon').value;
         const soTinChi = document.getElementById('soTinChi').value;
-        const hocPhi = document.getElementById('hocPhi').value;
+        const tienHoc = document.getElementById('tienHoc').value;
 
         if (maMon === '') {
             alert('bạn chưa nhập mã môn học')
@@ -189,10 +235,10 @@
             alert('bạn chưa nhập tên môn học');
         } else if (soTinChi === '') {
             alert('bạn chưa nhập số tín chỉ');
-        } else if (hocPhi === '') {
-            alert('bạn chưa nhập học phí')
+        } else if (tienHoc === '') {
+            alert('bạn chưa nhập tien hoc')
         } else {
-            console.log(maMon, '-', tenMon, '-', soTinChi, '-', hocPhi)
+            console.log(maMon, '-', tenMon, '-', soTinChi, '-', tienHoc)
         }
     }
 
