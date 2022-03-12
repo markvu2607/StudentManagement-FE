@@ -1,30 +1,30 @@
 // start render UI
 const renderQLLopHoc = () => {
-  $(".main").load("./quanlylophoc/quanlylophoc.html");
+  $(".main").load("quanlylophoc.html");
 };
 
 const renderQLMonHoc = () => {
-  $(".main").load("./quanlymonhoc/quanlymonhoc.html");
+  $(".main").load("quanlymonhoc.html");
 };
 
 const renderQLSinhVien = () => {
-  $(".main").load("./quanlythongtinsinhvien/quanlythongtinsinhvien.html");
+  $(".main").load("quanlythongtinsinhvien.html");
 };
 
 const renderQLBangTin = () => {
-  $(".main").load("./bangtin/quanlybangtin.html");
+  $(".main").load("quanlybangtin.html");
 };
 
 const renderQLKhoa = () => {
-  $(".main").load("./quanlykhoa/quanlykhoa.html");
+  $(".main").load("quanlykhoa.html");
 };
 
 const renderQLLichThi = () => {
-  $(".main").load("./lichthi/quanlylichthi.html");
+  $(".main").load("quanlylichthi.html");
 };
 
 const renderQLTaiKhoan = () => {
-  $(".main").load("./quanlytaikhoan/quanlytaikhoan.html");
+  $(".main").load("quanlytaikhoan.html");
 };
 
 const renderQLHocPhi = () => {
@@ -32,26 +32,30 @@ const renderQLHocPhi = () => {
 };
 
 const renderThongKeDiem = () => {
-  $(".main").load("./thongkediem/thongkediem.html");
+  $(".main").load("thongkediem.html");
 };
 
 const renderThongKeHocBong = () => {
-  $(".main").load("./thongkehocbong/thongkehocbong.html");
+  $(".main").load("thongkehocbong.html");
 };
 
 const renderDiemRenLuyen = () => {
-  $(".main").load("./diemrenluyen/diemrenluyen.html");
+  $(".main").load("diemrenluyen.html");
 };
 
 const renderChuongTrinhDaoTao = () => {
-  $(".main").load("./chuongtrinhdaotao/chuongtrinhdaotao.html");
+  $(".main").load("chuongtrinhdaotao.html");
 };
 
 const renderSinhVienTrongKTX = () => {
-  $(".main").load("./sinhvientrongktx/sinhvienktx.html");
+  $(".main").load("sinhvienktx.html");
 };
 
 const renderQuanLyGiangVien = () => {
-  $(".main").load("./quanlygiangvien/quanlygiangvien.html");
+  $(".main").load("quanlygiangvien.html");
+};
+
+const renderQuanLyKyHoc = () => {
+  $(".main").load("quanlykyhoc.html");
 };
 // end render UI
