@@ -1,6 +1,6 @@
 const renderLop = () => {
   const tuKhoa = document.querySelector("#searchInput").value;
-  fetch(`${HOST}/api/lop/?tenlop=${tuKhoa}`)
+  fetch(`${HOST}/api/lophocphan/?tenlop=${tuKhoa}`)
     .then((res) => res.json())
     .then((data) => {
       let html = "";
@@ -31,7 +31,6 @@ const renderLop = () => {
                                 </td>
                             </tr>`;
       });
-
       document.querySelector("#listLop").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));

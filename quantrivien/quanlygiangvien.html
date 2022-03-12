@@ -6,7 +6,7 @@
         <input id="searchInput" type="text" class="form-control" style="border-radius: 15px" placeholder="Họ và tên">
     </div>
     <div class="col-3 col-md-auto">
-        <button class="btn btn-primary" onclick="renderQuanLyGiangVien()">Tìm kiếm</button>
+        <button class="btn btn-primary" onclick="renderGiangVien()">Tìm kiếm</button>
     </div>
     <div class="col col col-lg-2">
         <div class="container">
@@ -25,56 +25,56 @@
                     <div class="modal-body ">
                         <form class="row g-3 needs-validation" id="formAdd" novalidate>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Họ Và Tên *</label>
-                                <input type="text" class="form-control" id="hoTen" required>
+                                <label for="tengv" class="form-label">Họ Và Tên *</label>
+                                <input type="text" class="form-control" id="tengv" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào họ tên giảng viên
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Giới Tính *</label>
-                                <input type="text" class="form-control" id="gioiTinh" required>
+                                <label for="laNam" class="form-label">Giới Tính *</label>
+                                <input type="text" class="form-control" id="laNam" required>
                                 <div class="invalid-feedback">
                                     Vui lòng chọn giới tính
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Ngày Sinh *</label>
+                                <label for="ngaySinh" class="form-label">Ngày Sinh *</label>
                                 <input type="date" class="form-control" id="ngaySinh" required>
                                 <div class="invalid-feedback">
                                     Vui lòng chọn ngày sinh
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Quê Quán *</label>
+                                <label for="queQuan" class="form-label">Quê Quán *</label>
                                 <input type="text" class="form-control" id="queQuan" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào quê quán
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <label for="tenKhoa" class="form-label">Địa Chỉ *</label>
+                                <label for="diaChi" class="form-label">Địa Chỉ *</label>
                                 <input type="text" class="form-control" id="diaChi" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào địa chỉ
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Khoa</label>
-                                <input type="text" class="form-control" id="khoa" required>
+                                <label for="idKhoa" class="form-label">Khoa</label>
+                                <input type="text" class="form-control" id="idKhoa" required>
                                 <div class="invalid-feedback">
                                     Vui lòng chọn tên khoa
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Số Điện Thoại *</label>
-                                <input type="text" class="form-control" id="soDienThoai" required>
+                                <label for="sdt" class="form-label">Số Điện Thoại *</label>
+                                <input type="text" class="form-control" id="sdt" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập số điện thoại
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Email</label>
+                                <label for="email" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="email" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào Email
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">CCCD *</label>
+                                <label for="cccd" class="form-label">CCCD *</label>
                                 <input type="text" class="form-control" id="cccd" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào căn cước công dân
@@ -90,8 +90,8 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="tenKhoa" class="form-label">Tên Đăng Nhập *</label>
-                                <input type="text" class="form-control" id="tenDangNhap" required>
+                                <label for="idtk" class="form-label">Tên Đăng Nhập *</label>
+                                <input type="text" class="form-control" id="idtk" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào tên đăng nhập
                                 </div>
@@ -136,56 +136,56 @@
             <div class="modal-body">
                 <form class="row g-3 needs-validation" id="formView" novalidate>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Họ Và Tên *</label>
-                        <input type="text" class="form-control" id="hoTen" readonly>
+                        <label for="tengv" class="form-label">Họ Và Tên *</label>
+                        <input type="text" class="form-control" id="tengv" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào họ tên giảng viên
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Giới Tính *</label>
-                        <input type="text" class="form-control" id="gioiTinh" readonly>
+                        <label for="laNam" class="form-label">Giới Tính *</label>
+                        <input type="text" class="form-control" id="laNam" readonly>
                         <div class="invalid-feedback">
                             Vui lòng chọn giới tính
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Ngày Sinh *</label>
+                        <label for="ngaySinh" class="form-label">Ngày Sinh *</label>
                         <input type="text" class="form-control" id="ngaySinh" readonly>
                         <div class="invalid-feedback">
                             Vui lòng chọn ngày sinh
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Quê Quán *</label>
+                        <label for="queQuan" class="form-label">Quê Quán *</label>
                         <input type="text" class="form-control" id="queQuan" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào quê quán
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="tenKhoa" class="form-label">Địa Chỉ *</label>
+                        <label for="diaChi" class="form-label">Địa Chỉ *</label>
                         <input type="text" class="form-control" id="diaChi" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào địa chỉ
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Khoa</label>
-                        <input type="text" class="form-control" id="khoa" readonly>
+                        <label for="idKhoa" class="form-label">Khoa</label>
+                        <input type="text" class="form-control" id="idKhoa" readonly>
                         <div class="invalid-feedback">
                             Vui lòng chọn tên khoa
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Số Điện Thoại *</label>
-                        <input type="text" class="form-control" id="soDienThoai" readonly>
+                        <label for="sdt" class="form-label">Số Điện Thoại *</label>
+                        <input type="text" class="form-control" id="sdt" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập số điện thoại
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Email</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào Email
@@ -193,7 +193,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">CCCD *</label>
+                        <label for="cccd" class="form-label">CCCD *</label>
                         <input type="text" class="form-control" id="cccd" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào căn cước công dân
@@ -201,8 +201,8 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Tên Đăng Nhập *</label>
-                        <input type="text" class="form-control" id="tenDangNhap" readonly>
+                        <label for="idtk" class="form-label">Tên Đăng Nhập *</label>
+                        <input type="text" class="form-control" id="idtk" readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào tên đăng nhập
                         </div>
@@ -226,58 +226,58 @@
             <!-- Modal body -->
             <div class="modal-body ">
                 <form class="row g-3 needs-validation" id="formUpdate" novalidate>
-                    <input type="text" name="" id="idgv" hidden>
+                    <input type="text" class="form-control" id="idgv" hidden required>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Họ Và Tên *</label>
-                        <input type="text" class="form-control" id="hoTen" required>
+                        <label for="tengv" class="form-label">Họ Và Tên *</label>
+                        <input type="text" class="form-control" id="tengv" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào họ tên giảng viên
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Giới Tính *</label>
-                        <input type="text" class="form-control" id="gioiTinh" required>
+                        <label for="laNam" class="form-label">Giới Tính *</label>
+                        <input type="text" class="form-control" id="laNam" required>
                         <div class="invalid-feedback">
                             Vui lòng chọn giới tính
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Ngày Sinh *</label>
+                        <label for="ngaySinh" class="form-label">Ngày Sinh *</label>
                         <input type="date" value="" class="form-control" id="ngaySinh" required>
                         <div class="invalid-feedback">
                             Vui lòng chọn ngày sinh
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Quê Quán *</label>
+                        <label for="queQuan" class="form-label">Quê Quán *</label>
                         <input type="text" class="form-control" id="queQuan" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào quê quán
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="tenKhoa" class="form-label">Địa Chỉ *</label>
+                        <label for="diaChi" class="form-label">Địa Chỉ *</label>
                         <input type="text" class="form-control" id="diaChi" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào địa chỉ
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Khoa</label>
-                        <input type="text" class="form-control" id="khoa" required>
+                        <label for="idKhoa" class="form-label">Khoa</label>
+                        <input type="text" class="form-control" id="idKhoa" required>
                         <div class="invalid-feedback">
                             Vui lòng chọn tên khoa
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Số Điện Thoại *</label>
-                        <input type="text" class="form-control" id="soDienThoai" required>
+                        <label for="sdt" class="form-label">Số Điện Thoại *</label>
+                        <input type="text" class="form-control" id="sdt" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập số điện thoại
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Email</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào Email
@@ -285,7 +285,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">CCCD *</label>
+                        <label for="cccd" class="form-label">CCCD *</label>
                         <input type="text" class="form-control" id="cccd" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào căn cước công dân
@@ -293,8 +293,8 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="tenKhoa" class="form-label">Tên Đăng Nhập *</label>
-                        <input type="text" class="form-control" id="tenDangNhap" required>
+                        <label for="idtk" class="form-label">Tên Đăng Nhập *</label>
+                        <input type="text" class="form-control" id="idtk" required readonly>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào tên đăng nhập
                         </div>
@@ -311,10 +311,7 @@
 
 
 <script>
-
     renderGiangVien()
-
-
 </script>
 
 <script>
@@ -335,39 +332,66 @@
                             form.classList.add('was-validated')
                         } else {
                             if (form.id == "formAdd") {
-                                fetch(`${HOST}/api/khoa/`, {
+                                fetch(`${HOST}/api/giangvien/`, {
                                     method: "POST",
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
-                                        "tenKhoa": form.tenKhoa.value
+                                        "tengv": form.tengv.value,
+                                        "ngaySinh": form.ngaySinh.value,
+                                        "laNam": form.laNam.value,
+                                        "queQuan": form.queQuan.value,
+                                        "diaChi": form.diaChi.value,
+                                        "sdt": form.sdt.value,
+                                        "cccd": form.cccd.value,
+                                        "email": form.email.value,
+                                        "idKhoa": form.idKhoa.value,
+                                        "idtk": form.idtk.value
                                     }),
                                 })
                                     .then(res => res.json())
                                     .then(data => {
-                                        form.reset()
-                                        alert("Them thanh cong")
-                                        renderKhoa()
-                                        document.querySelector("#myModalAdd .btn-close").click()
+                                        console.log(data);
+                                        if (data.message) {
+                                            alert('giảng viên đã có trong dữ liệu')
+                                        } else {
+                                            form.reset()
+                                            alert("Them thanh cong")
+                                            renderGiangVien()
+                                            document.querySelector("#myModalAdd .btn-close").click()
+                                        }
                                     })
                                     .catch(err => console.log("Error: ", err))
                             } else if (form.id == "formUpdate") {
-                                fetch(`${HOST}/api/khoa/${form.maKhoa.value}`, {
+                                fetch(`${HOST}/api/giangvien/${form.idgv.value}`, {
                                     method: "PUT",
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
-                                        "tenKhoa": form.tenKhoa.value
+                                        "tengv": form.tengv.value,
+                                        "ngaySinh": form.ngaySinh.value,
+                                        "laNam": form.laNam.value,
+                                        "queQuan": form.queQuan.value,
+                                        "diaChi": form.diaChi.value,
+                                        "sdt": form.sdt.value,
+                                        "cccd": form.cccd.value,
+                                        "email": form.email.value,
+                                        "idKhoa": form.idKhoa.value,
+                                        "idtk": form.idtk.value
                                     }),
                                 })
                                     .then(res => res.json())
                                     .then(data => {
-                                        form.reset()
-                                        alert("Sua thanh cong")
-                                        renderKhoa()
-                                        document.querySelector("#myModalUpdate .btn-close").click()
+                                        if (data.message) {
+                                            alert('giảng viên đã tồn tại')
+                                        } else {
+                                            form.reset()
+                                            alert("Sua thanh cong")
+                                            renderGiangVien()
+                                            document.querySelector("#myModalUpdate .btn-close").click()
+                                        }
                                     })
                                     .catch(err => console.log("Error: ", err))
                             }

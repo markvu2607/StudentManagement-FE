@@ -16,13 +16,13 @@ const renderSV = () => {
                         <td>${elm.sdt}</td>
                         <td>${elm.cccd}</td>
                         <td>${elm.tenBo}</td>
-                        <td>${elm.ngheNghiepBo}</td>
+                      
                         <td>${elm.sdtBo}</td>
-                        <td>${elm.namSinhBo}</td>
+                       
                         <td>${elm.tenMe}</td>
-                        <td>${elm.ngheNghiepMe}</td>
+                      
                         <td>${elm.sdtMe}</td>
-                        <td>${elm.namSinhMe}</td>
+                      
                         <td>
                             <a onclick="openUpdateSV(${
                               elm.idsv
@@ -30,112 +30,10 @@ const renderSV = () => {
                                     class="fa-solid fa-wrench"></i>
                             </a>
 
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-eye"></i>
-                                <div class="modal" id="myModal3">
-                                    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px !important">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Chi Tiết Thông Tin Sinh Viên</h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <!-- Modal body -->
-                                            <div class="modal-body ">
-                                                <form class="row g-3">
-                                                    <div class="col-md-6">
-                                                        <label for="malop" class="form-label">Mã sinh viên</label>
-                                                        <input type="text" class="form-control" id="malop">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="TenLop" class="form-label">Họ và tên*</label>
-                                                        <input type="text" class="form-control" id="TenLop">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Ngày sinh*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Giới tính*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Mã khoa*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="inputState" class="form-label">Kí túc xã*</label>
-                                                        <select id="inputState" class="form-select">
-                                                            <option selected>Choose...</option>
-                                                            <option>...</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label for="Tenmonhoc" class="form-label">Quê quán*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label for="Tenmonhoc" class="form-label">Địa chỉ*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">SĐT*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Căn cước công dân*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Tên đăng nhập*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Mật khẩu*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Họ và tên Bố*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Năm sinh*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Nghề nghiệp*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">SĐT*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Họ và tên Mẹ*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Năm sinh*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">Nghề nghiệp*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="Tenmonhoc" class="form-label">SĐT*</label>
-                                                        <input type="text" class="form-control" id="Tenmonhoc">
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <!-- Modal footer -->
-                                            <!-- <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-primary" style="width: 15%" data-bs-dismiss="modal">Lưu</button>
-                                                                </div> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                </i>
+                            <a 
+                            onclick="openViewSV(${elm.idsv})"
+                             type="button" data-bs-toggle="modal" data-bs-target="#myModelView"><i class="fa-solid fa-eye"></i>
+                               
                             </a>
                         </td>
                     </tr>`;
@@ -193,3 +91,37 @@ const getKhoa = () =>
       });
     })
     .catch((err) => console.log("Error: ", err));
+
+const openViewSV = (id) => {
+  fetch(`${HOST}/api/sinhvien/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.querySelector("#formView #maSinhVien").value = data.idsv;
+      document.querySelector("#formView #hoVaTen").value = data.tensv;
+      document.querySelector("#formView #ngaySinh").value = formatDate(
+        data.ngaySinh
+      );
+      document.querySelector("#formView #gioiTinh").value = data.laNam;
+      document.querySelector("#formView #khoa").value = data.idKhoa;
+      document.querySelector("#formView #kyTucXa").value = data.kyTucXa;
+      document.querySelector("#formView #queQuan").value = data.queQuan;
+      document.querySelector("#formView #diaChi").value = data.diaChi;
+      document.querySelector("#formView #soDienThoai").value = data.sdt;
+      document.querySelector("#formView #CCCD").value = data.cccd;
+      document.querySelector("#formView #hoTenBo").value = data.tenBo;
+      document.querySelector("#formView #namSinhBo").value = formatDate(
+        data.namSinhBo
+      );
+      document.querySelector("#formView #ngheNghiepBo").value =
+        data.ngheNghiepBo;
+      document.querySelector("#formView #sdtBo").value = data.sdtBo;
+      document.querySelector("#formView #hoTenMe").value = data.tenMe;
+      document.querySelector("#formView #namSinhMe").value = formatDate(
+        data.namSinhMe
+      );
+      document.querySelector("#formView #ngheNghiepMe").value =
+        data.ngheNghiepMe;
+      document.querySelector("#formView #sdtMe").value = data.sdtMe;
+      document.querySelector("#formView #idtk").value = data.idtk;
+    });
+};

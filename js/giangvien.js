@@ -37,21 +37,20 @@ const openUpdateGiangVien = (id) => {
   fetch(`${HOST}/api/giangvien/${id}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       document.querySelector("#formUpdate #idgv").value = data.idgv;
-      document.querySelector("#formUpdate #hoTen").value = data.tengv;
-      document.querySelector("#formUpdate #gioiTinh").value =
+      document.querySelector("#formUpdate #tengv").value = data.tengv;
+      document.querySelector("#formUpdate #laNam").value =
         data.laNam === 1 ? "nam" : "nữ";
       document.querySelector("#formUpdate #ngaySinh").value = formatDate(
         data.ngaySinh
       );
       document.querySelector("#formUpdate #queQuan").value = data.queQuan;
       document.querySelector("#formUpdate #diaChi").value = data.diaChi;
-      document.querySelector("#formUpdate #khoa").value = data.sdt;
-      document.querySelector("#formUpdate #soDienThoai").value = data.cccd;
+      document.querySelector("#formUpdate #idKhoa").value = data.sdt;
+      document.querySelector("#formUpdate #sdt").value = data.cccd;
       document.querySelector("#formUpdate #email").value = data.email;
       document.querySelector("#formUpdate #cccd").value = data.idKhoa;
-      document.querySelector("#formUpdate #tenDangNhap").value = data.idtk;
+      document.querySelector("#formUpdate #idtk").value = data.idtk;
     });
 };
 
@@ -59,18 +58,18 @@ const openViewGV = (id) => {
   fetch(`${HOST}/api/giangvien/${id}`)
     .then((res) => res.json())
     .then((data) => {
-      document.querySelector("#formView #hoTen").value = data.tengv;
-      document.querySelector("#formView #gioiTinh").value =
+      document.querySelector("#formView #tengv").value = data.tengv;
+      document.querySelector("#formView #laNam").value =
         data.laNam === 1 ? "nam" : "nữ";
       document.querySelector("#formView #ngaySinh").value = formatDate(
         data.ngaySinh
       );
       document.querySelector("#formView #queQuan").value = data.queQuan;
       document.querySelector("#formView #diaChi").value = data.diaChi;
-      document.querySelector("#formView #khoa").value = data.sdt;
-      document.querySelector("#formView #soDienThoai").value = data.cccd;
+      document.querySelector("#formView #idKhoa").value = data.sdt;
+      document.querySelector("#formView #sdt").value = data.cccd;
       document.querySelector("#formView #email").value = data.email;
       document.querySelector("#formView #cccd").value = data.idKhoa;
-      document.querySelector("#formView #tenDangNhap").value = data.idtk;
+      document.querySelector("#formView #idtk").value = data.idtk;
     });
 };

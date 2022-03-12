@@ -190,13 +190,13 @@
                 <th scope="col">Địa Chỉ</th>
                 <th scope="col">Điện Thoại</th>
                 <th scope="col">Tên Bố</th>
-                <th scope="col">Nghề Nghiêp</th>
+                <!-- <th scope="col">Nghề Nghiêp</th> -->
                 <th scope="col">Số Điện Thoại</th>
-                <th scope="col">Năm Sinh</th>
+                <!-- <th scope="col">Năm Sinh</th> -->
                 <th scope="col">Tên Mẹ</th>
-                <th scope="col">Nghề Nghiệp</th>
+                <!-- <th scope="col">Nghề Nghiệp</th> -->
                 <th scope="col">Số điện thoại</th>
-                <th scope="col">Năm Sinh</th>
+                <!-- <th scope="col">Năm Sinh</th> -->
             </tr>
         </thead>
         <tbody id="listSinhVien">
@@ -206,7 +206,7 @@
 </div>
 
 <div class="modal" id="myModalUpdate">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px !important">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px !important">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Sửa Thông Tin Sinh Viên</h4>
@@ -371,6 +371,116 @@
     </div>
 </div>
 
+<div class="modal" id="myModelView">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sửa Thông Tin Sinh Viên</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body ">
+                <form id="formView" class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="maSinhVien" class="form-label">Mã sinh viên</label>
+                        <input readonly type="text" class="form-control" id="maSinhVien">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hoVaTen" class="form-label">Họ và tên*</label>
+                        <input type="text" class="form-control" id="hoVaTen" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ngaySinh" class="form-label">Ngày sinh*</label>
+                        <input type="date" class="form-control" id="ngaySinh" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="gioiTinh" class="form-label">Giới tính*</label>
+                        <select id="gioiTinh" class=" form-select" readonly>
+                            <option selected disabled value="">--Chọn Giới Tính--</option>
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="khoa" class="form-label">Mã khoa*</label>
+                        <select id="khoa" class="form-select" readonly>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="kyTucXa" class="form-label">Kí túc xã*</label>
+                        <select id="kyTucXa" class="form-select">
+                            <option selected disabled value="">--Chọn Ký Túc Xá--</option>
+                            <option value="1">Có</option>
+                            <option value="0">không</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="queQuan" class="form-label">Quê quán*</label>
+                        <input type="text" class="form-control" id="queQuan" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="diaChi" class="form-label">Địa chỉ*</label>
+                        <input type="text" class="form-control" id="diaChi" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="soDienThoai" class="form-label">SĐT*</label>
+                        <input type="text" class="form-control" id="soDienThoai" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="Tenmonhoc" class="form-label">Căn cước công dân*</label>
+                        <input type="text" class="form-control" id="CCCD" readonly>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="hoTenBo" class="form-label">Họ và tên Bố*</label>
+                        <input type="text" class="form-control" id="hoTenBo" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="namSinhBo" class="form-label">Năm sinh*</label>
+                        <input type="date" class="form-control" id="namSinhBo" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ngheNghiepBo" class="form-label">Nghề nghiệp*</label>
+                        <input type="text" class="form-control" id="ngheNghiepBo" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sdtBo" class="form-label">SĐT Bố*</label>
+                        <input type="text" class="form-control" id="sdtBo" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hoTenMe" class="form-label">Họ và tên Mẹ*</label>
+                        <input type="text" class="form-control" id="hoTenMe" readonly>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="namSinhMe" class="form-label">Năm sinh*</label>
+                        <input type="date" class="form-control" id="namSinhMe" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ngheNghiepMe" class="form-label">Nghề nghiệp*</label>
+                        <input type="text" class="form-control" id="ngheNghiepMe" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="sdtMe" class="form-label">SĐT Mẹ*</label>
+                        <input type="text" class="form-control" id="sdtMe" readonly>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
     renderSV()
@@ -446,6 +556,7 @@
                                                 form.reset()
                                                 alert("Them thanh cong")
                                                 renderSV()
+                                                document.querySelector("#myModalUpdate .btn-close").click()
                                             })
                                             .catch(err => console.log("Error: ", err))
                                     })
