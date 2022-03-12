@@ -33,14 +33,14 @@
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="soTinChi" class="form-label">Số Tín Chỉ</label>
-                                <input type="text" class="form-control" id="soTinChi" required>
+                                <input type="number" class="form-control" id="soTinChi" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập số tín chỉ
                                 </div>
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="tienHoc" class="form-label">Tiền Học</label>
-                                <input type="text" class="form-control" id="tienHoc" required>
+                                <input type="number" class="form-control" id="tienHoc" required>
                                 <div class="invalid-feedback">
                                     Vui lòng nhập vào tiền học
                                 </div>
@@ -94,14 +94,14 @@
                     </div>
                     <div class="col-md-12">
                         <label for="soTinChi" class="form-label">Số tín chỉ*</label>
-                        <input type="text" class="form-control" id="soTinChi" required>
+                        <input type="number" class="form-control" id="soTinChi" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập số tín chỉ
                         </div>
                     </div>
                     <div class="col-md-12">
                         <label for="tienHoc" class="form-label">Tiền học*</label>
-                        <input type="text" class="form-control" id="tienHoc" required>
+                        <input type="number " class="form-control" id="tienHoc" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào tiền học
                         </div>
@@ -116,107 +116,92 @@
 </div>
 
 <script>
-    const renderMonHoc = () => {
-        const tuKhoa = document.querySelector("#searchInput").value
-        fetch(`${HOST}/api/monhoc/?tukhoa=${tuKhoa}`)
-            .then(res => res.json())
-            .then(data => {
-                let html = ""
-                data.forEach((elm) => {
-                    html += `<tr>
-                                <th scope="row">${elm.idmh}</th>
-                                <td>${elm.tenMon}</td>
-                                <td>${elm.soTinChi}</td>
-                                <td>${elm.tienHoc}</td>
-                                <td>
-                                    <a onclick=openUpdateMon(${elm.idmh})  style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate"><i
-                                            class="fa-solid fa-wrench"></i>
-                                      
-                                    </a>
-                                </td>
-                            </tr>`
-                })
 
-                document.querySelector("#listMonHoc").innerHTML = html
-            })
-            .catch(err => console.log("Error: ", err))
-    }
     renderMonHoc()
 
-    const openUpdateMon = (id) => {
-
-        fetch(`${HOST}/api/monhoc/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                document.querySelector("#formUpdate #maMon").value = data.idmh
-                document.querySelector("#formUpdate #tenMon").value = data.tenMon
-                document.querySelector("#formUpdate #soTinChi").value = data.soTinChi
-                document.querySelector("#formUpdate #tienHoc").value = data.tienHoc
-            })
-    }
 </script>
 <script>
-    (function () {
-        'use strict'
+        (function () {
+            'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation1')
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation1')
 
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    if (!form.checkValidity()) {
-                        form.classList.add('was-validated')
-                    } else {
-                        if (form.id == "formAdd") {
-                            fetch(`${HOST}/api/monhoc/`, {
-                                method: "POST",
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    "tenMon": form.tenMon.value,
-                                    "soTinChi": form.soTinChi.value,
-                                    "tienHoc": form.tienHoc.value
-                                }),
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Them thanh cong")
-                                    renderMonHoc()
-                                    document.querySelector("#myModalAdd .btn-close").click()
-                                })
-                                .catch(err => console.log("Error: ", err))
-                        } else if (form.id == "formUpdate") {
-                            fetch(`${HOST}/api/monhoc/${form.maMon.value}`, {
-                                method: "PUT",
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    "tenMon": form.tenMon.value,
-                                    "soTinChi": form.soTinChi.value,
-                                    "tienHoc": form.tienHoc.value
-                                }),
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Sua thanh cong")
-                                    renderMonHoc()
-                                    document.querySelector("#myModalUpdate .btn-close").click()
-                                })
-                                .catch(err => console.log("Error: ", err))
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        if (!form.checkValidity()) {
+                            form.classList.add('was-validated')
+                        } else {
+                            if (form.id == "formAdd") {
+                                let tenMon = form.tenMon.value.trim()
+                                var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                                if (form.tenMon.value.length > 255) {
+                                    alert('tên khoa không được quá 255 ký tự')
+                                }
+                                else if (format.test(tenMon)) {
+                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                                }
+                                else {
+                                    fetch(`${HOST}/api/monhoc/`, {
+                                        method: "POST",
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            "tenMon": form.tenMon.value,
+                                            "soTinChi": form.soTinChi.value,
+                                            "tienHoc": form.tienHoc.value
+                                        }),
+                                    })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            form.reset()
+                                            alert("Them thanh cong")
+                                            renderMonHoc()
+                                            document.querySelector("#myModalAdd .btn-close").click()
+                                        })
+                                        .catch(err => console.log("Error: ", err))
+                                }
+                            } else if (form.id == "formUpdate") {
+                                let tenMon = form.tenMon.value.trim()
+                                var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                                if (form.tenMon.value.length > 255) {
+                                    alert('tên khoa không được quá 255 ký tự')
+                                }
+                                else if (format.test(tenMon)) {
+                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                                }
+                                else {
+                                    fetch(`${HOST}/api/monhoc/${form.maMon.value}`, {
+                                        method: "PUT",
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            "tenMon": form.tenMon.value,
+                                            "soTinChi": form.soTinChi.value,
+                                            "tienHoc": form.tienHoc.value
+                                        }),
+                                    })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            form.reset()
+                                            alert("Sua thanh cong")
+                                            renderMonHoc()
+                                            document.querySelector("#myModalUpdate .btn-close").click()
+                                        })
+                                        .catch(err => console.log("Error: ", err))
+                                }
+                            }
                         }
-                    }
 
-                }, false)
-            })
-    })()
+                    }, false)
+                })
+        })()
 </script>
 <!-- 
 <script>

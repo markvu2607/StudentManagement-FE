@@ -89,132 +89,99 @@
 </div>
 
 <script>
-    const renderKhoa = () => {
-        const tuKhoa = document.querySelector("#searchInput").value
-        fetch(`${HOST}/api/khoa/?tukhoa=${tuKhoa}`)
-            .then(res => res.json())
-            .then(data => {
-                let html = ""
-                let i = 1;
-                data.forEach((elm) => {
-                    html += `<tr>
-                                <th scope="row">${i++}</th>
-                                <td>${elm.tenKhoa}</td>
-                                <td>
-                                    <a 
-                                    onclick="openUpdateKhoa(${elm.idKhoa})"
-                                     style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate"><i
-                                            class="fa-solid fa-wrench"></i>
-                                    </a>
-                                </td>
-                            </tr>`
-                })
 
-                document.querySelector("#listKhoa").innerHTML = html
-            })
-            .catch(err => console.log("Error: ", err))
-    }
     renderKhoa()
-
-    const openUpdateKhoa = (id) => {
-        fetch(`${HOST}/api/khoa/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                document.querySelector("#formUpdate #maKhoa").value = data.idKhoa
-                document.querySelector("#formUpdate #tenKhoa").value = data.tenKhoa
-            })
-    }
 </script>
 
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
 
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    if (!form.checkValidity()) {
-                        form.classList.add('was-validated')
-                    } else {
-                        if (form.id == "formAdd") {
-                            let tenKhoa = form.tenKhoa.value.trim()
-                            var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-                            if (form.tenKhoa.value.length > 255) {
-                                alert('tên khoa không được quá 255 ký tự')
-                            }
-                            else if (format.test(tenKhoa)) {
-                                alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
-                            }
-                            else {
-                                fetch(`${HOST}/api/khoa/`, {
-                                    method: "POST",
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        "tenKhoa": tenKhoa
-                                    }),
-                                })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.message) {
-                                            alert('Khoa đã tồn tại')
-                                        }
-                                        else {
-                                            form.reset()
-                                            alert("Them thanh cong")
-                                            renderKhoa()
-                                            document.querySelector("#myModalAdd .btn-close").click()
-                                        }
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        if (!form.checkValidity()) {
+                            form.classList.add('was-validated')
+                        } else {
+                            if (form.id == "formAdd") {
+                                let tenKhoa = form.tenKhoa.value.trim()
+                                var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                                if (form.tenKhoa.value.length > 255) {
+                                    alert('tên khoa không được quá 255 ký tự')
+                                }
+                                else if (format.test(tenKhoa)) {
+                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                                }
+                                else {
+                                    fetch(`${HOST}/api/khoa/`, {
+                                        method: "POST",
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            "tenKhoa": tenKhoa
+                                        }),
                                     })
-                                    .catch(err => console.log("Error: ", err))
-                            }
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            if (data.message) {
+                                                alert('Khoa đã tồn tại')
+                                            }
+                                            else {
+                                                form.reset()
+                                                alert("Them thanh cong")
+                                                renderKhoa()
+                                                document.querySelector("#myModalAdd .btn-close").click()
+                                            }
+                                        })
+                                        .catch(err => console.log("Error: ", err))
+                                }
 
 
-                        } else if (form.id == "formUpdate") {
-                            let tenKhoa = form.tenKhoa.value.trim()
-                            var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-                            if (form.tenKhoa.value.length > 255) {
-                                alert('tên khoa không được quá 255 ký tự')
-                            }
-                            else if (format.test(tenKhoa)) {
-                                alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
-                            }
-                            else {
-                                fetch(`${HOST}/api/khoa/${form.maKhoa.value}`, {
-                                    method: "PUT",
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        "tenKhoa": form.tenKhoa.value
-                                    }),
-                                })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.message) {
-                                            alert('Khoa đã tồn tại')
-                                        }
-                                        else {
-                                            form.reset()
-                                            alert("Sửa thành công")
-                                            renderKhoa()
-                                            document.getElementById("close").click()
-                                        }
+                            } else if (form.id == "formUpdate") {
+                                let tenKhoa = form.tenKhoa.value.trim()
+                                var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                                if (form.tenKhoa.value.length > 255) {
+                                    alert('tên khoa không được quá 255 ký tự')
+                                }
+                                else if (format.test(tenKhoa)) {
+                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                                }
+                                else {
+                                    fetch(`${HOST}/api/khoa/${form.maKhoa.value}`, {
+                                        method: "PUT",
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            "tenKhoa": form.tenKhoa.value
+                                        }),
                                     })
-                                    .catch(err => console.log("Error: ", err))
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            if (data.message) {
+                                                alert('Khoa đã tồn tại')
+                                            }
+                                            else {
+                                                form.reset()
+                                                alert("Sửa thành công")
+                                                renderKhoa()
+                                                document.getElementById("close").click()
+                                            }
+                                        })
+                                        .catch(err => console.log("Error: ", err))
+                                }
                             }
                         }
-                    }
 
-                }, false)
-            })
-    })()
+                    }, false)
+                })
+        })()
 </script>

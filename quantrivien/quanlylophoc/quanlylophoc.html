@@ -218,7 +218,7 @@
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip04" class="form-label">State</label>
-                            <select class="form-select" id="validationTooltip04" id="trangThai" required>
+                            <select class="form-select" id="trangThai" required>
                                 <option selected disabled value="">Trạng Thái Lớp Học</option>
                                 <option value="hoatdong">Hoạt Động</option>
                                 <option value="khonghoatdong    ">Huỷ Bỏ</option>
@@ -234,122 +234,74 @@
 </div>
 
 <script>
-    const renderLop = () => {
-        const tuKhoa = document.querySelector("#searchInput").value
-        fetch(`${HOST}/api/lop/?tenlop=${tuKhoa}`)
-            .then(res => res.json())
-            .then(data => {
-                let html = ""
-                let i = 1;
-                data.forEach((elm) => {
-                    html += `<tr>
-                                <th scope="row" >${i++}</th>
-                                <td>${elm.tenLop}</td>
-                                <td>${elm.idmh}</td>
-                                <td>${elm.phongHoc}</td>
-                                <td>${elm.idgv}</td>
-                                <td>${elm.soLuong}</td>
-                                <td>${formatDate(elm.thoiGianBd)}</td>
-                                <td>${formatDate(elm.thoiGianKt)}</td>
-                                <td>${elm.trangThai === 'hoatdong' ? "Active" : "Inactive"}</td>
-                                <td>
-                                    <a onClick=LopHoc(${elm.idLop}) style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        <i class="fa-solid fa-wrench"></i>
-                                    </a>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-ban"></i>
-                                    </a>
-                                </td>
-                            </tr>`
-                })
-
-                document.querySelector("#listLop").innerHTML = html
-            })
-            .catch(err => console.log("Error: ", err))
-    }
     renderLop()
-
-    const LopHoc = (id) => {
-        fetch(`${HOST}/api/lop/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                document.querySelector("#formUpdate #maLop").value = data.idLop
-                document.querySelector("#formUpdate #tenLop").value = data.tenLop
-                document.querySelector("#formUpdate #tenMonHoc").value = data.idmh
-                document.querySelector("#formUpdate #phongHoc").value = data.phongHoc
-                document.querySelector("#formUpdate #tenGiangVien").value = data.idgv
-                document.querySelector("#formUpdate #soLuong").value = data.soLuong
-                document.querySelector("#formUpdate #thoiGianBatDau").value = formatDate(data.thoiGianBd)
-                document.querySelector("#formUpdate #thoiGianKetThuc").value = formatDate(data.thoiGianKt)
-
-            })
-    }
 </script>
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
 
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                    if (!form.checkValidity()) {
-                        form.classList.add('was-validated')
-                    } else {
-                        if (form.id == "formAdd") {
-                            fetch(`${HOST}/api/lop/`, {
-                                method: "POST",
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    "tenLop": form.tenLop.value
-                                }),
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Them thanh cong")
-                                    renderKhoa()
-                                    document.querySelector("#myModalAdd .btn-close").click()
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        if (!form.checkValidity()) {
+                            form.classList.add('was-validated')
+                        } else {
+                            if (form.id == "formAdd") {
+                                fetch(`${HOST}/api/lop/`, {
+                                    method: "POST",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "tenLop": form.tenLop.value
+                                    }),
                                 })
-                                .catch(err => console.log("Error: ", err))
-                        } else if (form.id == "formUpdate") {
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        form.reset()
+                                        alert("Them thanh cong")
+                                        renderKhoa()
+                                        document.querySelector("#myModalAdd .btn-close").click()
+                                    })
+                                    .catch(err => console.log("Error: ", err))
+                            } else if (form.id == "formUpdate") {
 
-                            fetch(`${HOST}/api/lop/${form.maLop.value}`, {
-                                method: "PUT",
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    "tenLop": form.tenLop.value,
-                                    'phongHoc': form.phongHoc.value,
-                                    'soLuong': form.soLuong.value,
-                                    'thoiGianBd': form.thoiGianBatDau.value,
-                                    'thoiGianKt': form.thoiGianKetThuc.value,
-                                    // 'trangThai': trangThai,
-                                    'idgv': form.tenGiangVien.value,
-                                    'idmh': form.tenMonHoc.value,
+                                fetch(`${HOST}/api/lop/${form.maLop.value}`, {
+                                    method: "PUT",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "tenLop": form.tenLop.value,
+                                        'phongHoc': form.phongHoc.value,
+                                        'soLuong': form.soLuong.value,
+                                        'thoiGianBd': form.thoiGianBatDau.value,
+                                        'thoiGianKt': form.thoiGianKetThuc.value,
+                                        'trangThai': form.trangThai.value,
+                                        'idgv': form.tenGiangVien.value,
+                                        'idmh': form.tenMonHoc.value,
 
-                                }),
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    form.reset()
-                                    alert("Sua thanh cong")
-                                    renderKhoa()
-                                    document.querySelector("#myModal .btn-close").click()
+                                    }),
                                 })
-                                .catch(err => console.log("Error: ", err))
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        form.reset()
+                                        alert("Sua thanh cong")
+                                        renderLop()
+                                        document.querySelector("#myModal .btn-close").click()
+                                    })
+                                    .catch(err => console.log("Error: ", err))
+                            }
                         }
-                    }
 
-                }, false)
-            })
-    })()
+                    }, false)
+                })
+        })()
 </script>
