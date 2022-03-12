@@ -4,14 +4,17 @@ const renderMonHoc = () => {
     .then((res) => res.json())
     .then((data) => {
       let html = "";
+      let i = 1;
       data.forEach((elm) => {
         html += `<tr>
-                            <th scope="row">${elm.idmh}</th>
+                            <th scope="row">${i++}</th>
                             <td>${elm.tenMon}</td>
                             <td>${elm.soTinChi}</td>
                             <td>${elm.tienHoc}</td>
                             <td>
-                                <a onclick=openUpdateMon(${elm.idmh})  style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate"><i
+                                <a onclick=openUpdateMon(${
+                                  elm.idmh
+                                })  style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate"><i
                                         class="fa-solid fa-wrench"></i>
                                   
                                 </a>

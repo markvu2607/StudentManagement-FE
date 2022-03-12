@@ -159,10 +159,15 @@
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            form.reset()
-                                            alert("Them thanh cong")
-                                            renderMonHoc()
-                                            document.querySelector("#myModalAdd .btn-close").click()
+                                            if (data.message) {
+                                                alert('môn học đã tồn tại')
+                                            }
+                                            else {
+                                                form.reset()
+                                                alert("Them thanh cong")
+                                                renderMonHoc()
+                                                document.querySelector("#myModalAdd .btn-close").click()
+                                            }
                                         })
                                         .catch(err => console.log("Error: ", err))
                                 }
@@ -189,10 +194,16 @@
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            form.reset()
-                                            alert("Sua thanh cong")
-                                            renderMonHoc()
-                                            document.querySelector("#myModalUpdate .btn-close").click()
+
+                                            if (data.sqlMessage) {
+                                                alert('môn học đã tồn tại')
+                                            }
+                                            else {
+                                                form.reset()
+                                                alert("Sua thanh cong")
+                                                renderMonHoc()
+                                                document.querySelector("#myModalUpdate .btn-close").click()
+                                            }
                                         })
                                         .catch(err => console.log("Error: ", err))
                                 }
