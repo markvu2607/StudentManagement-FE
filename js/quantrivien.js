@@ -40,7 +40,7 @@ const renderThongKeHocBong = () => {
 };
 
 const renderDiemRenLuyen = () => {
-  $(".main").load("diemrenluyen.html");
+  $(".main").load("thongkediemrl.html");
 };
 
 const renderChuongTrinhDaoTao = () => {
