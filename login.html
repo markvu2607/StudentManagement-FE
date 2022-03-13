@@ -57,22 +57,25 @@
                 .val(); // get the content of what user typed ( in textarea ) 
             let password = $('input[id=password]')
                 .val(); // get the content of what user typed ( in textarea ) 
-            if (username == "" || password === "") {
-                alert('vui lòng nhập vào tài khoản hoặc mật khẩu');
+            if (username.trim() == "") {
+                alert('Tên đăng nhập không được để trống')
+            }
+            else if (password.trim() === "") {
+                alert('Mật khẩu không được để trống');
             } else {
                 $.ajax({
                     type: "POST",
                     url: `${HOST}/api/login`,
                     data: {
-                        "username": username,
-                        "password": password
+                        "username": username.trim().toLowerCase(),
+                        "password": password.trim()
                     },
                     dataType: "json",
                     success: function (result) {
                         if (result.error === 'Account not exist' || result.error ===
                             "Password incorrect") {
                             alert(
-                                "login không thành công, kiểm tra tên đăng nhập hoặc mật khẩu"
+                                "Tên đăng nhập hoặc mật khẩu không đúng, vui lòng nhập lại!"
                             )
                         } else {
                             const user = {
