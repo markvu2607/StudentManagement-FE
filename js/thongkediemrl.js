@@ -1,11 +1,10 @@
 const renderSVDRL = () => {
     const idKhoa = document.querySelector("#khoa").value;
     const idky = document.querySelector("#kyhoc").value;
-    const tensv = document.querySelector("#tensv").value.trim();
-    if (!idKhoa || !idky || !tensv) alert("Yêu cầu chọn đầy đủ thông tin thống kê");
+    if (!idKhoa || !idky) alert("Yêu cầu chọn đầy đủ thông tin thống kê");
     else
       fetch(
-        `${HOST}/api/diemrenluyen?idKhoa=${idKhoa}&idky=${idky}&tensv=${tensv}`
+        `${HOST}/api/diemrenluyen?idKhoa=${idKhoa}&idky=${idky}`
       )
         .then((res) => res.json())
         .then((data) => {
