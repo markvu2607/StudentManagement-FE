@@ -1,5 +1,12 @@
-const quanLyTaiKhoan = () =>
-  fetch(`${HOST}/api/taikhoan/`)
+const quanLyTaiKhoan = () => {
+  const tuKhoa = document.querySelector("#searchTextInput").value.trim();
+  var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+  if (tuKhoa.length > 255) {
+    alert("Không được quá 255 ký tự");
+    return;
+  }
+  const chucNang = document.querySelector("#searchChucNang").value;
+  fetch(`${HOST}/api/taikhoan/?tenDangNhap=${tuKhoa}&chucNang=${chucNang}`)
     .then((res) => res.json())
     .then((data) => {
       let html = "";
@@ -9,8 +16,10 @@ const quanLyTaiKhoan = () =>
                             <th scope="row">${i++}</th>
                             <th >${elm.idtk}</th>
                             <td>${elm.tenDangNhap}</td>
+                            <td>${elm.chucNang}</td>
+                            <td>${elm.trangThai}</td>
                             <td>
-                                <a  onclick=TaiKhoan(${
+                                <a  onclick=openUpdateTaiKhoan(${
                                   elm.idtk
                                 }) style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata">
                                      <i
@@ -18,7 +27,9 @@ const quanLyTaiKhoan = () =>
                                    
                                     </i>
                                 </a>
-                                <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3">
+                                <a onclick="openBlockTaiKhoan(${
+                                  elm.idtk
+                                })" type="button" data-bs-toggle="modal" data-bs-target="#myModal3">
                                     <i class="fa-solid fa-ban"></i>
                                    
                                     </i>
@@ -30,17 +41,21 @@ const quanLyTaiKhoan = () =>
       document.querySelector("#listTaiKhoan").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
+};
 
-const TaiKhoan = (id) => {
+const openUpdateTaiKhoan = (id) => {
   fetch(`${HOST}/api/taikhoan/${id}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      document.querySelector(".modal-body #maTaiKhoan").value = data.idtk;
-      document.querySelector(".modal-body #tenDangNhap").value =
+      document.querySelector("#formUpdate #maTaiKhoan").value = data.idtk;
+      document.querySelector("#formUpdate #tenDangNhap").value =
         data.tenDangNhap;
-      document.querySelector(".modal-body #matKhau").value = data.matKhau;
-      // document.querySelector(".modal-body #chucnang").value = data.chucNang
-      // document.querySelector(".modal-body #trangthai").value = data.trangThai
+      document.querySelector("#formUpdate #chucNang").value = data.chucNang;
+      document.querySelector("#formUpdate #trangThai").value = data.trangThai;
     });
+};
+
+const openBlockTaiKhoan = (id) => {
+  document.querySelector("#formBlock #idtk").value = id;
 };
