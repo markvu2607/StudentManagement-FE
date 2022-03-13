@@ -19,7 +19,6 @@ const renderSVHB = () => {
                 <td>${elm.DiemTichLuy}</td>
             </tr>`;
       }
-      console.log(html);
       document.querySelector("#listHocBong").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
