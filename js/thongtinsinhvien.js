@@ -11,17 +11,8 @@ const renderSV = () => {
                         <td>${elm.tensv}</td>
                         <td>${formatDate(elm.ngaySinh)}</td>
                         <td>${elm.laNam === 1 ? "Nam" : "Nữ"}</td>
-                        <td>${elm.kyTucXa === 1 ? "Có" : "Không"}</td>
-                        <td>${elm.queQuan}</td>
                         <td>${elm.sdt}</td>
-                        <td>${elm.cccd}</td>
-                        <td>${elm.tenBo}</td>
-                      
-                        <td>${elm.sdtBo}</td>
                        
-                        <td>${elm.tenMe}</td>
-                      
-                        <td>${elm.sdtMe}</td>
                       
                         <td>
                             <a onclick="openUpdateSV(${
