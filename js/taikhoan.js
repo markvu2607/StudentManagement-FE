@@ -17,7 +17,9 @@ const quanLyTaiKhoan = () => {
                             <th >${elm.idtk}</th>
                             <td>${elm.tenDangNhap}</td>
                             <td>${elm.chucNang}</td>
-                            <td>${elm.trangThai}</td>
+                            <td>${
+                              elm.trangThai === 1 ? "Hoạt động" : "Dừng"
+                            }</td>
                             <td>
                                 <a  onclick=openUpdateTaiKhoan(${
                                   elm.idtk
