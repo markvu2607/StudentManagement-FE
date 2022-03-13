@@ -10,9 +10,9 @@ const renderSVHB = () => {
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `<tr>
-                <th scope="row">${i}</th>
+                <th scope="row">${i+1}</th>
                 <td>${elm.idsv}</td>
-                <td>${elm.tensv} Chí hihi</td>
+                <td>${elm.tensv}</td>
                 <td>${elm.tenKhoa}</td>
                 <td>${elm.tenKyHoc}</td>
                 <td>${elm.DiemRenLuyen}</td>
