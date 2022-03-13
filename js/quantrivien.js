@@ -28,7 +28,7 @@ const renderQLTaiKhoan = () => {
 };
 
 const renderQLHocPhi = () => {
-  $(".main").load("./quanlyhocphi/quanlyhocphi.html");
+  $(".main").load("thongkehocphi.html");
 };
 
 const renderThongKeDiem = () => {
