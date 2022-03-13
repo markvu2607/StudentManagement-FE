@@ -1,6 +1,8 @@
 const renderSVHB = () => {
   const idKhoa = document.querySelector("#khoa").value;
   const idky = document.querySelector("#kyhoc").value;
+   if (!idKhoa || !idky) alert("Yêu cầu chọn đầy đủ thông tin thống kê");
+  else
   fetch(
     `${HOST}/api/sinhvien/thongke/hocbong?idKhoa=${idKhoa}&idky=${idky}&gioiHan=`
   )
