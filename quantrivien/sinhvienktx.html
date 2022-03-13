@@ -1,13 +1,11 @@
 <div class="row text-center py-3">
-    <h3>Thống Kê SInh Viên Trong KTX</h3>
+    <h3>Danh Sách Sinh Viên Nội Trú</h3>
 </div>
 <div class="row py-3">
     <div class="col-md-4">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-                Danh sách sinh viên nội chú
-            </label>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchKTX" onclick="renderSVKTX()">
+            <label class="form-check-label" for="flexSwitchKTX">Sinh viên nội trú</label>
         </div>
     </div>
 </div>
@@ -18,7 +16,8 @@
                 <th scope="col">STT</th>
                 <th scope="col">Mã SV</th>
                 <th scope="col">Họ và tên</th>
-                <th scope="col"></th>
+                <th scope="col">Giới tính</th>
+                <th scope="col">Số điện thoại</th>
             </tr>
         </thead>
         <tbody id="listSVKTX">
@@ -27,31 +26,27 @@
     </table>
 </div>
 
-
-
 <script>
-    fetch(`${HOST}/api/sinhvien/kytucxa`)
-        .then(res => res.json())
-        .then(data => {
-            let html = ""
-            console.log('vao day', data);
-            data.forEach((elm) => {
-                html += `<tr>
-                            <th scope="row">${elm.idsv}</th>
+    const renderSVKTX = () => {
+        const kytucxa = document.querySelector("#flexSwitchKTX").checked;
+        fetch(`${HOST}/api/sinhvien/thongke/kytucxa?kytucxa=${kytucxa}`)
+            .then(res => res.json())
+            .then(data => {
+                let html = ""
+                for (i = 0; i < data.length; i++) {
+                    elm = data[i];
+                    html += `<tr>
+                            <th scope="row">${i+1}</th>
+                            <td>${elm.idsv}</td>
                             <td>${elm.tensv}</td>
-                            <td>${elm.ngaySinh}</td>
-                            <td>${elm.laNam}</td>
-                            <td>
-                                <a   style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModaldata"><i
-                                        class="fa-solid fa-wrench"></i>
-                                  
-                                </a>
-                            </td>
+                            <td>${elm.laNam===1?"Nam":"Nữ"}</td>
+                            <td>${elm.sdt}</td>
                         </tr>`
+                }
+                console.log(html);
+                document.querySelector("#listSVKTX").innerHTML = html
             })
-
-            document.querySelector("#listSVKTX").innerHTML = html
-        })
-        .catch(err => console.log("Error: ", err))
-
+            .catch(err => console.log("Error: ", err))
+    }
+    renderSVKTX()
 </script>

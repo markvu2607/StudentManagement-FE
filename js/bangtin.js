@@ -13,35 +13,14 @@ const renderBangTin = () => {
                             )}</td>
                             <td >${elm.noiDung}</td>
                             <td>
-                               <a type="button" data-bs-toggle="modal" data-bs-target="#myModal3"><i class="fa-solid fa-trash"></i>
+                               <a type="button" onClick=deleteBangTin(${
+                                 elm.idbt
+                               }) ><i class="fa-solid fa-trash"></i>
                                </a>
                             </td>
                         </tr>
+                    
                         
-                        <div class="modal" id="myModal3">
-                            <div class="modal-dialog modal-dialog-centered" style="max-width: 400px !important">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Cảnh Báo</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="modal-body ">
-                                        <form class="row g-3 py-3">
-                                            Bạn có muốn xoá bản tin này không?
-                                        </form>
-                                    </div>
-  
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button  onClick=deleteBangTin(${
-                                          elm.idbt
-                                        }) type="button" class="btn btn-primary text-center" style="width: 30%"
-                                            data-bs-dismiss="modal">Đồng ý</button>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
                         `;
       });
 
@@ -51,17 +30,19 @@ const renderBangTin = () => {
 };
 
 const deleteBangTin = (id) => {
-  console.log(id);
-  fetch(`${HOST}/api/bangtin/${id}`, {
-    method: "DELETE",
-  })
-    .then(() => {
-      alert("Xoá thành công");
-      renderBangTin();
+  result = window.confirm("bạn có muốn xoá không?");
+  if (result === true) {
+    fetch(`${HOST}/api/bangtin/${id}`, {
+      method: "DELETE",
     })
-    .catch((err) => {
-      console.error(err);
-    });
+      .then(() => {
+        alert("Xoá thành công");
+        renderBangTin();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 };
 
 //
