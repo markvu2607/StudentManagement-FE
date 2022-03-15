@@ -21,3 +21,12 @@ function getFullYear(date) {
   let year = d.getFullYear();
   return year;
 }
+
+function checkPhoneNumber(phoneNumber) {
+  var check = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+  if (phoneNumber.match(check)) {
+    return true;
+  } else {
+    return false;
+  }
+}
