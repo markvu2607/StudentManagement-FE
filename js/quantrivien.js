@@ -39,7 +39,7 @@ const renderThongKeHocBong = () => {
   $(".main").load("thongke/hocbong.html");
 };
 
-const renderDiemRenLuyen = () => {
+const renderThongKeDiemRenLuyen = () => {
   $(".main").load("thongke/diemrenluyen.html");
 };
 
@@ -59,4 +59,7 @@ const renderQuanLyKyHoc = () => {
   $(".main").load("quanlykyhoc.html");
 };
 
+const renderQuanLyDiemRenLuyen = () => {
+  $(".main").load("quanlydiemrenluyen.html");
+}
 // end render UI
