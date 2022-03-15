@@ -1,11 +1,9 @@
 const renderLop = () => {
   const tuKhoa = document.querySelector("#tenLop").value.trim();
-  const idky = document.querySelector("#kyHocLop").value;
-  console.log(tuKhoa, idky);
+  const idky = document.querySelector("#kyHoc").value;
   fetch(`${HOST}/api/lophocphan/?tenlop=${tuKhoa}&idky=${idky}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       let html = "";
       for (i = 0; i < data.length; i++) {
         elm = data[i];
@@ -43,9 +41,9 @@ const LopHoc = (id) => {
     .then((data) => {
       document.querySelector("#formUpdate #maLop").value = data.idLop;
       document.querySelector("#formUpdate #tenLop").value = data.tenLop;
-      document.querySelector("#formUpdate #tenMonHoc").value = data.idmh;
+      document.querySelector("#formUpdate #monhoc").value = data.idmh;
       document.querySelector("#formUpdate #phongHoc").value = data.phongHoc;
-      document.querySelector("#formUpdate #kyHocLop").value = data.idky;
+      document.querySelector("#formUpdate #kyHoc").value = data.idky;
 
       document.querySelector("#formUpdate #tenGiangVien").value = data.idgv;
       document.querySelector("#formUpdate #soLuong").value = data.soLuong;
@@ -64,9 +62,9 @@ const viewLopHoc = (id) => {
     .then((res) => res.json())
     .then((data) => {
       document.querySelector("#formView #tenLop").value = data.tenLop;
-      document.querySelector("#formView #tenMonHoc").value = data.idmh;
+      document.querySelector("#formView #monhoc").value = data.idmh;
       document.querySelector("#formView #phongHoc").value = data.phongHoc;
-      document.querySelector("#formView #kyHocLop").value = data.idky;
+      document.querySelector("#formView #kyHoc").value = data.idky;
 
       document.querySelector("#formView #tenGiangVien").value = data.idgv;
       document.querySelector("#formView #soLuong").value = data.soLuong;
@@ -78,50 +76,6 @@ const viewLopHoc = (id) => {
       );
       document.querySelector("#formView #trangThai").value = data.trangThai;
     });
-};
-
-const getKyLopHoc = () =>
-  fetch(`${HOST}/api/kyhoc/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = `<option selected disabled value="">--Chọn Kỳ Học--</option>`;
-      data.forEach((elm) => {
-        html += `<option value="${elm.idky}">${elm.tenKyHoc}</option>`;
-      });
-      document.querySelectorAll("#kyHocLop").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
-
-const getMonLopHoc = () => {
-  fetch(`${HOST}/api/monhoc/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = `<option selected disabled value="">--Chọn Môn Học--</option>`;
-      data.forEach((elm) => {
-        html += `<option value="${elm.idmh}">${elm.tenMon}</option>`;
-      });
-      document.querySelectorAll("#tenMonHoc").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
-};
-
-const getGVLopHoc = () => {
-  fetch(`${HOST}/api/giangvien/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = `<option selected disabled value="">-- Chọn Giảng Viên --</option>`;
-      data.forEach((elm) => {
-        html += `<option value="${elm.idgv}">${elm.tengv}</option>`;
-      });
-      document.querySelectorAll("#tenGiangVien").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
 };
 
 const deleteLopHoc = (id) => {

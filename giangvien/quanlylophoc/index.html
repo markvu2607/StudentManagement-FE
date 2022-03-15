@@ -4,15 +4,11 @@
 
 <div class="row pt-4">
     <div class="col-md-3">
-        <select id="kyhoc" class=" form-select" style="border-radius: 15px" required>
-            <option selected disabled value="">Kỳ học</option>
-            <option value="0">1</option>
-            <option value="1">2</option>
-            <option value="2">3</option>
+        <select id="kyHoc" class="form-select" style="border-radius: 15px" required>
         </select>
     </div>
     <div class="col-md-3">
-        <input id="searchInput" type="text" class="form-control" style="border-radius: 15px" placeholder="Tên lớp">
+        <input id="searchInput" type="text" class="form-control" style="border-radius: 15px" placeholder="Tên lớp" id="tenLop">
     </div>
     <div class="col-3 col-md-auto">
         <button class="btn btn-primary" style="border-radius: 15px" onclick="">Tìm Kiếm</button>
@@ -46,3 +42,7 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    getKy()
+</script>

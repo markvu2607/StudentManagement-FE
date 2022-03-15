@@ -177,7 +177,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Thêm Lớp</h4>
+                <h4 class="modal-title">Cập Nhật Lớp</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <!-- Modal body -->
@@ -194,7 +194,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên môn học * </label>
-                        <select class="form-select" id="tenMonHoc" required>
+                        <select class="form-select" id="monhoc" required>
                             <option selected disabled value="">Môn Học</option>
 
                         </select>
@@ -213,11 +213,11 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Kỳ Học * </label>
-                        <select class="form-select" id="kyHocLop" required>
+                        <select class="form-select" id="kyHoc" required>
                             <option selected disabled value="">Kỳ Học</option>
 
                         </select>
-                        <div class="invalid-feedback">
+                        <div class=" invalid-feedback">
                             Vui lòng chọn Kỳ Học
                         </div>
                     </div>
@@ -288,7 +288,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Thêm Lớp</h4>
+                <h4 class="modal-title">Xem chi tiết lớp</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <!-- Modal body -->
@@ -303,10 +303,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên môn học * </label>
-                        <select class="form-select" id="tenMonHoc" readonly>
-                            <option selected disabled value="">Môn Học</option>
-
-                        </select>
+                        <input class="form-control" id="monhoc" readonly>
 
                     </div>
 
@@ -318,19 +315,14 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Kỳ Học * </label>
-                        <select class="form-select" id="kyHocLop" readonly>
-                            <option selected disabled value="">Kỳ Học</option>
+                        <input class="form-control" id="kyHoc" readonly>
 
-                        </select>
 
                     </div>
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên Giảng Viên * </label>
-                        <select class="form-select" id="tenGiangVien" readonly>
-                            <option selected disabled value="">Giảng Viên</option>
-
-                        </select>
+                        <input class="form-control" id="tenGiangVien" readonly>
 
                     </div>
 
@@ -354,12 +346,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Trạng Thái * </label>
-                        <select class="form-select" id="trangThai" readonly>
-                            <option selected disabled value="">Trạng Thái Lớp Học</option>
-                            <option value="hoatdong"> Hoạt Động </option>
-                            <option value="tamdung"> Tạm Dừng </option>
-
-                        </select>
+                        <input class="form-control" id="trangThai" readonly>
 
                     </div>
                 </form>

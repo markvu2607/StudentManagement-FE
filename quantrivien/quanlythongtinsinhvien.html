@@ -546,7 +546,7 @@
                                 })
                                     .then(res => res.json())
                                     .then(data => {
-
+                                        // 
                                         fetch(`${HOST}/api/sinhvien/`, {
                                             method: "POST",
                                             headers: {
@@ -563,22 +563,23 @@
                                                 "sdt": form.soDienThoai.value,
                                                 "cccd": form.CCCD.value,
                                                 "tenBo": form.hoTenBo.value,
-                                                "namSinhBo": form.namSinhBo.value,
+                                                "namSinhBo": getFullYear(form.namSinhBo.value),
                                                 "ngheNghiepBo": form.ngheNghiepBo.value,
                                                 "sdtBo": form.sdtBo.value,
                                                 "tenMe": form.hoTenMe.value,
-                                                "namSinhMe": form.namSinhMe.value,
+                                                "namSinhMe": getFullYear(form.namSinhMe.value),
                                                 "ngheNghiepMe": form.ngheNghiepMe.value,
                                                 "sdtMe": form.sdtMe.value,
                                                 "idtk": data.idtk
                                             }),
+
                                         })
                                             .then(res => res.json())
                                             .then(data => {
-                                                form.reset()
-                                                alert("Them thanh cong")
-                                                renderSV()
-                                                document.querySelector("#myModalAdd .btn-close").click()
+                                                // form.reset()
+                                                // alert("Them thanh cong")
+                                                // renderSV()
+                                                // document.querySelector("#myModalAdd .btn-close").click()
                                             })
                                             .catch(err => console.log("Error: ", err))
                                     })
@@ -600,11 +601,11 @@
                                         "sdt": form.soDienThoai.value,
                                         "cccd": form.CCCD.value,
                                         "tenBo": form.hoTenBo.value,
-                                        "namSinhBo": form.namSinhBo.value,
+                                        "namSinhBo": getFullYear(form.namSinhBo.value),
                                         "ngheNghiepBo": form.ngheNghiepBo.value,
                                         "sdtBo": form.sdtBo.value,
                                         "tenMe": form.hoTenMe.value,
-                                        "namSinhMe": form.namSinhMe.value,
+                                        "namSinhMe": getFullYear(form.namSinhMe.value),
                                         "ngheNghiepMe": form.ngheNghiepMe.value,
                                         "sdtMe": form.sdtMe.value,
                                         "idtk": form.idtk.value
@@ -612,6 +613,9 @@
                                 })
                                     .then(res => res.json())
                                     .then(data => {
+
+                                        console.log('sửa', data.sql);
+
                                         alert("Sua thanh cong")
                                         renderSV()
                                         document.querySelector("#myModalUpdate .btn-close").click()

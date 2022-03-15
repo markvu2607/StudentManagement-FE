@@ -15,3 +15,9 @@ function formatDate(date) {
 
   return [year, month, day].join("-");
 }
+
+function getFullYear(date) {
+  const d = new Date(date);
+  let year = d.getFullYear();
+  return year;
+}

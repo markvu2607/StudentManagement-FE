@@ -59,9 +59,11 @@
                 .val(); // get the content of what user typed ( in textarea ) 
             if (username.trim() == "") {
                 alert('Tên đăng nhập không được để trống')
+                document.getElementById('username').focus();
             }
             else if (password.trim() === "") {
                 alert('Mật khẩu không được để trống');
+                document.getElementById('password').focus();
             } else {
                 $.ajax({
                     type: "POST",
@@ -79,6 +81,7 @@
                             )
                         } else {
                             const user = {
+
                                 username: result.tenDangNhap,
                                 role: result.chucNang,
                                 status: result.trangThai

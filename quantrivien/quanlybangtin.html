@@ -24,7 +24,7 @@
                                 <textarea style="height: 500px;" cols="80" rows="5" type="text" class="form-control"
                                     id="editor" required></textarea>
                                 <div class="invalid-feedback">
-                                    Nhập vào nội dung
+                                    Nội dung không được để trống
                                 </div>
                             </div>
 
@@ -95,19 +95,21 @@
                     } else {
                         if (form.id == "formAdd") {
                             if (form.editor.value.length < 3000) {
+                                let noiDung = form.editor.value;
+
                                 fetch(`${HOST}/api/bangtin/`, {
                                     method: "POST",
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
-                                        "noiDung": form.editor.value
+                                        "noiDung": noiDung
                                     }),
                                 })
                                     .then(res => res.json())
                                     .then(data => {
                                         form.reset()
-                                        alert("Them thanh cong")
+                                        alert("Thêm mới bảng tin thành công")
                                         renderBangTin()
                                         document.getElementById("close").click()
                                     })
@@ -116,6 +118,7 @@
                             }
                             else {
                                 alert('bạn đã nhập quá 3000 từ')
+                                document.getElementById('editor').focus();
                             }
 
                         }

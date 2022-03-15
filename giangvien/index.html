@@ -9,13 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/main.css">
     <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
 
     <script src="../js/constants.js"></script>
     <script src="../js/common.js"></script>
+    <script src="../js/helper.js"></script>
     <script src="../js/renderGiangVien.js"></script>
 </head>
 
@@ -43,11 +45,13 @@
                     </div>
                 </div>
 
-                <div id="Dang-nhap " class="col-md-6 col-6 col-sm-6 " style="font-size:15px;color:grey;padding-top: 10px;">
+                <div id="Dang-nhap " class="col-md-6 col-6 col-sm-6 "
+                    style="font-size:15px;color:grey;padding-top: 10px;">
                     <div class="dropdown pb-4 text-end">
                         <div class="block">
                             <!-- <?php if($user['roles']=='admin'){?> -->
-                            <a href="#" class="text-white text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="#" class="text-white text-decoration-none" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <span><i class="bi bi-person-circle"></i></span>
                                 <!-- <span class=""><?php echo $user['username'] ?></span>  -->
                                 <span class="d-none d-sm-inline mx-1">Role: Giảng Viên</span>
@@ -74,31 +78,36 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <ul class="navbar-nav nav-pills mt-3" id="menu">
                         <li class="nav-item mt-2">
-                            <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip" data-bs-placement="right" title="Quản lý điểm">
+                            <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip"
+                                data-bs-placement="right" title="Quản lý điểm" onclick="renderQLDiem()">
                                 <i class="fa-regular fa-rectangle-list"></i>
 
-                                <span class="ms-2" onclick="renderQLDiem()">Quản Lý Điểm </span>
+                                <span class="ms-2">Quản Lý Điểm</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
-                            <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right" title="Quản lý lớp học">
+                            <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle"
+                                data-bs-toggle="tooltip" data-bs-placement="right" title="Quản lý lớp học"
+                                onclick="renderQLLophoc()">
                                 <i class="fa-solid fa-list-ul"></i>
-                                <span class="ms-2" onclick="renderQLLophoc()">Quản Lý Lớp Học </span>
+                                <span class="ms-2">Quản Lý Lớp Học</span>
                             </a>
 
                         </li>
                         <li class="nav-item mt-2">
-                            <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right" title="Danh sách sinh viên">
+                            <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle"
+                                data-bs-toggle="tooltip" data-bs-placement="right" title="Danh sách sinh viên"
+                                onclick="renderDSsinhvien()">
                                 <i class="fa-solid fa-user-group"></i>
-                                <span class="ms-2" onclick="renderDSsinhvien()">Danh Sách Sinh Viên </span>
+                                <span class="ms-2">Danh Sách Sinh Viên</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
-                            <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle" data-bs-toggle="tooltip" data-bs-placement="right" title="Thống kê điểm">
+                            <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle"
+                                data-bs-toggle="tooltip" data-bs-placement="right" title="Thống kê điểm"
+                                onclick="renderThongkediem()">
                                 <i class="fa-solid fa-clipboard-list"></i>
-
-                                <span class="ms-2" onclick="renderThongkediem()">Thống Kê Điểm</span>
-
+                                <span class="ms-2">Thống Kê Điểm</span>
                             </a>
                         </li>
 
@@ -118,20 +127,6 @@
 
 
     <footer class="text-center text-white" style="background-color: #292444;">
-        <div class="container p-4 pb-0">
-            <section class="mb-4">
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="bi bi-facebook"></i></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="bi bi-twitter"></i></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="bi bi-google"></i></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="bi bi-instagram"></i></a>
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-                        class="bi bi-github"></i></a>
-            </section>
-        </div>
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2021 CNTT-TLU:
             <a class="text-white" href="#">Thuy Loi University</a>
