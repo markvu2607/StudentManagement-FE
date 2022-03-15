@@ -27,26 +27,5 @@
 </div>
 
 <script>
-    const renderSVKTX = () => {
-        const kytucxa = document.querySelector("#flexSwitchKTX").checked;
-        fetch(`${HOST}/api/sinhvien/thongke/kytucxa?kytucxa=${kytucxa}`)
-            .then(res => res.json())
-            .then(data => {
-                let html = ""
-                for (i = 0; i < data.length; i++) {
-                    elm = data[i];
-                    html += `<tr>
-                            <th scope="row">${i+1}</th>
-                            <td>${elm.idsv}</td>
-                            <td>${elm.tensv}</td>
-                            <td>${elm.laNam===1?"Nam":"Nữ"}</td>
-                            <td>${elm.sdt}</td>
-                        </tr>`
-                }
-                console.log(html);
-                document.querySelector("#listSVKTX").innerHTML = html
-            })
-            .catch(err => console.log("Error: ", err))
-    }
     renderSVKTX()
 </script>

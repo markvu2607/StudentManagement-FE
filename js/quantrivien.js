@@ -28,19 +28,19 @@ const renderQLTaiKhoan = () => {
 };
 
 const renderQLHocPhi = () => {
-  $(".main").load("thongkehocphi.html");
+  $(".main").load("thongke/hocphi.html");
 };
 
 const renderThongKeDiem = () => {
-  $(".main").load("thongkediem.html");
+  $(".main").load("thongke/diem.html");
 };
 
 const renderThongKeHocBong = () => {
-  $(".main").load("thongkehocbong.html");
+  $(".main").load("thongke/hocbong.html");
 };
 
 const renderDiemRenLuyen = () => {
-  $(".main").load("thongkediemrl.html");
+  $(".main").load("thongke/diemrenluyen.html");
 };
 
 const renderChuongTrinhDaoTao = () => {
@@ -48,7 +48,7 @@ const renderChuongTrinhDaoTao = () => {
 };
 
 const renderSinhVienTrongKTX = () => {
-  $(".main").load("sinhvienktx.html");
+  $(".main").load("thongke/kytucxa.html");
 };
 
 const renderQuanLyGiangVien = () => {
