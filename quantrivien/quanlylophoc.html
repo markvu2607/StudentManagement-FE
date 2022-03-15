@@ -4,7 +4,7 @@
 <div class="row py-3">
 
     <div class="col-md-3">
-        <select id="kyHocLop" class="form-select" style="border-radius: 15px">
+        <select id="kyHoc" class="form-select" style="border-radius: 15px">
         </select>
     </div>
     <div class="col-md-3">
@@ -45,7 +45,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên môn học * </label>
-                        <select class="form-select" id="tenMonHoc" required>
+                        <select class="form-select" id="monhoc" required>
                             <option selected disabled value="">Tên môn học</option>
 
                         </select>
@@ -64,7 +64,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Kỳ Học * </label>
-                        <select class="form-select" id="kyHocLop" required>
+                        <select class="form-select" id="kyHoc" required>
                             <option selected disabled value="">Kỳ Học</option>
 
                         </select>
@@ -197,7 +197,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên môn học * </label>
-                        <select class="form-select" id="tenMonHoc" required>
+                        <select class="form-select" id="monhoc" required>
                             <option selected disabled value="">Môn Học</option>
 
                         </select>
@@ -216,7 +216,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Kỳ Học * </label>
-                        <select class="form-select" id="kyHocLop" required>
+                        <select class="form-select" id="kyHoc" required>
                             <option selected disabled value="">Kỳ Học</option>
 
                         </select>
@@ -306,7 +306,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên môn học * </label>
-                        <select class="form-select" id="tenMonHoc" readonly>
+                        <select class="form-select" id="monhoc" readonly>
                             <option selected disabled value="">Môn Học</option>
 
                         </select>
@@ -321,7 +321,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Kỳ Học * </label>
-                        <select class="form-select" id="kyHocLop" readonly>
+                        <select class="form-select" id="kyHoc" readonly>
                             <option selected disabled value="">Kỳ Học</option>
 
                         </select>
@@ -375,9 +375,9 @@
 
 <script>
     renderLop()
-    getKyLopHoc()
-    getMonLopHoc()
-    getGVLopHoc()
+    getKy()
+    getMonHoc()
+    getGV()
 </script>
 <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -410,8 +410,8 @@
                                         'thoiGianKt': form.thoiGianKetThuc.value,
                                         'trangThai': form.trangThai.value,
                                         'idgv': form.tenGiangVien.value,
-                                        'idmh': form.tenMonHoc.value,
-                                        'idky': form.kyHocLop.value,
+                                        'idmh': form.monhoc.value,
+                                        'idky': form.kyHoc.value,
 
                                     }),
                                 })
@@ -438,8 +438,8 @@
                                         'thoiGianKt': form.thoiGianKetThuc.value,
                                         'trangThai': form.trangThai.value,
                                         'idgv': form.tenGiangVien.value,
-                                        'idmh': form.tenMonHoc.value,
-                                        'idky': form.kyHocLop.value,
+                                        'idmh': form.monhoc.value,
+                                        'idky': form.kyHoc.value,
 
                                     }),
                                 })

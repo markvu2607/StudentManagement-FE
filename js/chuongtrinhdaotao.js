@@ -1,6 +1,6 @@
 const renderCTDT = () => {
   const tuKhoa = document.querySelector("#searchInput").value;
-  const idkhoa = document.getElementById("khoaCTDT").value;
+  const idkhoa = document.getElementById("khoa").value;
   fetch(`${HOST}/api/ctdaotao?idKhoa=${idkhoa}&tenctdt=${tuKhoa}`)
     .then((res) => res.json())
     .then((data) => {
@@ -38,11 +38,11 @@ const openUpdateCTDT = (id) => {
     .then((data) => {
       document.querySelector("#formUpdate #idCTDT").value = data.idctdt;
       document.querySelector("#formUpdate #tenCTDT").value = data.tenctdt;
-      document.querySelector("#formUpdate #khoaCTDT").value = data.idKhoa;
+      document.querySelector("#formUpdate #khoa").value = data.idKhoa;
     });
 };
 
-const getKhoaCTDT = () =>
+const getkhoa = () =>
   fetch(`${HOST}/api/khoa/`)
     .then((res) => res.json())
     .then((data) => {
@@ -50,7 +50,7 @@ const getKhoaCTDT = () =>
       data.forEach((elm) => {
         html += `<option value="${elm.idKhoa}">${elm.tenKhoa}</option>`;
       });
-      document.querySelectorAll("#khoaCTDT").forEach((elm) => {
+      document.querySelectorAll("#khoa").forEach((elm) => {
         elm.innerHTML = html;
       });
     })
@@ -110,19 +110,4 @@ const deleteCTCTDT = (idmh) => {
         console.error(err);
       });
   }
-};
-
-const getMonHoc = () => {
-  fetch(`${HOST}/api/monhoc/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = `<option selected disabled value="">--Chọn Môn Học--</option>`;
-      data.forEach((elm) => {
-        html += `<option value="${elm.idmh}">${elm.tenMon}</option>`;
-      });
-      document.querySelectorAll("#monhoc").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
 };

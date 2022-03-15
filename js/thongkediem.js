@@ -24,17 +24,3 @@ const renderSVTKD = () => {
       })
       .catch((err) => console.log("Error: ", err));
 };
-
-const getKyTKD = () =>
-  fetch(`${HOST}/api/kyhoc/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = `<option selected disabled value="">--Chọn Kỳ Học--</option>`;
-      data.forEach((elm) => {
-        html += `<option value="${elm.idky}">${elm.tenKyHoc}</option>`;
-      });
-      document.querySelectorAll("#kyHoc").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
