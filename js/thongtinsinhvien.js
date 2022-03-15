@@ -69,20 +69,6 @@ const openUpdateSV = (id) => {
     });
 };
 
-const getKhoa = () =>
-  fetch(`${HOST}/api/khoa/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = `<option selected disabled value="">--Chọn Khoa--</option>`;
-      data.forEach((elm) => {
-        html += `<option value="${elm.idKhoa}">${elm.tenKhoa}</option>`;
-      });
-      document.querySelectorAll("#khoa").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
-
 const openViewSV = (id) => {
   fetch(`${HOST}/api/sinhvien/${id}`)
     .then((res) => res.json())

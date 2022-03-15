@@ -4,7 +4,7 @@
 <div class="row py-3">
 
     <div class="col-md-3">
-        <select id="kyHocLop" class="form-select" style="border-radius: 15px">
+        <select id="kyHoc" class="form-select" style="border-radius: 15px">
         </select>
     </div>
     <div class="col-md-3">
@@ -45,8 +45,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên môn học * </label>
-                        <select class="form-select" id="tenMonHoc" required>
-                            <option selected disabled value="">Tên môn học</option>
+                        <select class="form-select" id="monhoc" required>
 
                         </select>
                         <div class="invalid-feedback">
@@ -64,8 +63,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Kỳ Học * </label>
-                        <select class="form-select" id="kyHocLop" required>
-                            <option selected disabled value="">Kỳ Học</option>
+                        <select class="form-select" id="kyHoc" required>
 
                         </select>
                         <div class="invalid-feedback">
@@ -76,7 +74,6 @@
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên Giảng Viên * </label>
                         <select class="form-select" id="tenGiangVien" required>
-                            <option selected disabled value="">Giảng Viên</option>
 
                         </select>
                         <div class="invalid-feedback">
@@ -375,9 +372,9 @@
 
 <script>
     renderLop()
-    getKyLopHoc()
-    getMonLopHoc()
-    getGVLopHoc()
+    getGV()
+    getKy()
+    getMonHoc()
 </script>
 <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -410,8 +407,8 @@
                                         'thoiGianKt': form.thoiGianKetThuc.value,
                                         'trangThai': form.trangThai.value,
                                         'idgv': form.tenGiangVien.value,
-                                        'idmh': form.tenMonHoc.value,
-                                        'idky': form.kyHocLop.value,
+                                        'idmh': form.monhoc.value,
+                                        'idky': form.kyHoc.value,
 
                                     }),
                                 })
@@ -438,8 +435,8 @@
                                         'thoiGianKt': form.thoiGianKetThuc.value,
                                         'trangThai': form.trangThai.value,
                                         'idgv': form.tenGiangVien.value,
-                                        'idmh': form.tenMonHoc.value,
-                                        'idky': form.kyHocLop.value,
+                                        'idmh': form.monhoc.value,
+                                        'idky': form.kyHoc.value,
 
                                     }),
                                 })
