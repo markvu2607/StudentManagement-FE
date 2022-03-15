@@ -1,34 +1,34 @@
 //QUẢN LÝ ĐIỂM
 const renderQLDiem = () => {
-  $(".main").load("./Quanlydiem");
+  $(".main").load("./quanlydiem/");
 };
 const renderLophocphan = () => {
-  $(".main").load("./Quanlydiem/lophocphan.html");
+  $(".main").load("./quanlydiem/lophocphan.html");
 };
 
 //QUẢN LÝ LỚP HỌC
 const renderQLLophoc = () => {
-  $(".main").load("./Quanlylophoc");
+  $(".main").load("./quanlylophoc/");
 };
 const renderDiemdanh = () => {
-  $(".main").load("./Quanlylophoc/diemdanh.html");
+  $(".main").load("./quanlylophoc/diemdanh.html");
 };
 const renderChitietdiemdanh = () => {
-  $(".main").load("./Quanlylophoc/chitietdiemdanh.html");
+  $(".main").load("./quanlylophoc/chitietdiemdanh.html");
 };
 const renderTailieumonhoc = () => {
-  $(".main").load("./Quanlylophoc/tailieumonhoc.html");
+  $(".main").load("./quanlylophoc/tailieumonhoc.html");
 };
 
 // DANH SÁCH SINH VIÊN
 const renderDSsinhvien = () => {
-  $(".main").load("./Danhsachsinhvien");
+  $(".main").load("./quanlysinhvien/");
 };
 const renderChitietdssinhvien = () => {
-  $(".main").load("./Danhsachsinhvien/chitietdanhsachsinhvien.html");
+  $(".main").load("./quanlysinhvien/chitietdanhsachsinhvien.html");
 };
 
 //THỐNG KÊ ĐIỂM
 const renderThongkediem = () => {
-  $(".main").load("./Thongkediem");
+  $(".main").load("../quantrivien/thongke/diem.html");
 };

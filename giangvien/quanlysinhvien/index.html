@@ -1,0 +1,54 @@
+<div class="row text-center py-3">
+    <h3>Thống Kê Danh Sách Sinh Viên</h3>
+</div>
+
+<div class="row pt-4">
+    <div class="col-md-3">
+        <select id="kyHoc" class=" form-select" style="border-radius: 15px" required>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input id="searchInput" type="text" class="form-control" style="border-radius: 15px" placeholder="Tên lớp">
+    </div>
+    <div class="col-3 col-md-auto">
+        <button class="btn btn-primary" style="border-radius: 15px" onclick="">Tìm Kiếm</button>
+    </div>
+</div>
+<div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 50px !important;">
+    <table class="table table-hover mt-5 " style="margin-top: 5px !important;">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tên lớp</th>
+                <th scope="col">Kỳ học</th>
+            </tr>
+        </thead>
+        <tbody id="listDiemlop">
+        </tbody>
+    </table>
+</div>
+
+<script>
+    getKy()
+    const renderDanhSachLop = () => {
+        const kytucxa = document.querySelector("#flexSwitchKTX").checked;
+        fetch(`${HOST}/api/sinhvien/thongke/kytucxa?kytucxa=${kytucxa}`)
+            .then((res) => res.json())
+            .then((data) => {
+                let html = "";
+                for (i = 0; i < data.length; i++) {
+                    elm = data[i];
+                    html += `<tr>
+                            <th scope="row">${i + 1}</th>
+                            <td>${elm.idsv}</td>
+                            <td>${elm.tensv}</td>
+                            <td>${elm.laNam === 1 ? "Nam" : "Nữ"}</td>
+                            <td>${elm.sdt}</td>
+                        </tr>`;
+                }
+                console.log(html);
+                document.querySelector("#listSVKTX").innerHTML = html;
+            })
+            .catch((err) => console.log("Error: ", err));
+    };
+</script>
