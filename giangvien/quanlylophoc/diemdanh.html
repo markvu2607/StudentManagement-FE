@@ -1,9 +1,10 @@
 <div class="row text-center py-3">
-    <h3>(Tên Lớp)</h3>
+    <h3 id="tenLop"></h3>
 </div>
 <div class="row pt-4">
     <div class="col-3 col-md-auto">
-        <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="modal" data-bs-target="#myModalAdd">Thêm</button>
+        <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="modal"
+            data-bs-target="#myModalAdd">Thêm</button>
     </div>
 </div>
 <div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 50px !important;">
@@ -16,18 +17,10 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody id="listDiemlop">
-            <th>1</th>
-            <th>3h15 03/04/2022</th>
-            <th>3h30 03/04/2022</th>
-            <td>
-                <a style="margin-right: 5px;" type="button" onclick="renderChitietdiemdanh()">
-                    <i class="fa-solid fa-eye"></i>
-                </a>
-                <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate">
-                    <i class="fa-solid fa-wrench"></i>
-                </a>
-            </td>
+        <tbody id="listDiemDanh">
+            <tr>
+
+            </tr>
         </tbody>
     </table>
 </div>
@@ -41,29 +34,29 @@
             <div class="modal-body">
                 <form id="formAdd" class="row g-3 needs-validation" novalidate>
                     <div class="row">
-                        <!-- <input hidden type="text" class="form-control" id="maLop" readonly required> -->
-
+                        <input hidden type="text" class="form-control" id="idLop" readonly required>
                         <div class="col-md-12 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Thời gian bắt đầu*</label>
-                            <input type="text" class="form-control" id="diemquatrinh" required>
+                            <input type="datetime-local" class="form-control" id="thoiGianBd" required>
                             <div class="invalid-feedback">
                                 Vui lòng nhập thời gian bắt đầu
                             </div>
                         </div>
                         <div class="col-md-12 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Thời gian kết thúc*</label>
-                            <input type="text" class="form-control" id="tenMonHoc" required>
+                            <input type="datetime-local" class="form-control" id="thoiGianKt" required>
                             <div class="invalid-feedback">
                                 Vui lòng nhập thời gian kết thúc
                             </div>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"> Lưu
-                    </button>
+                <div class="modal-footer">
+                    <div class="row">
+                        <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"
+                            onclick="addDiemDanh()"> Lưu
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,18 +72,18 @@
             <div class="modal-body">
                 <form id="formUpdate" class="row g-3 needs-validation" novalidate>
                     <div class="row">
-                        <!-- <input hidden type="text" class="form-control" id="maLop" readonly required> -->
-
+                        <input type="text" class="form-control" id="idDiemDanh" readonly required>
+                        <input type="text" class="form-control" id="idLop" readonly required>
                         <div class="col-md-12 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Thời gian bắt đầu*</label>
-                            <input type="text" class="form-control" id="diemquatrinh" required>
+                            <input type="datetime-local" class="form-control" id="thoiGianBd" required>
                             <div class="invalid-feedback">
                                 Vui lòng nhập thời gian bắt đầu
                             </div>
                         </div>
                         <div class="col-md-12 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Thời gian kết thúc*</label>
-                            <input type="text" class="form-control" id="tenMonHoc" required>
+                            <input type="datetime-local" class="form-control" id="thoiGianKt" required>
                             <div class="invalid-feedback">
                                 Vui lòng nhập thời gian kết thúc
                             </div>
@@ -100,10 +93,18 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"> Lưu
+                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"
+                        onclick="updateDiemDanh()"> Lưu
                     </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    $('#myModalUpdate').on('show.bs.modal', function (e) {
+        var idDiemDanh = $(e.relatedTarget).data('idDiemDanh');
+        $(e.currentTarget).find('input[id="idDiemDanh"]').val(idDiemDanh);
+    });
+</script>
