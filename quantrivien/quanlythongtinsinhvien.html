@@ -550,10 +550,11 @@
                                 } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
                                 }
-                                else if (cccd.length < 11 | cccd.length > 13) {
+                                else if (cccd.length < 11 || cccd.length > 13) {
                                     alert('căn cướcc công dân không đúng định dạng')
-                                } else if (tenDangNhap.length > 16) {
-                                    alert('tên đưang nhập không được quá 16 ký tự');
+                                }
+                                else if (tenDangNhap.length > 16) {
+                                    alert('tên đăng nhập không được quá 16 ký tự');
                                 }
                                 else {
 
@@ -631,7 +632,7 @@
                                 } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
                                 }
-                                else if (cccd.length < 11 | cccd.length > 13) {
+                                else if (cccd.length < 11 || cccd.length > 13) {
                                     alert('căn cướcc công dân không đúng định dạng')
                                 } else if (tenDangNhap.length > 16) {
                                     alert('tên đưang nhập không được quá 16 ký tự');
