@@ -59,3 +59,17 @@ const getGV = () => {
     })
     .catch((err) => console.log("Error: ", err));
 };
+
+const getSinhVien = () => {
+  fetch(`${HOST}/api/sinhvien`)
+    .then(res => res.json())
+    .then(data => {
+      let html = "";
+      data.forEach((elm) => {
+        html += `<option value="${elm.idsv}-${elm.tensv}"/>`;
+      });
+
+      document.querySelector("#sinhVien").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+}
