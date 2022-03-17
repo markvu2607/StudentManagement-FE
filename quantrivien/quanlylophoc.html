@@ -381,61 +381,91 @@
                             form.classList.add('was-validated')
                         } else {
                             if (form.id == "formAdd") {
-                                fetch(`${HOST}/api/lophocphan/`, {
-                                    method: "POST",
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        "tenLop": form.tenLop.value,
-                                        'phongHoc': form.phongHoc.value,
-                                        'soLuong': form.soLuong.value,
-                                        'thoiGianBd': form.thoiGianBatDau.value,
-                                        'thoiGianKt': form.thoiGianKetThuc.value,
-                                        'trangThai': form.trangThai.value,
-                                        'idgv': form.tenGiangVien.value,
-                                        'idmh': form.monhoc.value,
-                                        'idky': form.kyHoc.value,
 
-                                    }),
-                                })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        form.reset()
-                                        alert("Them thanh cong")
-                                        renderLop()
-                                        document.querySelector("#myModalAdd .btn-close").click()
+                                let tenLop = form.tenLop.value.trim();
+                                let phongHoc = form.phongHoc.value.trim();
+                                let soLuong = form.soLuong.value.trim();
+                                var format = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
+                                if (tenLop.length > 255 || phongHoc.length > 255) {
+                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
+                                }
+                                else if (format.test(tenLop) || format.test(phongHoc) || format.test(soLuong)) {
+                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                                }
+                                else if (soLuong > 200) {
+                                    alert('Số lượng quá nhiều   ')
+                                }
+                                else {
+                                    fetch(`${HOST}/api/lophocphan/`, {
+                                        method: "POST",
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            "tenLop": tenLop,
+                                            'phongHoc': phongHoc,
+                                            'soLuong': soLuong,
+                                            'thoiGianBd': form.thoiGianBatDau.value,
+                                            'thoiGianKt': form.thoiGianKetThuc.value,
+                                            'trangThai': form.trangThai.value,
+                                            'idgv': form.tenGiangVien.value,
+                                            'idmh': form.monhoc.value,
+                                            'idky': form.kyHoc.value,
+
+                                        }),
                                     })
-                                    .catch(err => console.log("Error: ", err))
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            form.reset()
+                                            alert("Them thanh cong")
+                                            renderLop()
+                                            document.querySelector("#myModalAdd .btn-close").click()
+                                        })
+                                        .catch(err => console.log("Error: ", err))
+                                }
                             } else if (form.id == "formUpdate") {
+                                let tenLop = form.tenLop.value.trim();
+                                let phongHoc = form.phongHoc.value.trim();
+                                let soLuong = form.soLuong.value.trim();
+                                var format = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
+                                if (tenLop.length > 255 || phongHoc.length > 255) {
+                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
+                                }
+                                else if (format.test(tenLop) || format.test(phongHoc) || format.test(soLuong)) {
+                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                                }
+                                else if (soLuong > 200) {
+                                    alert('Số lượng quá nhiều   ')
+                                }
+                                else {
+                                    fetch(`${HOST}/api/lophocphan/${form.maLop.value}`, {
+                                        method: "PUT",
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({
+                                            "tenLop": form.tenLop.value,
+                                            'phongHoc': form.phongHoc.value,
+                                            'soLuong': form.soLuong.value,
+                                            'thoiGianBd': form.thoiGianBatDau.value,
+                                            'thoiGianKt': form.thoiGianKetThuc.value,
+                                            'trangThai': form.trangThai.value,
+                                            'idgv': form.tenGiangVien.value,
+                                            'idmh': form.monhoc.value,
+                                            'idky': form.kyHoc.value,
 
-                                fetch(`${HOST}/api/lophocphan/${form.maLop.value}`, {
-                                    method: "PUT",
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        "tenLop": form.tenLop.value,
-                                        'phongHoc': form.phongHoc.value,
-                                        'soLuong': form.soLuong.value,
-                                        'thoiGianBd': form.thoiGianBatDau.value,
-                                        'thoiGianKt': form.thoiGianKetThuc.value,
-                                        'trangThai': form.trangThai.value,
-                                        'idgv': form.tenGiangVien.value,
-                                        'idmh': form.monhoc.value,
-                                        'idky': form.kyHoc.value,
-
-                                    }),
-                                })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        console.log(data);
-                                        form.reset()
-                                        alert("Sua thanh cong")
-                                        renderLop()
-                                        document.querySelector("#myModalUpdate .btn-close").click()
+                                        }),
                                     })
-                                    .catch(err => console.log("Error: ", err))
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            console.log(data);
+                                            form.reset()
+                                            alert("Sửa lớp học thành công")
+                                            renderLop()
+                                            document.querySelector("#myModalUpdate .btn-close").click()
+                                        })
+                                        .catch(err => console.log("Error: ", err))
+                                }
                             }
                         }
 

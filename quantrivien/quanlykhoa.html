@@ -131,12 +131,12 @@
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            if (data.message) {
+                                            if (data.sqlMessage) {
                                                 alert('Khoa đã tồn tại')
                                             }
                                             else {
                                                 form.reset()
-                                                alert("Them thanh cong")
+                                                alert("Thêm khoa thành công")
                                                 renderKhoa()
                                                 document.querySelector("#myModalAdd .btn-close").click()
                                             }
@@ -166,7 +166,8 @@
                                     })
                                         .then(res => res.json())
                                         .then(data => {
-                                            if (data.message) {
+                                            console.log(data);
+                                            if (data.sqlMessage) {
                                                 alert('Khoa đã tồn tại')
                                             }
                                             else {
