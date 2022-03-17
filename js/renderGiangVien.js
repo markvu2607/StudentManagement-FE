@@ -71,7 +71,12 @@ const renderDiemdanh = (idLop) => {
                   }, ${idLop})">
                       <i class="fa-solid fa-eye"></i>
                   </a>
-                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" data-idDiemDanh="${idDiemDanh}">
+                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" onclick=updateDiemDanh() >
+                    <script>
+                         document.querySelector('#formUpdate #idDiemDanh).value = ${
+                           elm.idDiemDanh
+                         }
+                    </script>
                       <i class="fa-solid fa-wrench"></i>
                   </a>
               </td>
@@ -87,6 +92,7 @@ const addDiemDanh = () => {
   let thoiGianBd = document.querySelector("#myModalAdd #thoiGianBd").value;
   let thoiGianKt = document.querySelector("#myModalAdd #thoiGianKt").value;
   let idLop = document.querySelector("#myModalAdd #idLop").value;
+
   if (!thoiGianBd) {
     alert("Thời gian bắt đầu không được bỏ trống");
   } else if (!thoiGianKt) {
@@ -123,6 +129,8 @@ const updateDiemDanh = () => {
   let thoiGianBd = document.querySelector("#myModalUpdate #thoiGianBd").value;
   let thoiGianKt = document.querySelector("#myModalUpdate #thoiGianKt").value;
   let idLop = document.querySelector("#myModalUpdate #idLop").value;
+  let idDiemDanh = document.querySelector("#formUpdate #idDiemDanh").value;
+  console.log(idDiemDanh);
   if (!thoiGianBd) {
     alert("Thời gian bắt đầu không được bỏ trống");
   } else if (!thoiGianKt) {
@@ -138,11 +146,10 @@ const updateDiemDanh = () => {
         thoiGianKt: thoiGianKt,
         idLop: idLop,
       }),
-
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.message) {
           alert(data.message);
         } else {
@@ -211,11 +218,11 @@ const renderChiTieLop = (idLop) => {
             for (i = 0; i < data.length; i++) {
               elm = data[i];
               html += `<tr>
-  <th>${i + 1}</th>
-  <th>${elm.idsv}</th>
-  <th>${elm.tensv}</th>
-  <th>${elm.tenKhoa}</th>
-</tr>`;
+            <th>${i + 1}</th>
+            <th>${elm.idsv}</th>
+            <th>${elm.tensv}</th>
+            <th>${elm.tenKhoa}</th>
+          </tr>`;
             }
             document.querySelector("#listSinhVien").innerHTML = html;
           }
@@ -257,4 +264,98 @@ const renderDanhSachLopTKSV = () => {
 //THỐNG KÊ ĐIỂM
 const renderThongkediem = () => {
   $(".main").load("../quantrivien/thongke/diem.html");
+};
+
+const renderLopHoc = () => {
+  fetch(`${HOST}/api/lophocphan/`)
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `
+        <tr>
+        <td>${i + 1}</td>
+        <td>${elm.tenLop}</td>
+        <td>
+        <td>
+          <a style="margin-right: 5px;" type="button" onclick="renderDiemTheoLop('${
+            elm.tenLop
+          }')">
+              <i class="fa-solid fa-eye"></i>
+          </a>
+        </td>
+        </tr>
+        `;
+      }
+      document.querySelectorAll("#getLopHoc").forEach((elm) => {
+        elm.innerHTML = html;
+      });
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const renderDiemTheoLop = (tenLop) => {
+  fetch(`${HOST}/api/diem?tenlop=${tenLop}&idky=`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${elm.tensv}</td>
+        <td>${
+          elm.diemQuaTrinh === null ? "chưa có điểm" : elm.diemQuaTrinh
+        }</td>
+        <td>${elm.diemThi === null ? "chưa có điểm" : elm.diemThi}</td>
+        <td>${
+          elm.diemTrungBinh === null ? "chưa có điểm" : elm.diemTrungBinh
+        }</td>
+        <td>${elm.diemHeSo4 === null ? "chưa có điểm" : elm.diemHeSo4}</td>
+        <td>
+          
+          ${
+            elm.diemQuaTrinh !== null && elm.diemThi !== null
+              ? `
+            <a
+            style="margin-right: 10px;"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#myModalUpdate"
+          >
+          <i class="fa-solid fa-wrench"></i>
+          </a>
+            `
+              : `
+              <a
+              style="margin-right: 10px;"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#myModalAdd"
+              data-id-sv="${elm.idsv}"
+              data-id-diem="${elm.idDiem}"
+
+            >
+              <i class="fa-solid fa-plus"></i>
+            </a>
+            `
+          }
+             
+        </td>
+      </tr>
+      
+      `;
+      }
+      document.getElementById("idLopDiem").value = elm.idLop;
+      document.getElementById("tenLopDiem").innerHTML = elm.tenLop;
+      document.getElementById("tenLop").value = elm.tenLop;
+      document.querySelectorAll("#renderDiemTheoLop").forEach((elm) => {
+        elm.innerHTML = html;
+      });
+    })
+    .catch((err) => console.log("Error: ", err));
+  $(".main").load("./quanlydiem/lophocphan.html");
 };
