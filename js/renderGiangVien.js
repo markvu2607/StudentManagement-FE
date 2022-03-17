@@ -71,7 +71,7 @@ const renderDiemdanh = (idLop) => {
                   }, ${idLop})">
                       <i class="fa-solid fa-eye"></i>
                   </a>
-                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" data-idDiemDanh="${idDiemDanh}">
+                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" data-id-diemDanh="${elm.idDiemDanh}" data-thoiGian-Bd="${elm.thoiGianBd}" data-thoiGian-Kt="${elm.thoiGianKt}">
                       <i class="fa-solid fa-wrench"></i>
                   </a>
               </td>
@@ -120,6 +120,7 @@ const addDiemDanh = () => {
 };
 
 const updateDiemDanh = () => {
+  let idDiemDanh = document.querySelector("#myModalUpdate #idDiemDanh").value;
   let thoiGianBd = document.querySelector("#myModalUpdate #thoiGianBd").value;
   let thoiGianKt = document.querySelector("#myModalUpdate #thoiGianKt").value;
   let idLop = document.querySelector("#myModalUpdate #idLop").value;
