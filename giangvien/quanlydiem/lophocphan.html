@@ -72,41 +72,28 @@
 
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Điểm quá trình</label>
-                            <input type="text" class="form-control" id="diemquatrinh" required>
+                            <input type="text" class="form-control" id="diemQuaTrinh" required>
                             <div class="invalid-feedback">
                                 Vui lòng nhập điểm quá trình
                             </div>
                         </div>
                         <div class="col-md-6 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Điểm thi</label>
-                            <input type="text" class="form-control" id="tenMonHoc" required>
+                            <input type="text" class="form-control" id="diemThi" required>
                             <div class="invalid-feedback">
                                 Vui lòng nhập điểm thi
                             </div>
                         </div>
-                        <div class="col-md-6 position-relative mt-2">
-                            <label for="validationTooltip01" class="form-label">Điểm hệ số 4</label>
-                            <input type="text" class="form-control" id="phongHoc" required>
-                            <div class="invalid-feedback">
-                                Vui lòng nhập điểm hệ số 4
-                            </div>
-                        </div>
-                        <div class="col-md-6 position-relative mt-2">
-                            <label for="validationTooltip01" class="form-label">Điểm trung bình</label>
-                            <input type="text" class="form-control" id="tenGiangVien" required>
-                            <div class="invalid-feedback">
-                                Vui lòng nhập điểm trung bình
-                            </div>
-                        </div>
+                        <input type="text" hidden id="idsv">
+                        <input type="text" hidden id="idDiem">
+                        <input type="text" hidden id="tenLop">
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" style="float: right;" type="submit">Lưu</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"> Lưu
-                    </button>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
@@ -164,7 +151,6 @@
                                     .then(res => res.json())
                                     .then(data => {
 
-                                        console.log(data);
                                         if (data.message) {
                                             alert('Lỗi khi thêm điểm')
                                         }
@@ -180,38 +166,52 @@
 
 
                         } else if (form.id == "formUpdate") {
-                            let tenKyHoc = form.tenKyHoc.value.trim()
-                            var format = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
-                            if (form.tenKyHoc.value.length > 255) {
-                                alert('tên kỳ học không được quá 255 ký tự')
+                            let diemQuaTrinh = parseFloat(form.diemQuaTrinh.value.trim());
+                            let diemThi = parseFloat(form.diemThi.value.trim())
+                            let diemTrungBinh = (diemQuaTrinh + diemThi) / 2
+                            let diemHeSo4 = calculatorHeSo(diemTrungBinh);
+                            let idLop = document.getElementById('idLopDiem').value.trim()
+                            let idsv = form.idsv.value.trim()
+                            let idDiem = parseInt(form.idDiem.value.trim())
+                            let tenLop = form.tenLop.value;
+
+                            if (diemQuaTrinh < 0 || diemQuaTrinh > 10) {
+                                alert('Điểm không được nhỏ hơn 0 hoặc lớn hơn 10! Vui lòng nhập lại ')
                             }
-                            else if (format.test(tenKyHoc)) {
-                                alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                            else if (diemThi < 0 || diemThi > 10) {
+                                alert('Điểm không được nhỏ hơn 0 hoặc lớn hơn 10! Vui lòng nhập lại ')
                             }
                             else {
-                                fetch(`${HOST}/api/kyhoc/${form.maKy.value}`, {
-                                    method: "PUT",
+                                fetch(`${HOST}/api/diem/${idDiem}`, {
+                                    method: "put",
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
-                                        "tenKyHoc": form.tenKyHoc.value
+
+                                        "diemQuaTrinh": diemQuaTrinh,
+                                        'diemThi': diemThi,
+                                        'diemTrungBinh': diemTrungBinh,
+                                        'diemHeSo4': diemHeSo4,
+                                        'idsv': idsv,
+                                        'idLop': idLop
                                     }),
                                 })
                                     .then(res => res.json())
                                     .then(data => {
 
-                                        if (data.sqlMessage) {
-                                            alert('kỳ học đã tồn tại')
+                                        if (data.message) {
+                                            alert('Lỗi khi thêm điểm')
                                         }
                                         else {
                                             form.reset()
-                                            alert("Sửa thành công")
-                                            renderKyHoc()
-                                            document.getElementById("close").click()
+                                            alert("cập nhật điểm thành công")
+                                            renderDiemTheoLop(tenLop)
+                                            document.querySelector("#myModalUpdate .btn-close").click()
                                         }
                                     })
                                     .catch(err => console.log("Error: ", err))
+
                             }
                         }
                     }
@@ -242,5 +242,6 @@
     document.getElementById('myModalAdd').addEventListener('shown.bs.modal', function (event) {
         document.querySelector('#myModalAdd #idsv').value = event.relatedTarget.getAttribute('data-id-sv');
         document.querySelector('#myModalAdd #idDiem').value = event.relatedTarget.getAttribute('data-id-diem');
+
     })
 </script>

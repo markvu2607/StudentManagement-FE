@@ -298,10 +298,10 @@ const renderDiemTheoLop = (tenLop) => {
   fetch(`${HOST}/api/diem?tenlop=${tenLop}&idky=`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       let html = "";
       for (i = 0; i < data.length; i++) {
         elm = data[i];
+        console.log(data);
         html += `
       <tr>
         <td>${i + 1}</td>
@@ -320,10 +320,13 @@ const renderDiemTheoLop = (tenLop) => {
             elm.diemQuaTrinh !== null && elm.diemThi !== null
               ? `
             <a
+            onclick=openUpdateDiem(${elm.idsv})
             style="margin-right: 10px;"
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#myModalUpdate"
+            data-id-svud="${elm.idsv}"
+            data-id-diemud="${elm.idDiem}"
           >
           <i class="fa-solid fa-wrench"></i>
           </a>
@@ -357,4 +360,19 @@ const renderDiemTheoLop = (tenLop) => {
     })
     .catch((err) => console.log("Error: ", err));
   $(".main").load("./quanlydiem/lophocphan.html");
+};
+
+const openUpdateDiem = (id) => {
+  console.log(id);
+  fetch(`${HOST}/api/diem/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.querySelector("#formUpdate #diemQuaTrinh").value =
+        data[0].diemQuaTrinh;
+      document.querySelector("#formUpdate #diemThi").value = data[0].diemThi;
+      document.querySelector("#formUpdate #idsv").value = data[0].idsv;
+      document.querySelector("#formUpdate #idDiem").value = data[0].idDiem;
+      document.querySelector("#formUpdate #tenLop").value = data[0].tenLop;
+    })
+    .catch((err) => console.log("Error: ", err));
 };
