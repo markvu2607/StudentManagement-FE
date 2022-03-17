@@ -103,8 +103,9 @@
 </div>
 <!-- 
 <script>
-    $('#myModalUpdate').on('show.bs.modal', function (e) {
-        var idDiemDanh = $(e.relatedTarget).data('idDiemDanh');
-        $(e.currentTarget).find('input[id="idDiemDanh"]').val(idDiemDanh);
-    });
-</script> -->
+    document.getElementById('myModalUpdate').addEventListener('shown.bs.modal', function (event) {
+        document.querySelector('#myModalUpdate #idDiemDanh').value = event.relatedTarget.getAttribute('data-id-diemDanh');
+        document.querySelector('#myModalUpdate #thoiGianBd').value = formatDatetime(event.relatedTarget.getAttribute('data-thoiGian-Bd')).replace(" / ", "T");
+        document.querySelector('#myModalUpdate #thoiGianKt').value = formatDatetime(event.relatedTarget.getAttribute('data-thoiGian-Kt')).replace(" / ", "T");
+    })
+</script>

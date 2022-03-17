@@ -71,12 +71,11 @@ const renderDiemdanh = (idLop) => {
                   }, ${idLop})">
                       <i class="fa-solid fa-eye"></i>
                   </a>
-                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" onclick=updateDiemDanh() >
-                    <script>
-                         document.querySelector('#formUpdate #idDiemDanh).value = ${
-                           elm.idDiemDanh
-                         }
-                    </script>
+                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" data-id-diemDanh="${
+                    elm.idDiemDanh
+                  }" data-thoiGian-Bd="${elm.thoiGianBd}" data-thoiGian-Kt="${
+            elm.thoiGianKt
+          }">
                       <i class="fa-solid fa-wrench"></i>
                   </a>
               </td>
