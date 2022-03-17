@@ -4,7 +4,8 @@
 
 <div class="row pt-4">
     <div class="col-3 col-md-auto">
-        <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="modal" data-bs-target="#myModalAdd">Thêm</button>
+        <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="modal"
+            data-bs-target="#myModalUpload">Thêm</button>
     </div>
 </div>
 <div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 50px !important;">
@@ -23,7 +24,7 @@
         </tbody>
     </table>
 </div>
-<div class="modal" id="myModalAdd">
+<div class="modal" id="myModalUpload">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 500px !important">
         <div class="modal-content">
             <div class="modal-header">
@@ -35,10 +36,17 @@
                     <div class="row">
                         <!-- <input hidden type="text" class="form-control" id="maLop" readonly required> -->
                         <div class="col-md-12 position-relative mt-2">
+                            <label for="validationTooltip01" class="form-label">Tên tài liệu</label>
+                            <input type="text" class="form-control" id="tenTaiLieu" required>
+                            <div class="invalid-feedback">
+                                Tên tài liệu không được để trống
+                            </div>
+                        </div>
+                        <div class="col-md-12 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Tài liệu</label>
                             <input type="file" class="form-control" id="tapTin" required>
                             <div class="invalid-feedback">
-                                Vui lòng upload tài liệu
+                                Yêu cầu thêm file tài liệu
                             </div>
                         </div>
                     </div>
@@ -46,10 +54,28 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"> Lưu
+                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit" onclick=""> Lưu
                     </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    const fileUpload = document.querySelector("#myModalUpload #tapTin");
+    fileUpload.addEventListener("change", (e) => {
+        const reader = new FileReader();
+        const files = e.target.files;
+        for (const file of files) {
+            const { name, type, size, lastModified } = file;
+            let maxSize = 10 * 1024 * 1024;
+            if (size > maxSize) {
+                alert("Dung lượng tệp tin không được vượt quá 10MB")
+            } else {
+                //upfile
+            }
+            console.log(file)
+        }
+    })
+</script>
