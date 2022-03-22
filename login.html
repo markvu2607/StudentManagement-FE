@@ -17,12 +17,11 @@
     <script>
         const user = JSON.parse(localStorage.getItem("user"))
         if (!user) {
-
-        } else if (user.role == "quantrivien") {
+        } else if (user.taiKhoan.chucNang == "quantrivien") {
             window.location = "./quantrivien/"
-        } else if (user.role == "giangvien") {
+        } else if (user.taiKhoan.chucNang == "giangvien") {
             window.location = "./giangvien/"
-        } else if (user.role == "sinhvien") {
+        } else if (user.taiKhoan.chucNang == "sinhvien") {
             window.location = "./sinhvien/"
         }
     </script>
@@ -79,28 +78,26 @@
                             alert(
                                 "Tên đăng nhập hoặc mật khẩu không đúng, vui lòng nhập lại!"
                             )
-                        } else {
-                            const user = {
-
-                                username: result.tenDangNhap,
-                                role: result.chucNang,
-                                status: result.trangThai
-                            }
-                            window.localStorage.setItem("user", JSON.stringify(user))
-                            if (result.chucNang == "quantrivien") {
+                        } else if (result.taikhoan.trangThai === 0){
+                            alert(
+                                "Tài khoản đã bị thu hồi quyền truy cập!"
+                            )
+                        }
+                        else {
+                            const user = JSON.parse(JSON.stringify(result));
+                            window.localStorage.setItem("user", JSON.parse(JSON.stringify(user)))
+                            if (user.taiKhoan.chucNang === "quantrivien") {
                                 window.location = "quantrivien/"
-                            } else if (result.chucNang == "giangvien") {
+                            } else if (user.taiKhoan.chucNang === "giangvien") {
                                 window.location = "giangvien/"
-                            } else if (result.chucNang == "sinhvien") {
+                            } else if (user.taiKhoan.chucNang === "sinhvien") {
                                 window.location = "sinhvien/"
                             }
                         }
-
                     },
                     error: function (result) {
                         alert("khong thể kết nối se");
                     }
-
                 }); //end ajax   
             }
         }); //end click function

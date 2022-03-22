@@ -23,7 +23,7 @@
 
 <script>
     const user = JSON.parse(localStorage.getItem("user"))
-    if (!user || user.role !== "giangvien") {
+    if (!user || user.taiKhoan.chucNang !== "giangvien") {
         window.location = "../login.html"
     }
 </script>

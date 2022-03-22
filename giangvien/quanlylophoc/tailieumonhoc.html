@@ -1,7 +1,6 @@
 <div class="row text-center py-3">
-    <h3>Tài Liệu Môc Học</h3>
+    <h3 id="tenLop">Tài Liệu Môc Học</h3>
 </div>
-
 <div class="row pt-4">
     <div class="col-3 col-md-auto">
         <button class="btn btn-primary" style="border-radius: 15px" type="button" data-bs-toggle="modal"
@@ -18,9 +17,11 @@
             </tr>
         </thead>
         <tbody id="listDiemlop">
-            <th>1</th>
-            <th>Toán cao cấp</th>
-            <th>09/01/2022</th>
+            <tr>
+                <th>1</th>
+                <th>Toán cao cấp</th>
+                <th>09/01/2022</th>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -34,7 +35,7 @@
             <div class="modal-body">
                 <form id="formAdd" class="row g-3 needs-validation" novalidate>
                     <div class="row">
-                        <!-- <input hidden type="text" class="form-control" id="maLop" readonly required> -->
+                        <input hidden type="text" class="form-control" id="idLop" readonly required>
                         <div class="col-md-12 position-relative mt-2">
                             <label for="validationTooltip01" class="form-label">Tên tài liệu</label>
                             <input type="text" class="form-control" id="tenTaiLieu" required>
@@ -43,10 +44,10 @@
                             </div>
                         </div>
                         <div class="col-md-12 position-relative mt-2">
-                            <label for="validationTooltip01" class="form-label">Tài liệu</label>
-                            <input type="file" class="form-control" id="tapTin" required>
+                            <label for="validationTooltip01" class="form-label">Đường dẫn tài liệu</label>
+                            <input type="url" class="form-control" id="duongDan" required>
                             <div class="invalid-feedback">
-                                Yêu cầu thêm file tài liệu
+                                Đường dẫn không được để trống
                             </div>
                         </div>
                     </div>
@@ -54,8 +55,8 @@
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit" onclick=""> Lưu
-                    </button>
+                    <button class="btn btn-primary " style="float: right;width: 150%;" type="submit"
+                        onclick="">Lưu</button>
                 </div>
             </div>
         </div>
@@ -63,19 +64,4 @@
 </div>
 
 <script>
-    const fileUpload = document.querySelector("#myModalUpload #tapTin");
-    fileUpload.addEventListener("change", (e) => {
-        const reader = new FileReader();
-        const files = e.target.files;
-        for (const file of files) {
-            const { name, type, size, lastModified } = file;
-            let maxSize = 10 * 1024 * 1024;
-            if (size > maxSize) {
-                alert("Dung lượng tệp tin không được vượt quá 10MB")
-            } else {
-                //upfile
-            }
-            console.log(file)
-        }
-    })
 </script>

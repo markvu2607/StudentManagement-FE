@@ -14,7 +14,8 @@ const renderQLLophoc = () => {
 const renderDanhSachLopQLLH = () => {
   const tenlop = document.querySelector("#tenLop").value;
   const kyHoc = document.querySelector("#kyHoc").value;
-  fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=1`)
+  const idgv = JSON.parse(localStorage.getItem("user")).idgv
+  fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
     .then((res) => res.json())
     .then((data) => {
       let html = "";
@@ -195,8 +196,66 @@ const renderChitietdiemdanh = (idDiemDanh, idLop) => {
       .catch((err) => console.log("Error: ", err));
   });
 };
-const renderTailieumonhoc = () => {
-  $(".main").load("./quanlylophoc/tailieumonhoc.html");
+
+const renderTailieumonhoc = (idLop) => {
+  $(".main").load("./quanlylophoc/tailieumonhoc.html", function () {
+    fetch(`${HOST}/api/tailieu/${idLop}`)
+      .then((res) => res.json())
+      .then((data) => {
+        fetch(`${HOST}/api/lophocphan/${idLop}`)
+          .then((res) => res.json())
+          .then((data) => {
+            document.querySelector("#tenLop").innerHTML = data.tenLop;
+          })
+          .catch((err) => console.log("Error: ", err));
+        html = "";
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
+              <th>${i + 1}</th>
+              <th>${elm.idsv}</th>
+              <th>${elm.tensv}</th>
+              <th>${
+                elm.trangThai === "vang"
+                  ? "Vắng"
+                  : elm.trangThai === "muon"
+                  ? "Muộn"
+                  : "Có Mặt"
+              }</th>
+          </tr>`;
+        }
+        document.querySelector("#listSinhVienDD").innerHTML = html;
+      })
+      .catch((err) => console.log("Error: ", err));
+  });
+};
+
+const addTaiLieu = () => {
+  let tenTaiLieu = document.querySelector("#myModalUpload #tenTaiLieu").value;
+  let duongDan = document.querySelector("#myModalUpload #duongDan").value;
+  let idLop = document.querySelector("#myModalUpload #idLop").value;
+  fetch(`${HOST}/api/tailieu/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      tenTaiLieu: tenTaiLieu,
+      duongDan: duongDan,
+      idLop: idLop,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        alert("Thành công");
+        renderTailieumonhoc(idLop);
+        document.querySelector("#myModalUpload .btn-close").click();
+      }
+    })
+    .catch((err) => console.log("Error: ", err));
 };
 
 // DANH SÁCH SINH VIÊN
@@ -236,7 +295,8 @@ const renderChiTieLop = (idLop) => {
 const renderDanhSachLopTKSV = () => {
   const tenlop = document.querySelector("#tenLop").value;
   const kyHoc = document.querySelector("#kyHoc").value;
-  fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=2`)
+  const idgv = JSON.parse(localStorage.getItem("user")).idgv
+  fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
     .then((res) => res.json())
     .then((data) => {
       let html = "";

@@ -38,7 +38,7 @@
 
 <script>
     const user = JSON.parse(localStorage.getItem("user"))
-    if (!user || user.role !== "quantrivien") {
+    if (!user || user.taiKhoan.chucNang !== "quantrivien") {
         window.location = "../login.html"
     }
 </script>
