@@ -16,8 +16,7 @@
     <title>Login</title>
     <script>
         const user = JSON.parse(localStorage.getItem("user"))
-        if (!user) {
-        } else if (user.taiKhoan.chucNang == "quantrivien") {
+        if (!user) {} else if (user.taiKhoan.chucNang == "quantrivien") {
             window.location = "./quantrivien/"
         } else if (user.taiKhoan.chucNang == "giangvien") {
             window.location = "./giangvien/"
@@ -59,8 +58,7 @@
             if (username.trim() == "") {
                 alert('Tên đăng nhập không được để trống')
                 document.getElementById('username').focus();
-            }
-            else if (password.trim() === "") {
+            } else if (password.trim() === "") {
                 alert('Mật khẩu không được để trống');
                 document.getElementById('password').focus();
             } else {
@@ -78,14 +76,15 @@
                             alert(
                                 "Tên đăng nhập hoặc mật khẩu không đúng, vui lòng nhập lại!"
                             )
-                        } else if (result.taikhoan.trangThai === 0){
+                        } else if (result.taiKhoan.trangThai === 0) {
                             alert(
                                 "Tài khoản đã bị thu hồi quyền truy cập!"
                             )
-                        }
-                        else {
+                        } else {
+                            console.log('login success')
                             const user = JSON.parse(JSON.stringify(result));
-                            window.localStorage.setItem("user", JSON.parse(JSON.stringify(user)))
+                            window.localStorage.setItem("user", JSON.parse(JSON.stringify(
+                                user)))
                             if (user.taiKhoan.chucNang === "quantrivien") {
                                 window.location = "quantrivien/"
                             } else if (user.taiKhoan.chucNang === "giangvien") {
