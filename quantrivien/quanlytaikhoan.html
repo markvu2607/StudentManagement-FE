@@ -222,7 +222,7 @@
                                         }
                                         else {
                                             form.reset()
-                                            alert("Thêm thành công")
+                                            alert("Thêm tài khoản thành công")
                                             quanLyTaiKhoan()
                                             document.querySelectorAll(".btn-close")[0].click()
                                         }
@@ -245,7 +245,7 @@
                             })
                                 .then(res => res.json())
                                 .then(data => {
-                                    alert("Sửa thành công")
+                                    alert("Sửa tài khoản thành công")
                                     quanLyTaiKhoan()
                                     document.querySelectorAll(".btn-close")[1].click()
                                 })
@@ -259,7 +259,7 @@
                             })
                                 .then(res => res.json())
                                 .then(data => {
-                                    alert("Khoá thành công")
+                                    alert("Khoá tài khoản thành công")
                                     quanLyTaiKhoan()
                                     document.querySelectorAll(".btn-close")[2].click()
                                 })

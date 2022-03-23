@@ -37,7 +37,7 @@
 
                     <div class="col-md-6 position-relative">
                         <label class="form-label">Tên Lớp *</label>
-                        <input type="text" class="form-control" id="tenLop" required>
+                        <input maxlength="2" type="text" class="form-control" id="tenLop" required>
                         <div class="invalid-feedback">
                             Vui lòng nhập vào tên lớp
                         </div>
@@ -417,7 +417,7 @@
                                         .then(res => res.json())
                                         .then(data => {
                                             form.reset()
-                                            alert("Them thanh cong")
+                                            alert("Thêm lớp học thành công")
                                             renderLop()
                                             document.querySelector("#myModalAdd .btn-close").click()
                                         })
@@ -460,7 +460,7 @@
                                         .then(data => {
                                             console.log(data);
                                             form.reset()
-                                            alert("Sửa lớp học thành công")
+                                            alert("Cập nhật lớp học thành công")
                                             renderLop()
                                             document.querySelector("#myModalUpdate .btn-close").click()
                                         })
