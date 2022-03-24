@@ -22,10 +22,53 @@ const renderKetquadangky = () => {
 const renderTracuuhocphi = () => {
   $(".main").load("./tracuuhocphi.html");
 };
+
+const getHocPhiChuaThu = () => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv
+  fetch(`${HOST}/api/hocphi/chuathu?idsv=${idsv}`)
+      .then((res) => res.json())
+      .then((data) => {
+        let html = "";
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
+          <th scope="row">${i+1}</th>
+          <td>${elm.tenKyHoc}</td>
+          <td>${elm.tongTien}</td>
+      </tr>`;
+        }
+        document.querySelector("#listChuaThu").innerHTML = html;
+      })
+      .catch((err) => console.log("Error: ", err));
+};
+
+const getHocPhiDaThu = () => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv
+  fetch(`${HOST}/api/hocphi/dathu?idsv=${idsv}`)
+      .then((res) => res.json())
+      .then((data) => {
+        let html = "";
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
+          <th scope="row">${i+1}</th>
+          <td>${elm.tenKyHoc}</td>
+          <td>${elm.tongTien}</td>
+      </tr>`;
+        }
+        document.querySelector("#listDaThu").innerHTML = html;
+      })
+      .catch((err) => console.log("Error: ", err));
+};
+
+//TRA CỨU LỊCH THI
+const renderTracuulichthi = () => {
+  $(".main").load("./tracuulichthi.html");
+};
+
 const getLichThiSV = () => {
   const idky = document.querySelector("#kyHoc").value;
   const idsv = JSON.parse(localStorage.getItem("user")).idsv
-  alert(idky + " | " +idsv)
   fetch(`${HOST}/api/lichthi?idsv=${idsv}&idky=${idky}`)
       .then((res) => res.json())
       .then((data) => {
@@ -44,8 +87,4 @@ const getLichThiSV = () => {
         document.querySelector("#listLichThi").innerHTML = html;
       })
       .catch((err) => console.log("Error: ", err));
-};
-
-const renderTracuulichthi = () => {
-  $(".main").load("./tracuulichthi.html");
 };

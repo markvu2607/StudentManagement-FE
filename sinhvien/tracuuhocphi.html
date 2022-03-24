@@ -1,8 +1,7 @@
 <div class="col py-3">
-    <div class="container" style="background-color: #F5F5F5">
+    <div class="container" style="background-color: #F5F5F5; border-radius: 15px;">
         <div class="row text-center py-3">
             <h3>Tra Cứu Học Phí</h3>
-            <h5>Sbd -Họ tên sv - Khoa</h5>
         </div>
         <div class="row">
             <div class="col md-6 m-1" style="background-color: white; border-radius: 15px;">
@@ -13,16 +12,10 @@
                             <th scope="col">STT</th>
                             <th scope="col">Kỳ học</th>
                             <th scope="col">Tổng tiền</th>
-                            <th scope="col">Tình trạng</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>CNTT</td>
-                            <td>100000000</td>
-                            <td>Đã thu</td>
-                        </tr>
+                    <tbody id="listDaThu">
+                        
                     </tbody>
                 </table>
             </div>
@@ -34,25 +27,18 @@
                             <th scope="col">STT</th>
                             <th scope="col">Kỳ học</th>
                             <th scope="col">Tổng tiền</th>
-                            <th scope="col">Tình trạng</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>TCC</td>
-                            <td>100000000</td>
-                            <td>Chưa thu</td>
-                        </tr>
+                    <tbody id="listChuaThu">
+
                     </tbody>
                 </table>
             </div>
-
-            <div class=" mt-2"
-                style="background-color: white; border-radius: 15px; height: 200px; margin-bottom: 20px;">
-                <h3 class="text-center mt-2">Tổng Các Khoản Phải Đóng</h3>
-            </div>
         </div>
-
     </div>
 </div>
+
+<script>
+    getHocPhiChuaThu();
+    getHocPhiDaThu();
+</script>
