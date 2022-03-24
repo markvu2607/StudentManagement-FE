@@ -11,9 +11,35 @@ const renderTailieumonhoc = () => {
 const renderQLhocphan = () => {
   $(".main").load("./quanlyhocphan");
 };
+
 const renderDangkyhoc = () => {
   $(".main").load("./quanlyhocphan/dangkyhoc.html");
 };
+
+const getDaDangKyHoc = () => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  const idky = document.querySelector("#kyHoc").value;
+  fetch(`${HOST}/api/sinhvien/thongke/dadangkyhoc?idsv=${idsv}&idky=${idky}`)
+      .then((res) => res.json())
+      .then((data) => {
+        let html = "";
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
+          <td>${i+1}</td>
+          <td>${elm.tenLop}</td>
+          <td>${formatDate(elm.thoiGianBd)} - ${formatDate(elm.thoiGianBd)}</td>
+          <td>${elm.phongHoc}</td>
+          <td>${elm.tengv}</td>
+          <td>${elm.siSo}</td>
+          <td>${elm.soTinChi}</td>
+        </tr>`;
+        }
+        document.querySelector("#listDaDangKyHoc").innerHTML = html;
+      })
+      .catch((err) => console.log("Error: ", err));
+}
+
 const renderKetquadangky = () => {
   $(".main").load("./quanlyhocphan/ketquadangky.html");
 };
@@ -24,7 +50,7 @@ const renderTracuuhocphi = () => {
 };
 
 const getHocPhiChuaThu = () => {
-  const idsv = JSON.parse(localStorage.getItem("user")).idsv
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
   fetch(`${HOST}/api/hocphi/chuathu?idsv=${idsv}`)
       .then((res) => res.json())
       .then((data) => {
