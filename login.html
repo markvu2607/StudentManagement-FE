@@ -83,8 +83,7 @@
                         } else {
                             console.log('login success')
                             const user = JSON.parse(JSON.stringify(result));
-                            window.localStorage.setItem("user", JSON.parse(JSON.stringify(
-                                user)))
+                            window.localStorage.setItem("user", JSON.stringify(user))
                             if (user.taiKhoan.chucNang === "quantrivien") {
                                 window.location = "quantrivien/"
                             } else if (user.taiKhoan.chucNang === "giangvien") {

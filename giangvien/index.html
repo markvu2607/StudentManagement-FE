@@ -49,16 +49,12 @@
                     style="font-size:15px;color:grey;padding-top: 10px;">
                     <div class="dropdown pb-4 text-end">
                         <div class="block">
-                            <!-- <?php if($user['roles']=='admin'){?> -->
                             <a href="#" class="text-white text-decoration-none" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <span><i class="bi bi-person-circle"></i></span>
-                                <!-- <span class=""><?php echo $user['username'] ?></span>  -->
                                 <span class="d-none d-sm-inline mx-1">Role: Giảng Viên</span>
                             </a>
-                            <!-- <?php }?> -->
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
-                                <li><a class="dropdown-item" href="#" id="show">Thông tin tài khoản</a></li>
                                 <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -68,7 +64,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <?php } ?> -->
             </div>
         </div>
     </div>
@@ -81,7 +76,6 @@
                             <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip"
                                 data-bs-placement="right" title="Quản lý điểm" onclick="renderQLDiem()">
                                 <i class="fa-regular fa-rectangle-list"></i>
-
                                 <span class="ms-2">Quản Lý Điểm</span>
                             </a>
                         </li>
@@ -110,9 +104,7 @@
                                 <span class="ms-2">Thống Kê Điểm</span>
                             </a>
                         </li>
-
                     </ul>
-
                 </div>
             </div>
             <div class="col py-3">

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <script src="../js/constants.js"></script>
     <script src="../js/common.js"></script>
+    <script src="../js/helper.js"></script>
     <script src="../js/renderSinhvien.js"></script>
     <script src="../js/sinhvien/getlop.js"></script>
 </head>
@@ -24,8 +25,6 @@
     if (!user || user.taiKhoan.chucNang !== "sinhvien") {
         window.location = "../login.html"
     }
-
-
 </script>
 
 <body>
@@ -45,21 +44,16 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="Dang-nhap " class="col-md-6 col-6 col-sm-6 "
                         style="font-size:15px;color:grey;padding-top: 10px;">
                         <div class="dropdown pb-4 text-end">
                             <div class="block">
-                                <!-- <?php if($user['roles']=='admin'){?> -->
                                 <a href="#" class="text-white text-decoration-none" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <span><i class="bi bi-person-circle"></i></span>
-                                    <!-- <span class=""><?php echo $user['username'] ?></span>  -->
                                     <span class="d-none d-sm-inline mx-1">Role: Sinh viên</span>
                                 </a>
-                                <!-- <?php }?> -->
                                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
-                                    <li><a class="dropdown-item" href="#" id="show">Thông tin tài khoản</a></li>
                                     <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -69,7 +63,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <?php } ?> -->
                 </div>
             </div>
         </div>

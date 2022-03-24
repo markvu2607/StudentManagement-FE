@@ -13,7 +13,7 @@ const getKhoa = () =>
     })
     .catch((err) => console.log("Error: ", err));
 
-const getKy = () =>
+const  getKy = () =>
   fetch(`${HOST}/api/kyhoc/`)
     .then((res) => res.json())
     .then((data) => {
