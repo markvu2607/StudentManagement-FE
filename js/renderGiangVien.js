@@ -14,7 +14,7 @@ const renderQLLophoc = () => {
 const renderDanhSachLopQLLH = () => {
   const tenlop = document.querySelector("#tenLop").value;
   const kyHoc = document.querySelector("#kyHoc").value;
-  const idgv = JSON.parse(localStorage.getItem("user")).idgv
+  const idgv = JSON.parse(localStorage.getItem("user")).idgv;
   fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
     .then((res) => res.json())
     .then((data) => {
@@ -295,7 +295,7 @@ const renderChiTieLop = (idLop) => {
 const renderDanhSachLopTKSV = () => {
   const tenlop = document.querySelector("#tenLop").value;
   const kyHoc = document.querySelector("#kyHoc").value;
-  const idgv = JSON.parse(localStorage.getItem("user")).idgv
+  const idgv = JSON.parse(localStorage.getItem("user")).idgv;
   fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
     .then((res) => res.json())
     .then((data) => {
@@ -361,7 +361,6 @@ const renderDiemTheoLop = (tenLop) => {
       let html = "";
       for (i = 0; i < data.length; i++) {
         elm = data[i];
-        console.log(data);
         html += `
       <tr>
         <td>${i + 1}</td>

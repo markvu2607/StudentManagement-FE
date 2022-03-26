@@ -20,13 +20,13 @@ const getDaDangKyHoc = () => {
   const idsv = JSON.parse(localStorage.getItem("user")).idsv;
   const idky = document.querySelector("#kyHoc").value;
   fetch(`${HOST}/api/sinhvien/thongke/dadangkyhoc?idsv=${idsv}&idky=${idky}`)
-      .then((res) => res.json())
-      .then((data) => {
-        let html = "";
-        for (i = 0; i < data.length; i++) {
-          elm = data[i];
-          html += `<tr>
-          <td>${i+1}</td>
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
+          <td>${i + 1}</td>
           <td>${elm.tenLop}</td>
           <td>${formatDate(elm.thoiGianBd)} - ${formatDate(elm.thoiGianBd)}</td>
           <td>${elm.phongHoc}</td>
@@ -34,11 +34,11 @@ const getDaDangKyHoc = () => {
           <td>${elm.siSo}</td>
           <td>${elm.soTinChi}</td>
         </tr>`;
-        }
-        document.querySelector("#listDaDangKyHoc").innerHTML = html;
-      })
-      .catch((err) => console.log("Error: ", err));
-}
+      }
+      document.querySelector("#listDaDangKyHoc").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+};
 
 const renderKetquadangky = () => {
   $(".main").load("./quanlyhocphan/ketquadangky.html");
@@ -52,39 +52,40 @@ const renderTracuuhocphi = () => {
 const getHocPhiChuaThu = () => {
   const idsv = JSON.parse(localStorage.getItem("user")).idsv;
   fetch(`${HOST}/api/hocphi/chuathu?idsv=${idsv}`)
-      .then((res) => res.json())
-      .then((data) => {
-        let html = "";
-        for (i = 0; i < data.length; i++) {
-          elm = data[i];
-          html += `<tr>
-          <th scope="row">${i+1}</th>
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
+          <th scope="row">${i + 1}</th>
           <td>${elm.tenKyHoc}</td>
           <td>${elm.tongTien}</td>
       </tr>`;
-        }
-        document.querySelector("#listChuaThu").innerHTML = html;
-      })
-      .catch((err) => console.log("Error: ", err));
+      }
+      document.querySelector("#listChuaThu").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
 };
 
 const getHocPhiDaThu = () => {
-  const idsv = JSON.parse(localStorage.getItem("user")).idsv
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
   fetch(`${HOST}/api/hocphi/dathu?idsv=${idsv}`)
-      .then((res) => res.json())
-      .then((data) => {
-        let html = "";
-        for (i = 0; i < data.length; i++) {
-          elm = data[i];
-          html += `<tr>
-          <th scope="row">${i+1}</th>
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
+          <th scope="row">${i + 1}</th>
           <td>${elm.tenKyHoc}</td>
           <td>${elm.tongTien}</td>
       </tr>`;
-        }
-        document.querySelector("#listDaThu").innerHTML = html;
-      })
-      .catch((err) => console.log("Error: ", err));
+      }
+      document.querySelector("#listDaThu").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
 };
 
 //TRA CỨU LỊCH THI
@@ -94,23 +95,24 @@ const renderTracuulichthi = () => {
 
 const getLichThiSV = () => {
   const idky = document.querySelector("#kyHoc").value;
-  const idsv = JSON.parse(localStorage.getItem("user")).idsv
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
   fetch(`${HOST}/api/lichthi?idsv=${idsv}&idky=${idky}`)
-      .then((res) => res.json())
-      .then((data) => {
-        let html = "";
-        for (i = 0; i < data.length; i++) {
-          elm = data[i];
-          html += `<tr>
-          <td>${i+1}</td>
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        console.log(data);
+        elm = data[i];
+        html += `<tr>
+          <td>${i + 1}</td>
           <td>${elm.tenKyHoc}</td>
-          <td>${elm.tenmh}</td>
+          <td>${elm.tenMon}</td>
           <td>${elm.sbd}</td>
           <td>${elm.phongThi}</td>
           <td>${elm.thoiGian}</td>
       </tr>`;
-        }
-        document.querySelector("#listLichThi").innerHTML = html;
-      })
-      .catch((err) => console.log("Error: ", err));
+      }
+      document.querySelector("#listLichThi").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
 };

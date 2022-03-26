@@ -1,5 +1,7 @@
 const renderLopHoc = () => {
-  fetch(`${HOST}/api/lophocphan/`)
+  let idsv = JSON.parse(localStorage.getItem("user")).idsv;
+
+  fetch(`${HOST}/api/sinhvien/thongke/dadangkyhoc?idsv=${idsv}`)
     .then((res) => res.json())
     .then((data) => {
       let html = "";
@@ -11,7 +13,7 @@ const renderLopHoc = () => {
         <td>${elm.tenLop}</td>
         <td>
             <a style="margin-right: 5px;" type="button" onclick="renderDiemdanh(${
-              elm.idLop
+              elm.idlop
             })">
                 <i class="fa-solid fa-eye"></i>
             </a>
@@ -45,14 +47,19 @@ const renderDiemdanh = (id) => {
         <td>${formatDate(elm.thoiGianBd)}</td>
         <td>${formatDate(elm.thoiGianKt)}</td>
         <td>
-            <a style="margin-right: 5px;" type="button"">
-                <i class="fa-solid fa-eye"></i>
-            </a>
+          ${
+            elm.trangThai === "vang"
+              ? "Vắng"
+              : elm.trangThai === "muon"
+              ? "Muộn"
+              : "Có Mặt"
+          } 
         </td>
         <th>
-             <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="switchDiemDanh" onclick="updateDiemDanh(elm.idDiemDanh)">
-                </div>
+        <button type="button" class="btn btn-success" style="" onclick="updateDiemDanh(${
+          elm.idDiemDanh
+        })" 
+        >Điểm Danh</button>
             </th>
         </tr>
       `;
@@ -60,12 +67,28 @@ const renderDiemdanh = (id) => {
       document.querySelectorAll("#listDiemDanh").forEach((elm) => {
         elm.innerHTML = html;
       });
+      document.getElementById("idLop").value = idLop;
     })
     .catch((err) => console.log("Error: ", err));
   $(".main").load("./lophoc/diemdanh.html");
 };
 
 const updateDiemDanh = (id) => {
-  let idDiemDanh = id;
-  console.log(idDiemDanh);
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  const idDiemDanh = id;
+  idLop = document.getElementById("idLop").value;
+  fetch(`${HOST}/api/diemdanh/sinhvien/${idsv}`, {
+    method: "PUT", // or 'PUT'
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ idDiemDanh: idDiemDanh }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      renderDiemdanh(idLop);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 };
