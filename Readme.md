@@ -1,11 +1,11 @@
 ### Page Sinh Viên
 
-- còn trang đăng ký học
+- done
 
 ### Page Giảng Viên
 
-- xong
+- done
 
 ### Page Quản Trị Viên
 
-- 60%
+- done

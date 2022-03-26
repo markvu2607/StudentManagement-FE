@@ -5,13 +5,11 @@
 <div class="row py-4">
 
     <div class="col-md-3">
-        <select class="form-select" id="" style="border-radius: 15px" required>
-            <option selected disabled value="monHoc">Học phần</option>
+        <select class="form-select" onChange=getCoTheDangKyHoc() id="monhoc" style="border-radius: 15px" required>
+
         </select>
     </div>
-    <div class="col-md-3">
-        <button class="btn btn-primary" style="border-radius: 10px;width: 40%;" onclick="">Đăng Ký</button>
-    </div>
+
 </div>
 
 <div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 5px !important;">
@@ -27,10 +25,11 @@
                 <th scope="col">Sĩ số</th>
                 <th scope="col">Số TC</th>
                 <th scope="col">Học phí</th>
+                <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
+        <tbody id="listCoTheDangKyHoc">
+            <!-- <tr>
                 <td>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -44,7 +43,7 @@
                 <td>98/120</td>
                 <td>3</td>
                 <td>124325436</td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 </div>
@@ -74,11 +73,12 @@
             </tr>
         </thead>
         <tbody id="listDaDangKyHoc">
-            
+
         </tbody>
     </table>
 </div>
 
 <script>
     getDaDangKyHoc()
+    getMonHocSinhVienDangKyHoc()
 </script>

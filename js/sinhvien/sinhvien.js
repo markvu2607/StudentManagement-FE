@@ -91,3 +91,48 @@ const updateDiemDanh = (id) => {
       console.error("Error:", error);
     });
 };
+
+const getMonHocSinhVienDangKyHoc = () => {
+  fetch(`${HOST}/api/monhoc/`)
+    .then((res) => res.json())
+    .then((data) => {
+      let html = `<option  value=""> Chọn Môn học</option>`;
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<option value="${elm.idmh}">${elm.tenMon}</option>`;
+      }
+      document.querySelectorAll("#monhoc").forEach((elm) => {
+        elm.innerHTML = html;
+      });
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const getCoTheDangKyHoc = () => {
+  let idmh = document.getElementById("monhoc").value;
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  fetch(
+    `${HOST}/api/sinhvien/thongke/cothedangkyhoc/?idsv=${idsv}&idmh=${idmh}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
+          <td>${i + 1}</td>
+          <td>${elm.tenLop}</td>
+          <td>${formatDate(elm.thoiGianBd)} - ${formatDate(elm.thoiGianBd)}</td>
+          <td>${elm.phongHoc}</td>
+          <td>${elm.tengv}</td>
+          <td>${elm.siSo}</td>
+          <td>${elm.soTinChi}</td>
+          <td>${elm.tienHoc}</td>
+          <td> <button type="button" class="btn btn-primary" style="padding:3px">Đăng Ký</button> </td>
+        </tr>`;
+      }
+      document.querySelector("#listCoTheDangKyHoc").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+};
