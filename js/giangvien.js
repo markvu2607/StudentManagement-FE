@@ -39,17 +39,18 @@ const openUpdateGiangVien = (id) => {
     .then((data) => {
       document.querySelector("#formUpdate #idgv").value = data.idgv;
       document.querySelector("#formUpdate #tengv").value = data.tengv;
-      document.querySelector("#formUpdate #laNam").value =
-        data.laNam === 1 ? "nam" : "nữ";
+      document.querySelector("#formUpdate #laNam").value = data.laNam;
       document.querySelector("#formUpdate #ngaySinh").value = formatDate(
         data.ngaySinh
       );
       document.querySelector("#formUpdate #queQuan").value = data.queQuan;
       document.querySelector("#formUpdate #diaChi").value = data.diaChi;
-      document.querySelector("#formUpdate #idKhoa").value = data.sdt;
-      document.querySelector("#formUpdate #sdt").value = data.cccd;
+      document.querySelector("#formUpdate #sdt").value = data.sdt;
+      document.querySelector("#formUpdate #cccd").value = data.cccd;
       document.querySelector("#formUpdate #email").value = data.email;
-      document.querySelector("#formUpdate #cccd").value = data.idKhoa;
+      document.querySelector("#formUpdate #khoa").value = data.idKhoa;
+      document.querySelector("#formUpdate #tenDangNhap").value =
+        data.tenDangNhap;
       document.querySelector("#formUpdate #idtk").value = data.idtk;
     });
 };
@@ -71,5 +72,6 @@ const openViewGV = (id) => {
       document.querySelector("#formView #email").value = data.email;
       document.querySelector("#formView #cccd").value = data.idKhoa;
       document.querySelector("#formView #idtk").value = data.idtk;
+      document.querySelector("#formView #tenDangNhap").value = data.tenDangNhap;
     });
 };
