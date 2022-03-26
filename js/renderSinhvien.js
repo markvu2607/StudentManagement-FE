@@ -18,6 +18,39 @@ const renderDangkyhoc = () => {
 
 const getDaDangKyHoc = () => {
   const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  fetch(`${HOST}/api/sinhvien/thongke/dadangkyhoc?idsv=${idsv}&idky=`)
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
+        <td>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+        </td>
+          <td>${i + 1}</td>
+          <td>${elm.tenLop}</td>
+          <td>${formatDate(elm.thoiGianBd)} - ${formatDate(elm.thoiGianBd)}</td>
+          <td>${elm.phongHoc}</td>
+          <td>${elm.tengv}</td>
+          <td>${elm.siSo}</td>
+          <td>${elm.soTinChi}</td>
+          <td>${elm.tienHoc}</td>
+        </tr>`;
+      }
+      document.querySelector("#listDaDangKyHoc").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const renderKetquadangky = () => {
+  $(".main").load("./quanlyhocphan/ketquadangky.html");
+};
+
+const getKetQuaDangKy = () => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
   const idky = document.querySelector("#kyHoc").value;
   fetch(`${HOST}/api/sinhvien/thongke/dadangkyhoc?idsv=${idsv}&idky=${idky}`)
     .then((res) => res.json())
@@ -35,13 +68,9 @@ const getDaDangKyHoc = () => {
           <td>${elm.soTinChi}</td>
         </tr>`;
       }
-      document.querySelector("#listDaDangKyHoc").innerHTML = html;
+      document.querySelector("#listKetQuaDangky").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
-};
-
-const renderKetquadangky = () => {
-  $(".main").load("./quanlyhocphan/ketquadangky.html");
 };
 
 //TRA CỨU HỌC PHÍ
@@ -54,7 +83,6 @@ const getHocPhiChuaThu = () => {
   fetch(`${HOST}/api/hocphi/chuathu?idsv=${idsv}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       let html = "";
       for (i = 0; i < data.length; i++) {
         elm = data[i];
@@ -101,7 +129,6 @@ const getLichThiSV = () => {
     .then((data) => {
       let html = "";
       for (i = 0; i < data.length; i++) {
-        console.log(data);
         elm = data[i];
         html += `<tr>
           <td>${i + 1}</td>

@@ -1,15 +1,12 @@
 <div class="row text-center py-3">
     <h3>Đăng Ký Học</h3>
-    <h5>Họ tên sv - Khoa - Kỳ học</h5>
 </div>
 
 <div class="row py-4">
 
     <div class="col-md-3">
         <select class="form-select" id="" style="border-radius: 15px" required>
-            <option selected disabled value="">Học phần</option>
-            <option value="">...</option>
-            <option value="">...</option>
+            <option selected disabled value="monHoc">Học phần</option>
         </select>
     </div>
     <div class="col-md-3">
@@ -17,39 +14,37 @@
     </div>
 </div>
 
-<div class="tableDKH">
-    <table class="table table-hover mt-5 table-bordered" style="margin-top: 5px !important;">
+<div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 5px !important;">
+    <table class="table table-hover text-center" style="margin-top: 5px !important;">
         <thead>
             <tr>
-                <th scope="col">STT</th>
                 <th scope="col"></th>
+                <th scope="col">STT</th>
                 <th scope="col">Học phần</th>
-                <th scope="col">TG bắt đầu</th>
-                <th scope="col">TG kết thúc</th>
+                <th scope="col">Thời gian</th>
                 <th scope="col">Địa điểm</th>
                 <th scope="col">Giảng viên</th>
                 <th scope="col">Sĩ số</th>
-                <th scope="col">Đã ĐK</th>
                 <th scope="col">Số TC</th>
                 <th scope="col">Học phí</th>
             </tr>
         </thead>
         <tbody>
-            <td>1</td>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                </div>
-            </td>
-            <td>GDTC</td>
-            <td>13214</td>
-            <td>134123</td>
-            <td>132-A2</td>
-            <td>TS</td>
-            <td>120</td>
-            <td>98</td>
-            <td>3</td>
-            <td>124325436</td>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    </div>
+                </td>
+                <td>1</td>
+                <td>GDTC</td>
+                <td>134123</td>
+                <td>132-A2</td>
+                <td>TS</td>
+                <td>98/120</td>
+                <td>3</td>
+                <td>124325436</td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -59,43 +54,31 @@
     <h3>Học Phần Đã Đăng Ký</h3>
 </div>
 <div class="col-md-3">
-    <button class="btn btn-primary" style="border-radius: 10px;width: 40%;" onclick="">Huỷ</button>
+    <button class="btn btn-primary" style="border-radius: 10px;width: 40%;" onclick="getDaDangKyHoc()">Huỷ</button>
 </div>
 
 
-<div class="tableDKH py-3">
-    <table class="table table-hover mt-5 table-bordered" style="margin-top: 5px !important;">
+<div style="background-color: #f5f5f5; border-radius: 7px; border: 1px solid black; margin-top: 5px !important;">
+    <table class="table table-hover text-center" style="margin-top: 5px !important;">
         <thead>
             <tr>
-                <th scope="col">STT</th>
                 <th scope="col"></th>
+                <th scope="col">STT</th>
                 <th scope="col">Học phần</th>
-                <th scope="col">TG bắt đầu</th>
-                <th scope="col">TG kết thúc</th>
+                <th scope="col">Thời gian</th>
                 <th scope="col">Địa điểm</th>
                 <th scope="col">Giảng viên</th>
                 <th scope="col">Sĩ số</th>
-                <th scope="col">Đã ĐK</th>
                 <th scope="col">Số TC</th>
                 <th scope="col">Học phí</th>
             </tr>
         </thead>
-        <tbody>
-            <td>1</td>
-            <td>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                </div>
-            </td>
-            <td>GDTC</td>
-            <td>13214</td>
-            <td>134123</td>
-            <td>132-A2</td>
-            <td>TS</td>
-            <td>120</td>
-            <td>98</td>
-            <td>3</td>
-            <td>124325436</td>
+        <tbody id="listDaDangKyHoc">
+            
         </tbody>
     </table>
 </div>
+
+<script>
+    getDaDangKyHoc()
+</script>

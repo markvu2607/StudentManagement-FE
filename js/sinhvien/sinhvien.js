@@ -13,7 +13,7 @@ const renderLopHoc = () => {
           <td>${elm.tenLop}</td>
           <td>
               <a style="margin-right: 5px;" type="button" onclick="renderDiemdanh(${
-                elm.idlop
+                elm.idLop
               })">
                   <i class="fa-solid fa-eye"></i>
               </a>
