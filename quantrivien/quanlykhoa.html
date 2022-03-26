@@ -29,7 +29,7 @@
                                 <label for="tenKhoa" class="form-label">Tên Khoa</label>
                                 <input type="text" class="form-control" id="tenKhoa" required>
                                 <div class="invalid-feedback">
-                                    Vui lòng nhập vào tên khoa
+                                    Tên khoa không được để trống
                                 </div>
                             </div>
                             <div class="col-12">
@@ -76,7 +76,7 @@
                         <label for="tenKhoa" class="form-label">Tên khoa*</label>
                         <input type="text" class="form-control" id="tenKhoa" required>
                         <div class="invalid-feedback">
-                            Vui lòng nhập vào tên khoa
+                            Tên khoa không được để trống
                         </div>
                     </div>
                     <div class="col-12">
@@ -114,7 +114,7 @@
                                 let tenKhoa = form.tenKhoa.value.trim()
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (form.tenKhoa.value.length > 255) {
-                                    alert('tên khoa không được quá 255 ký tự')
+                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
                                 }
                                 else if (format.test(tenKhoa)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
@@ -149,7 +149,7 @@
                                 let tenKhoa = form.tenKhoa.value.trim()
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (form.tenKhoa.value.length > 255) {
-                                    alert('tên khoa không được quá 255 ký tự')
+                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
                                 }
                                 else if (format.test(tenKhoa)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')

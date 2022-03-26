@@ -14,7 +14,6 @@ const quanLyTaiKhoan = () => {
       data.forEach((elm) => {
         html += `<tr>
                             <th scope="row">${i++}</th>
-                            <th >${elm.idtk}</th>
                             <td>${elm.tenDangNhap}</td>
                             <td>${elm.chucNang}</td>
                             <td>${

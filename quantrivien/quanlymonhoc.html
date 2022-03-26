@@ -28,21 +28,21 @@
                                 <label for="tenMon" class="form-label">Tên môn học</label>
                                 <input type="text" class="form-control" id="tenMon" required>
                                 <div class="invalid-feedback">
-                                    Vui lòng nhập vào tên môn học
+                                    Tên môn học không được để trống
                                 </div>
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="soTinChi" class="form-label">Số Tín Chỉ</label>
                                 <input type="number" class="form-control" id="soTinChi" required>
                                 <div class="invalid-feedback">
-                                    Vui lòng nhập số tín chỉ
+                                    Số tín chỉ không được để trống
                                 </div>
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="tienHoc" class="form-label">Tiền Học</label>
                                 <input type="number" class="form-control" id="tienHoc" required>
                                 <div class="invalid-feedback">
-                                    Vui lòng nhập vào tiền học
+                                    Học phí không được để trống
                                 </div>
                             </div>
 
@@ -89,21 +89,21 @@
                         <label for="tenMon" class="form-label">Tên môn học*</label>
                         <input type="text" class="form-control" id="tenMon" required>
                         <div class="invalid-feedback">
-                            Vui lòng nhập vào tên môn học
+                            Tên môn học không được để trống
                         </div>
                     </div>
                     <div class="col-md-12">
                         <label for="soTinChi" class="form-label">Số tín chỉ*</label>
                         <input type="number" class="form-control" id="soTinChi" required>
                         <div class="invalid-feedback">
-                            Vui lòng nhập số tín chỉ
+                            Số tín chỉ không được để trống
                         </div>
                     </div>
                     <div class="col-md-12">
                         <label for="tienHoc" class="form-label">Tiền học*</label>
                         <input type="number " class="form-control" id="tienHoc" required>
                         <div class="invalid-feedback">
-                            Vui lòng nhập vào tiền học
+                            Học phí không được để trống
                         </div>
                     </div>
                     <div class="col-12 ">
@@ -140,7 +140,7 @@
                                 let tenMon = form.tenMon.value.trim()
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (form.tenMon.value.length > 255) {
-                                    alert('tên khoa không được quá 255 ký tự')
+                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
                                 }
                                 else if (format.test(tenMon)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
@@ -160,7 +160,7 @@
                                         .then(res => res.json())
                                         .then(data => {
                                             if (data.message) {
-                                                alert('môn học đã tồn tại')
+                                                alert('Môn học đã tồn tại')
                                             }
                                             else {
                                                 form.reset()
@@ -175,7 +175,7 @@
                                 let tenMon = form.tenMon.value.trim()
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (form.tenMon.value.length > 255) {
-                                    alert('tên khoa không được quá 255 ký tự')
+                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
                                 }
                                 else if (format.test(tenMon)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
@@ -196,7 +196,7 @@
                                         .then(data => {
 
                                             if (data.sqlMessage) {
-                                                alert('môn học đã tồn tại')
+                                                alert('Môn học đã tồn tại')
                                             }
                                             else {
                                                 form.reset()
@@ -214,25 +214,3 @@
                 })
         })()
 </script>
-<!-- 
-<script>
-    function saveMonHoc() {
-        const maMon = document.getElementById('maMon').value;
-        const tenMon = document.getElementById('tenMon').value;
-        const soTinChi = document.getElementById('soTinChi').value;
-        const tienHoc = document.getElementById('tienHoc').value;
-
-        if (maMon === '') {
-            alert('bạn chưa nhập mã môn học')
-        } else if (tenMon === '') {
-            alert('bạn chưa nhập tên môn học');
-        } else if (soTinChi === '') {
-            alert('bạn chưa nhập số tín chỉ');
-        } else if (tienHoc === '') {
-            alert('bạn chưa nhập tien hoc')
-        } else {
-            console.log(maMon, '-', tenMon, '-', soTinChi, '-', tienHoc)
-        }
-    }
-
-</script> -->

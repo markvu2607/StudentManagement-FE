@@ -52,7 +52,7 @@
               </div>
               <div class="col-md-12">
                 <label for="tenKhoa" class="form-label">Điểm rèn luyện*</label>
-                <input type="text" class="form-control" id="diemRenLuyen" required>
+                <input type="number" class="form-control" id="diemRenLuyen" required>
                 <div class="invalid-feedback">
                   Vui lòng nhập vào điểm rèn luyện
                 </div>
@@ -92,30 +92,32 @@
 </script>
 
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function () {
-    'use strict'
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          event.preventDefault()
-          event.stopPropagation()
-          if (!form.checkValidity()) {
-            form.classList.add('was-validated')
-          } else {
-            if (form.id == "formAdd") {
-              const idsv = form.inputDataList.value.split('-')[0]
-              const idky = form.kyHoc.value
-              const diemRenLuyen = +form.diemRenLuyen.value
-              if (!form.diemRenLuyen.value) {
-                alert('Nhập điểm rèn luyện')
-              } else {
-                fetch(`${HOST}/api/diemrenluyen/`, {
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            event.preventDefault()
+            event.stopPropagation()
+            if (!form.checkValidity()) {
+              form.classList.add('was-validated')
+            } else {
+              if (form.id == "formAdd") {
+                const idsv = form.inputDataList.value.split('-')[0]
+                const idky = form.kyHoc.value
+                const diemRenLuyen = +form.diemRenLuyen.value.trim();
+                if (!form.diemRenLuyen.value) {
+                  alert('Nhập điểm rèn luyện')
+                } if (diemRenLuyen < 0 || diemRenLuyen > 100) {
+                  alert('Diểm rèn luyện phải lớn hơn 0 và nhỏ hơn 100')
+                } else {
+                  fetch(`${HOST}/api/diemrenluyen/`, {
                     method: "POST",
                     headers: {
                       'Content-Type': 'application/json',
@@ -126,22 +128,22 @@
                       "diem": diemRenLuyen
                     }),
                   })
-                  .then(res => res.json())
-                  .then(data => {
-                    if (data.message) {
-                      alert('Error')
-                    } else {
-                      form.reset()
-                      alert("Thêm điểm rèn luyện thành công")
-                      renderDiemRenLuyen()
-                      document.querySelector("#myModalAdd .btn-close").click()
-                    }
-                  })
-                  .catch(err => console.log("Error: ", err))
+                    .then(res => res.json())
+                    .then(data => {
+                      if (data.message) {
+                        alert('Error')
+                      } else {
+                        form.reset()
+                        alert("Thêm điểm rèn luyện thành công")
+                        renderDiemRenLuyen()
+                        document.querySelector("#myModalAdd .btn-close").click()
+                      }
+                    })
+                    .catch(err => console.log("Có lỗi vui lòng kiểm tra lại: ", err))
+                }
               }
             }
-          }
-        }, false)
-      })
-  })()
+          }, false)
+        })
+    })()
 </script>

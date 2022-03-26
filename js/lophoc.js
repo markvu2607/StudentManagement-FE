@@ -62,11 +62,11 @@ const viewLopHoc = (id) => {
     .then((res) => res.json())
     .then((data) => {
       document.querySelector("#formView #tenLop").value = data.tenLop;
-      document.querySelector("#formView #monhoc").value = data.idmh;
+      document.querySelector("#formView #monhoc").value = data.tenMon;
       document.querySelector("#formView #phongHoc").value = data.phongHoc;
-      document.querySelector("#formView #kyHoc").value = data.idky;
+      document.querySelector("#formView #kyHoc").value = data.tenKyHoc;
 
-      document.querySelector("#formView #tenGiangVien").value = data.idgv;
+      document.querySelector("#formView #tenGiangVien").value = data.tengv;
       document.querySelector("#formView #soLuong").value = data.soLuong;
       document.querySelector("#formView #thoiGianBatDau").value = formatDate(
         data.thoiGianBd
@@ -85,7 +85,7 @@ const deleteLopHoc = (id) => {
       if (data.trangThai === "tamdung") {
         alert("lớp học này đã tạm dừng");
       } else {
-        result = window.confirm("bạn có muốn xoá không?");
+        result = window.confirm("bạn có muốn dừng lớp học này không?");
         if (result === true) {
           fetch(`${HOST}/api/lophocphan/${id}`, {
             method: "DELETE",
@@ -97,7 +97,7 @@ const deleteLopHoc = (id) => {
             // }),
           })
             .then(() => {
-              alert("Xoá thành công");
+              alert("Lớp học đã được dừng");
               renderLop(id);
             })
             .catch((err) => {

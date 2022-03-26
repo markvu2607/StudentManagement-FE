@@ -2,7 +2,7 @@ const getKhoa = () =>
   fetch(`${HOST}/api/khoa/`)
     .then((res) => res.json())
     .then((data) => {
-      let html = `<option selected disabled value="">Khoa</option>`;
+      let html = `<option  value="">Khoa</option>`;
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `<option value="${elm.idKhoa}">${elm.tenKhoa}</option>`;
@@ -13,11 +13,11 @@ const getKhoa = () =>
     })
     .catch((err) => console.log("Error: ", err));
 
-const  getKy = () =>
+const getKy = () =>
   fetch(`${HOST}/api/kyhoc/`)
     .then((res) => res.json())
     .then((data) => {
-      let html = `<option selected disabled value="">Kỳ học</option>`;
+      let html = `<option  value="">Kỳ học</option>`;
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `<option value="${elm.idky}">${elm.tenKyHoc}</option>`;
@@ -32,7 +32,7 @@ const getMonHoc = () => {
   fetch(`${HOST}/api/monhoc/`)
     .then((res) => res.json())
     .then((data) => {
-      let html = `<option selected disabled value="">Môn học</option>`;
+      let html = `<option  value="">Môn học</option>`;
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `<option value="${elm.idmh}">${elm.tenMon}</option>`;
@@ -48,7 +48,7 @@ const getGV = () => {
   fetch(`${HOST}/api/giangvien/`)
     .then((res) => res.json())
     .then((data) => {
-      let html = `<option selected disabled value="">Giảng viên</option>`;
+      let html = `<option  value="">Giảng viên</option>`;
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `<option value="${elm.idgv}">${elm.tengv}</option>`;
