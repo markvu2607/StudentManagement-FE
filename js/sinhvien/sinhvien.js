@@ -129,10 +129,66 @@ const getCoTheDangKyHoc = () => {
           <td>${elm.siSo}</td>
           <td>${elm.soTinChi}</td>
           <td>${elm.tienHoc}</td>
-          <td> <button type="button" class="btn btn-primary" style="padding:3px">Đăng Ký</button> </td>
+          <td> <button type="button" class="btn btn-primary" style="padding:3px" onClick=xuLyDangKyHoc(${
+            elm.idLop
+          })>Đăng Ký</button> </td>
         </tr>`;
       }
       document.querySelector("#listCoTheDangKyHoc").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const xuLyDangKyHoc = (id) => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  console.log(idsv, id);
+  fetch(`${HOST}/api/sinhvien/dangkyhoc/dangky?idsv=${idsv}&idLop=${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      alert("Đăng ký lớp học phần thành công");
+      renderDangkyhoc();
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const getDaDangKyHoc = () => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  fetch(`${HOST}/api/sinhvien/thongke/dadangkyhoc?idsv=${idsv}&idky=`)
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
+          <td>${i + 1}</td>
+          <td>${elm.tenLop}</td>
+          <td>${formatDate(elm.thoiGianBd)} - ${formatDate(elm.thoiGianBd)}</td>
+          <td>${elm.phongHoc}</td>
+          <td>${elm.tengv}</td>
+          <td>${elm.siSo}</td>
+          <td>${elm.soTinChi}</td>
+          <td>${elm.tienHoc}</td>
+          <td> <button type="button" class="btn btn-primary" style="padding:3px" onClick=huyDangKyHoc(${
+            elm.idLop
+          })>Hủy</button> </td>
+        </tr>`;
+      }
+      document.querySelector("#listDaDangKyHoc").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const huyDangKyHoc = (id) => {
+  const idsv = JSON.parse(localStorage.getItem("user")).idsv;
+  // console.log(id, idsv);
+  fetch(`${HOST}/api/sinhvien/dangkyhoc/huy?idsv=${idsv}&idLop=${id}`, {
+    method: "DELETE", // or 'PUT'
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      alert("Hủy lớp thành công");
+      renderDangkyhoc();
     })
     .catch((err) => console.log("Error: ", err));
 };
