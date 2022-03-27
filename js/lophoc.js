@@ -11,7 +11,13 @@ const renderLop = () => {
           <th scope="row" >${i + 1}</th>
           <td>${elm.tenLop}</td>
           <td>${elm.tenKyHoc}</td>
-          <td >${elm.trangThai === "hoatdong" ? "Hoạt Động" : "Tạm Dừng"}</td>
+          <td >${
+            elm.trangThai === "hoatdong"
+              ? "Hoạt Động"
+              : elm.trangThai === "tamdung"
+              ? "Tạm Dừng"
+              : "Đăng Ký Học"
+          }</td>
           <td>
               <a onClick=LopHoc(${
                 elm.idLop
@@ -74,7 +80,12 @@ const viewLopHoc = (id) => {
       document.querySelector("#formView #thoiGianKetThuc").value = formatDate(
         data.thoiGianKt
       );
-      document.querySelector("#formView #trangThai").value = data.trangThai;
+      document.querySelector("#formView #trangThai").value =
+        data.trangThai === "hoatdong"
+          ? "Hoạt Động"
+          : data.trangThai === "tamdung"
+          ? "Tạm Dừng"
+          : "Đăng Ký Học";
     });
 };
 
