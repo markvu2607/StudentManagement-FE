@@ -14,7 +14,6 @@ const renderSVKTX = () => {
                             <td>${elm.sdt}</td>
                         </tr>`;
       }
-      console.log(html);
       document.querySelector("#listSVKTX").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
@@ -49,7 +48,8 @@ const renderSVTKD = () => {
 
 const renderSVDRL = () => {
   const idKhoa = document.querySelector("#khoa").value;
-  const idky = document.querySelector("#kyhoc").value;
+  const idky = document.querySelector("#kyHoc").value;
+
   if (!idKhoa || !idky) alert("Yêu cầu chọn đầy đủ thông tin thống kê");
   else
     fetch(`${HOST}/api/diemrenluyen?idKhoa=${idKhoa}&idky=${idky}`)
@@ -67,7 +67,7 @@ const renderSVDRL = () => {
                     <td>${elm.tongTien}</td>
                 </tr>`;
         }
-        document.querySelector("#listHocPhiSinhVien").innerHTML = html;
+        document.querySelector("#ListDiemRenLuyen").innerHTML = html;
       })
       .catch((err) => console.log("Error: ", err));
 };
