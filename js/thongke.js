@@ -74,7 +74,7 @@ const renderSVDRL = () => {
 
 const renderSVHB = () => {
   const idKhoa = document.querySelector("#khoa").value;
-  const idky = document.querySelector("#kyhoc").value;
+  const idky = document.querySelector("#kyHoc").value;
   if (!idKhoa || !idky) alert("Yêu cầu chọn đầy đủ thông tin thống kê");
   else
     fetch(
@@ -102,7 +102,7 @@ const renderSVHB = () => {
 
 const renderSVHP = () => {
   const idKhoa = document.querySelector("#khoa").value;
-  const idky = document.querySelector("#kyhoc").value;
+  const idky = document.querySelector("#kyHoc").value;
   const tinhTrang = document.querySelector("#tinhTrang").value;
   if (!idKhoa || !idky || !tinhTrang)
     alert("Yêu cầu chọn đầy đủ thông tin thống kê");
