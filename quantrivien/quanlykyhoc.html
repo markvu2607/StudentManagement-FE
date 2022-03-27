@@ -110,7 +110,7 @@
                                 let tenKyHoc = form.tenKyHoc.value.trim()
                                 var format = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
                                 if (form.tenKyHoc.value.length > 255) {
-                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
+                                    alert('Tên kỳ học không được quá 255 ký tự')
                                 }
                                 else if (format.test(tenKyHoc)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
@@ -146,7 +146,7 @@
                                 let tenKyHoc = form.tenKyHoc.value.trim()
                                 var format = /[!@#$%^&*()+\=\[\]{};':"\\|,.<>\/?]+/;
                                 if (form.tenKyHoc.value.length > 255) {
-                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
+                                    alert('Tên kỳ học không được quá 255 ký tự')
                                 }
                                 else if (format.test(tenKyHoc)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
