@@ -121,7 +121,7 @@ const getCoTheDangKyHoc = () => {
 
       for (i = 0; i < data.length; i++) {
         elm = data[i];
-        if (elm.daDangKy < elm.soLuong) {
+        if (elm.daDangKy <= elm.soLuong) {
           html += `<tr>
           <td>${i + 1}</td>
           <td>${elm.tenLop}</td>
@@ -144,7 +144,13 @@ const getCoTheDangKyHoc = () => {
 
 const xuLyDangKyHoc = (id) => {
   const idsv = JSON.parse(localStorage.getItem("user")).idsv;
-  fetch(`${HOST}/api/sinhvien/dangkyhoc/dangky?idsv=${idsv}&idLop=${id}`)
+  fetch(`${HOST}/api/sinhvien/dangkyhoc/${idsv}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ idLop: id }),
+  })
     .then((res) => res.json())
     .then((data) => {
       if (data.message) {
@@ -186,7 +192,6 @@ const getDaDangKyHoc = () => {
 
 const huyDangKyHoc = (id) => {
   const idsv = JSON.parse(localStorage.getItem("user")).idsv;
-  // console.log(id, idsv);
   fetch(`${HOST}/api/sinhvien/dangkyhoc/huy?idsv=${idsv}&idLop=${id}`, {
     method: "DELETE", // or 'PUT'
   })
