@@ -551,10 +551,10 @@
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
                                 }
                                 else if (cccd.length < 11 || cccd.length > 13) {
-                                    alert('căn cướcc công dân không đúng định dạng')
+                                    alert('Căn cước công dân không đúng định dạng')
                                 }
                                 else if (tenDangNhap.length > 16) {
-                                    alert('tên đăng nhập không được quá 16 ký tự');
+                                    alert('Tên đăng nhập không được quá 16 ký tự');
                                 }
                                 else {
 
@@ -623,7 +623,6 @@
                                 let sdtBo = form.sdtBo.value.trim();
                                 let sdtMe = form.sdtMe.value.trim();
                                 let cccd = form.CCCD.value.trim();
-                                let tenDangNhap = form.tenDangNhap.value.trim()
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
                                     alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
@@ -633,9 +632,7 @@
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
                                 }
                                 else if (cccd.length < 11 || cccd.length > 13) {
-                                    alert('căn cướcc công dân không đúng định dạng')
-                                } else if (tenDangNhap.length > 16) {
-                                    alert('tên đưang nhập không được quá 16 ký tự');
+                                    alert('Căn cước công dân không đúng định dạng')
                                 } else {
                                     fetch(`${HOST}/api/sinhvien/${form.maSinhVien.value}`, {
                                         method: "PUT",
