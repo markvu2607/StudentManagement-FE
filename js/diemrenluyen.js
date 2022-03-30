@@ -14,7 +14,6 @@ const renderDiemRenLuyen = () => {
         document.querySelector("#inputName").value = "";
         renderDiemRenLuyen();
       } else {
-        console.log(data)
         for (i = 0; i < data.length; i++) {
           elm = data[i];
           html += `<tr>
