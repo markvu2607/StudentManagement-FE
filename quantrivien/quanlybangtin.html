@@ -94,9 +94,11 @@
                         form.classList.add('was-validated')
                     } else {
                         if (form.id == "formAdd") {
-                            if (form.editor.value.length < 3000) {
-                                let noiDung = form.editor.value;
-
+                            let noiDung = form.editor.value;
+                            if (noiDung === "") {
+                                alert("Nội dung không được để trống")
+                            }
+                            else if (noiDung.length < 3000) {
                                 fetch(`${HOST}/api/bangtin/`, {
                                     method: "POST",
                                     headers: {
@@ -114,10 +116,9 @@
                                         document.getElementById("close").click()
                                     })
                                     .catch(err => console.log("Error: ", err))
-
                             }
                             else {
-                                alert('bạn đã nhập quá 3000 từ')
+                                alert('Không được nhập quá 3000 ký tự')
                                 document.getElementById('editor').focus();
                             }
 
