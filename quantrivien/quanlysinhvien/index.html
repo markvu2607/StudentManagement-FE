@@ -535,7 +535,7 @@
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
                                     alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
-                                } else if (format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || form.test(cccd)) {
+                                } else if (format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
                                 } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
