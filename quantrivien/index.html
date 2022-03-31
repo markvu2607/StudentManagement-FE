@@ -22,19 +22,19 @@
     <script src="../js/constants.js"></script>
     <script src="../js/helper.js"></script>
     <script src="../js/common.js"></script>
-    <script src="../js/quantrivien.js"></script>
-    <script src="../js/bangtin.js"></script>
-    <script src="../js/lophoc.js"></script>
-    <script src="../js/khoa.js"></script>
-    <script src="../js/monhoc.js"></script>
-    <script src="../js/taikhoan.js"></script>
-    <script src="../js/thongtinsinhvien.js"></script>
-    <script src="../js/giangvien.js"></script>
-    <script src="../js/kyhoc.js"></script>
-    <script src="../js/chuongtrinhdaotao.js"></script>
-    <script src="../js/thongke.js"></script>
-    <script src="../js/diemrenluyen.js"></script>
-    <script src="../js/lichthi.js"></script>
+    <script src="../js/quantrivien/renderQuantrivien.js"></script>
+    <script src="../js/quantrivien/bangtin.js"></script>
+    <script src="../js/quantrivien/lophoc.js"></script>
+    <script src="../js/quantrivien/khoa.js"></script>
+    <script src="../js/quantrivien/monhoc.js"></script>
+    <script src="../js/quantrivien/taikhoan.js"></script>
+    <script src="../js/quantrivien/thongtinsinhvien.js"></script>
+    <script src="../js/quantrivien/giangvien.js"></script>
+    <script src="../js/quantrivien/kyhoc.js"></script>
+    <script src="../js/quantrivien/chuongtrinhdaotao.js"></script>
+    <script src="../js/quantrivien/thongke.js"></script>
+    <script src="../js/quantrivien/diemrenluyen.js"></script>
+    <script src="../js/quantrivien/lichthi.js"></script>
 
 
     <!-- end js -->
@@ -56,7 +56,7 @@
                     <div class=" d-flex  header-logo">
                         <div class="logo col-md-2 col-2 col-sm-2 text-center">
                             <a href="index.html">
-                                <img src="../assets/image/logo-small.png" alt="logo" class="img-logo">
+                                <img src="../assets/image/logo-small.png" alt="logo" class="img-logo" onclick="renderPGBangTin()">
                             </a>
                         </div>
                         <div class="menu-toggle col-md-4 col-4 col-sm-4 text-center">
@@ -271,7 +271,7 @@
                 </div>
                 <div class="main container">
                     <script>
-                        renderQLBangTin()
+                        renderPGBangTin()
                     </script>
                 </div>
             </div>

@@ -18,8 +18,9 @@
     <script src="../js/constants.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/helper.js"></script>
-    <script src="../js/renderGiangVien.js"></script>
-    <script src="../js/thongke.js"></script>
+    <script src="../js/giangvien/giangvien.js"></script>
+    <script src="../js/giangvien/renderGiangvien.js"></script>
+    <script src="../js/quantrivien/thongke.js"></script>
 </head>
 
 <script>
@@ -37,7 +38,7 @@
                     <div class=" d-flex  header-logo">
                         <div class="logo col-md-2 col-2 col-sm-2 text-center">
                             <a href="index.html">
-                                <img src="../assets/image/logo-small.png" alt="logo" class="img-logo">
+                                <img src="../assets/image/logo-small.png" alt="logo" class="img-logo" onclick="renderPGBangTin()">
                             </a>
                         </div>
                         <div class="menu-toggle col-md-4 col-4 col-sm-4 text-center">
@@ -155,7 +156,7 @@
                 </div>
                 <div class="main container" id="main">
                     <script>
-                        renderQLDiem()
+                        renderPGBangTin()
                     </script>
                 </div>
             </div>

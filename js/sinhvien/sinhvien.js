@@ -116,7 +116,6 @@ const getCoTheDangKyHoc = () => {
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       let html = "";
 
       for (i = 0; i < data.length; i++) {
