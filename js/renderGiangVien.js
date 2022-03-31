@@ -26,16 +26,14 @@ const renderDanhSachLopQLLH = () => {
         <th>${elm.tenLop}</th>
         <th>${elm.tenKyHoc}</th>
         <td>
-            <a style="margin-right: 5px;" type="button" onclick="renderTailieumonhoc(${
-              elm.idLop
-            })">
+            <a style="margin-right: 5px;" type="button" onclick="renderTailieumonhoc(${elm.idLop
+          })">
                 <i class="fa-solid fa-eye"></i>
             </a>
         </td>
         <td>
-            <a style="margin-right: 5px;" type="button" onclick="renderDiemdanh(${
-              elm.idLop
-            })">
+            <a style="margin-right: 5px;" type="button" onclick="renderDiemdanh(${elm.idLop
+          })">
                 <i class="fa-solid fa-eye"></i>
             </a>
         </td>
@@ -67,16 +65,13 @@ const renderDiemdanh = (idLop) => {
               <th>${formatDatetime(elm.thoiGianBd)}</th>
               <th>${formatDatetime(elm.thoiGianKt)}</th>
               <td>
-                  <a style="margin-right: 5px;" type="button" onclick="renderChitietdiemdanh(${
-                    elm.idDiemDanh
-                  }, ${idLop})">
+                  <a style="margin-right: 5px;" type="button" onclick="renderChitietdiemdanh(${elm.idDiemDanh
+            }, ${idLop})">
                       <i class="fa-solid fa-eye"></i>
                   </a>
-                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" data-id-diemDanh="${
-                    elm.idDiemDanh
-                  }" data-thoiGian-Bd="${elm.thoiGianBd}" data-thoiGian-Kt="${
-            elm.thoiGianKt
-          }">
+                  <a style="margin-right: 5px;" type="button" data-bs-toggle="modal" data-bs-target="#myModalUpdate" data-id-diemDanh="${elm.idDiemDanh
+            }" data-thoiGian-Bd="${elm.thoiGianBd}" data-thoiGian-Kt="${elm.thoiGianKt
+            }">
                       <i class="fa-solid fa-wrench"></i>
                   </a>
               </td>
@@ -182,13 +177,12 @@ const renderChitietdiemdanh = (idDiemDanh, idLop) => {
               <th>${i + 1}</th>
               <th>${elm.idsv}</th>
               <th>${elm.tensv}</th>
-              <th>${
-                elm.trangThai === "vang"
-                  ? "Vắng"
-                  : elm.trangThai === "muon"
-                  ? "Muộn"
-                  : "Có Mặt"
-              }</th>
+              <th>${elm.trangThai === "vang"
+              ? "Vắng"
+              : elm.trangThai === "muon"
+                ? "Muộn"
+                : "Có Mặt"
+            }</th>
           </tr>`;
         }
         document.querySelector("#listSinhVienDD").innerHTML = html;
@@ -205,7 +199,8 @@ const renderTailieumonhoc = (idLop) => {
         fetch(`${HOST}/api/lophocphan/${idLop}`)
           .then((res) => res.json())
           .then((data) => {
-            document.querySelector("#tenLop").innerHTML = data.tenLop;
+            document.querySelector("#title").innerHTML += ` Lớp ${data.tenLop}`;
+            document.querySelector('#myModalUpload #idLop').value = data.idLop
           })
           .catch((err) => console.log("Error: ", err));
         html = "";
@@ -213,50 +208,44 @@ const renderTailieumonhoc = (idLop) => {
           elm = data[i];
           html += `<tr>
               <th>${i + 1}</th>
-              <th>${elm.idsv}</th>
-              <th>${elm.tensv}</th>
-              <th>${
-                elm.trangThai === "vang"
-                  ? "Vắng"
-                  : elm.trangThai === "muon"
-                  ? "Muộn"
-                  : "Có Mặt"
-              }</th>
+              <th>${elm.tenTaiLieu}</th>
+              <th>${moment(elm.thoiGianDang).format("YYYY-MM-DDTkk:mm").split('T').join('  ')}</th>
+              <th><a href="http://localhost:10000/api/tailieu/download/${elm.duongDan.split('/')[1]}"> <i class="bi bi-download""></i></a></th>
           </tr>`;
         }
-        document.querySelector("#listSinhVienDD").innerHTML = html;
+        document.querySelector("#listTaiLieu").innerHTML = html;
       })
       .catch((err) => console.log("Error: ", err));
   });
 };
 
-const addTaiLieu = () => {
-  let tenTaiLieu = document.querySelector("#myModalUpload #tenTaiLieu").value;
-  let duongDan = document.querySelector("#myModalUpload #duongDan").value;
-  let idLop = document.querySelector("#myModalUpload #idLop").value;
-  fetch(`${HOST}/api/tailieu/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      tenTaiLieu: tenTaiLieu,
-      duongDan: duongDan,
-      idLop: idLop,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.message) {
-        alert(data.message);
-      } else {
-        alert("Thành công");
-        renderTailieumonhoc(idLop);
-        document.querySelector("#myModalUpload .btn-close").click();
-      }
-    })
-    .catch((err) => console.log("Error: ", err));
-};
+// const addTaiLieu = () => {
+//   let tenTaiLieu = document.querySelector("#myModalUpload #tenTaiLieu").value;
+//   let duongDan = document.querySelector("#myModalUpload #duongDan").value;
+//   let idLop = document.querySelector("#myModalUpload #idLop").value;
+//   fetch(`${HOST}/api/tailieu/`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       tenTaiLieu: tenTaiLieu,
+//       duongDan: duongDan,
+//       idLop: idLop,
+//     }),
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       if (data.message) {
+//         alert(data.message);
+//       } else {
+//         alert("Thành công");
+//         renderTailieumonhoc(idLop);
+//         document.querySelector("#myModalUpload .btn-close").click();
+//       }
+//     })
+//     .catch((err) => console.log("Error: ", err));
+// };
 
 // DANH SÁCH SINH VIÊN
 const renderDSsinhvien = () => {
@@ -307,9 +296,8 @@ const renderDanhSachLopTKSV = () => {
                       <td>${elm.tenLop}</td>
                       <td>${elm.tenKyHoc}</td>
                       <td>
-                          <a onClick="renderChiTieLop(${
-                            elm.idLop
-                          })" style="margin-right: 5px;" type="button">
+                          <a onClick="renderChiTieLop(${elm.idLop
+          })" style="margin-right: 5px;" type="button">
                               <i class="fa-solid fa-eye"></i>
                           </a>
                       </td>
@@ -338,8 +326,7 @@ const renderLopHoc = () => {
         <td>${elm.tenLop}</td>
         <td>
         <td>
-          <a style="margin-right: 5px;" type="button" onclick="renderDiemTheoLop('${
-            elm.tenLop
+          <a style="margin-right: 5px;" type="button" onclick="renderDiemTheoLop('${elm.tenLop
           }')">
               <i class="fa-solid fa-eye"></i>
           </a>
@@ -365,19 +352,16 @@ const renderDiemTheoLop = (tenLop) => {
       <tr>
         <td>${i + 1}</td>
         <td>${elm.tensv}</td>
-        <td>${
-          elm.diemQuaTrinh === null ? "chưa có điểm" : elm.diemQuaTrinh
-        }</td>
+        <td>${elm.diemQuaTrinh === null ? "chưa có điểm" : elm.diemQuaTrinh
+          }</td>
         <td>${elm.diemThi === null ? "chưa có điểm" : elm.diemThi}</td>
-        <td>${
-          elm.diemTrungBinh === null ? "chưa có điểm" : elm.diemTrungBinh
-        }</td>
+        <td>${elm.diemTrungBinh === null ? "chưa có điểm" : elm.diemTrungBinh
+          }</td>
         <td>${elm.diemHeSo4 === null ? "chưa có điểm" : elm.diemHeSo4}</td>
         <td>
           
-          ${
-            elm.diemQuaTrinh !== null && elm.diemThi !== null
-              ? `
+          ${elm.diemQuaTrinh !== null && elm.diemThi !== null
+            ? `
             <a
             onclick=openUpdateDiem(${elm.idsv})
             style="margin-right: 10px;"
@@ -390,7 +374,7 @@ const renderDiemTheoLop = (tenLop) => {
           <i class="fa-solid fa-wrench"></i>
           </a>
             `
-              : `
+            : `
               <a
               style="margin-right: 10px;"
               type="button"
