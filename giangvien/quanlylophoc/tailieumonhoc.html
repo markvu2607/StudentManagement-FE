@@ -65,7 +65,7 @@
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
             .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
+                form.addEventListener('submit', async function (event) {
                     event.preventDefault()
                     event.stopPropagation()
                     if (!form.checkValidity()) {
@@ -76,20 +76,31 @@
                             if (tenTaiLieu.length > 255) {
                                 alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
                             } else {
-                                fetch('http://localhost:10000/api/tailieu/upload', {
-                                        body: new FormData(document.getElementById(
-                                            'formUploadFile')),
-                                        method: "post",
-                                    }).then(res => res.json())
-                                    .then(data => {
-                                        const idLop = document.querySelector(
-                                                '#myModalUpload #idLop')
-                                            .value
-                                        form.reset()
-                                        alert("Thêm tài liệu thành công")
-                                        renderTailieumonhoc(idLop)
-                                        document.querySelector("#myModalUpload .btn-close").click()
-                                    })
+                                const data = await fetch(
+                                        `${HOST}/api/tailieu/?tenTaiLieu=${tenTaiLieu}&idLop=${form.idLop.value}`
+                                    )
+                                    .then(res => res.json())
+                                    .then(data => data)
+
+                                if (data.length <= 0) {
+                                    fetch(`${HOST}/api/tailieu/upload`, {
+                                            body: new FormData(document.getElementById(
+                                                'formUploadFile')),
+                                            method: "post",
+                                        }).then(res => res.json())
+                                        .then(data => {
+                                            const idLop = document.querySelector(
+                                                    '#myModalUpload #idLop')
+                                                .value
+                                            form.reset()
+                                            alert("Thêm tài liệu thành công")
+                                            renderTailieumonhoc(idLop)
+                                            document.querySelector("#myModalUpload .btn-close")
+                                                .click()
+                                        })
+                                } else {
+                                    alert("Tên tài liệu đã tồn tại")
+                                }
                             }
                         }
                     }

@@ -89,7 +89,7 @@ const renderTailieumonhoc = (idLop) => {
               <th>${i + 1}</th>
               <th>${elm.tenTaiLieu}</th>
               <th>${moment(elm.thoiGianDang).format("YYYY-MM-DDTkk:mm").split('T').join('  ')}</th>
-              <th><a href="http://localhost:10000/api/tailieu/download/${elm.duongDan.split('/')[1]}"> <i class="bi bi-download""></i></a></th>
+              <th><a href="${HOST}/api/tailieu/download/${elm.duongDan.split('/')[1]}"> <i class="bi bi-download""></i></a></th>
           </tr>`;
         }
         document.querySelector("#listTaiLieu").innerHTML = html;
