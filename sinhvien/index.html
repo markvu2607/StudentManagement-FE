@@ -34,16 +34,17 @@
                 <div class="row  align-items-center page-header justify-content-between m-0">
                     <div class="col-md-6 col-6 col-sm-6">
                         <div class=" d-flex  header-logo">
+                            <div class="menu-toggle col-md-1 col-1 col-sm-1">
+                                <i class="bi bi-list icon-toggle" id="show"></i>
+                            </div>
                             <div class="logo col-md-2 col-2 col-sm-2 text-center">
-                                <a href="">
+                                <a href="index.html">
                                     <img src="../assets/image/logo-small.png" alt="logo" class="img-logo"
                                         onclick="renderPGBangTin()">
                                 </a>
                             </div>
-                            <div class="menu-toggle col-md-4 col-4 col-sm-4 text-center">
-                                <i class="bi bi-list icon-toggle" id="show"></i>
-                            </div>
                         </div>
+
                     </div>
                     <div id="Dang-nhap " class="col-md-6 col-6 col-sm-6 "
                         style="font-size:15px;color:grey;padding-top: 10px;">
@@ -54,11 +55,10 @@
                                     <span><i class="bi bi-person-circle"></i></span>
                                     <span class="d-none d-sm-inline mx-1" id="name"> </span>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
-                                    <li>
-                                        <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">Đổi mật khẩu</a>
-                                    </li>
+                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow " style="width:150px">
+
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">Đổi mật khẩu</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
@@ -75,7 +75,7 @@
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar"
-                    style="background-color: #2B3643;width: 250px;">
+                    style="background-color: #2B3643;width: 80px;">
                     <div
                         class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <ul class="navbar-nav nav-pills mt-3" id="menu">
@@ -83,28 +83,31 @@
                                 <a class="nav-link align-middle px-0" data-bs-toggle="tooltip" data-bs-placement="right"
                                     title="Lớp Học">
                                     <i class="fa-solid fa-check"></i>
-                                    <span class="ms-2" onclick="renderLophoc()">Lớp Học</span>
+                                    <span class="ms-2" style="display: none; " onclick="renderLophoc()">Lớp Học</span>
                                 </a>
                             </li>
                             <li class="nav-item mt-2">
                                 <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
                                     data-bs-placement="right" title="Đăng ký học">
                                     <i class="fa-regular fa-rectangle-list"></i>
-                                    <span class="ms-2" onclick="renderQLhocphan()">Quản Lý Học Phần</span> </a>
+                                    <span class="ms-2" style="display: none; " onclick="renderQLhocphan()">Quản Lý Học
+                                        Phần</span> </a>
 
                             </li>
                             <li class="nav-item mt-2">
                                 <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
                                     data-bs-placement="right" title="Quản Lý Giảng Viên">
                                     <i class="fa-solid fa-money-check-dollar"></i>
-                                    <span class="ms-2" onclick="renderTracuuhocphi()">Tra Cứu Học Phí</span>
+                                    <span class="ms-2" style="display: none; " onclick="renderTracuuhocphi()">Tra Cứu
+                                        Học Phí</span>
                                 </a>
                             </li>
                             <li class="nav-item mt-2">
                                 <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" data-bs-toggle="tooltip"
                                     data-bs-placement="right" title="Quản Lý Môn Học">
                                     <i class="fa-solid fa-list-ol"></i>
-                                    <span class="ms-2" onclick="renderTracuulichthi()">Tra Cứu Lịch Thi</span>
+                                    <span class="ms-2" style="display: none; " onclick="renderTracuulichthi()">Tra Cứu
+                                        Lịch Thi</span>
                                 </a>
                             </li>
                         </ul>
@@ -129,14 +132,23 @@
                 <a class="text-white" href="#">Thuy Loi University</a>
             </div>
         </footer>
+
         <script src="../assets/js/toggle.js" async defer></script>
     </div>
 </body>
+
 <script src="../js/doimatkhau.js"></script>
 <script>
     const name = user.taiKhoan.tenDangNhap;
     document.getElementById("name").innerHTML = name;
     $("#dmk").load("../doimatkhau.html");
+</script>
+
+<script>
+    $(document).ready(function () {
+        console.log("ready")
+        $("show").click();
+    }); 
 </script>
 
 </html>

@@ -36,14 +36,14 @@
             <div class="row  align-items-center page-header justify-content-between m-0">
                 <div class="col-md-6 col-6 col-sm-6">
                     <div class=" d-flex  header-logo">
+                        <div class="menu-toggle col-md-1 col-1 col-sm-1">
+                            <i class="bi bi-list icon-toggle" id="show"></i>
+                        </div>
                         <div class="logo col-md-2 col-2 col-sm-2 text-center">
                             <a href="index.html">
                                 <img src="../assets/image/logo-small.png" alt="logo" class="img-logo"
                                     onclick="renderPGBangTin()">
                             </a>
-                        </div>
-                        <div class="menu-toggle col-md-4 col-4 col-sm-4 text-center">
-                            <i class="bi bi-list icon-toggle" id="show"></i>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                                 <span><i class="bi bi-person-circle"></i></span>
                                 <span class="d-none d-sm-inline mx-1" id="name"></span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow ">
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow " style="width:150px">
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">Đổi mật khẩu</a></li>
                                 <li>
@@ -74,15 +74,14 @@
     </div>
     <div class=" container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar"
-                style="background-color: #2B3643;width: 250px;">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar" style="background-color: #2B3643;width: 80px;">
                 <div class="d-flex flex-column align-items-center align-items-sm-start ps-2 pt-2 text-white min-vh-100">
                     <ul class="navbar-nav nav-pills mt-3" id="menu">
                         <li class="nav-item mt-2">
                             <a href="" class="nav-link align-middle px-0" data-bs-toggle="tooltip"
                                 data-bs-placement="right" title="Quản lý điểm" onclick="renderQLDiem()">
                                 <i class="fa-regular fa-rectangle-list"></i>
-                                <span class="ms-2">Quản Lý Điểm</span>
+                                <span class="ms-2" style="display: none; ">Quản Lý Điểm</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
@@ -90,7 +89,7 @@
                                 data-bs-toggle="tooltip" data-bs-placement="right" title="Quản lý lớp học"
                                 onclick="renderQLLophoc()">
                                 <i class="fa-solid fa-list-ul"></i>
-                                <span class="ms-2">Quản Lý Lớp Học</span>
+                                <span class="ms-2" style="display: none; ">Quản Lý Lớp Học</span>
                             </a>
 
                         </li>
@@ -99,7 +98,7 @@
                                 data-bs-toggle="tooltip" data-bs-placement="right" title="Danh sách sinh viên"
                                 onclick="renderDSsinhvien()">
                                 <i class="fa-solid fa-user-group"></i>
-                                <span class="ms-2">Danh Sách Sinh Viên</span>
+                                <span class="ms-2" style="display: none; ">Danh Sách Sinh Viên</span>
                             </a>
                         </li>
                         <li class="nav-item mt-2">
@@ -107,7 +106,7 @@
                                 data-bs-toggle="tooltip" data-bs-placement="right" title="Thống kê điểm"
                                 onclick="renderThongkediem()">
                                 <i class="fa-solid fa-clipboard-list"></i>
-                                <span class="ms-2">Thống Kê Điểm</span>
+                                <span class="ms-2" style="display: none; ">Thống Kê Điểm</span>
                             </a>
                         </li>
                     </ul>
