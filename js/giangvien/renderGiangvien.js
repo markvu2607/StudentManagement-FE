@@ -122,5 +122,5 @@ const renderDSsinhvien = () => {
 
 //THỐNG KÊ ĐIỂM
 const renderThongkediem = () => {
-  $(".main").load("../quantrivien/thongke/diem.html");
+  $(".main").load("../quantrivien/thongkediem");
 };

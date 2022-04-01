@@ -1,6 +1,6 @@
 var sideBar = document.querySelector(".sidebar");
 const x = sideBar.style.width;
-document.getElementById("show").onclick = function () {
+const menuOpenClose = function () {
   var showText = document.querySelectorAll(".ms-2");
   for (let i = 0; i < showText.length; i++) {
     if (showText[i].style.display == "none") {
@@ -12,3 +12,5 @@ document.getElementById("show").onclick = function () {
     }
   }
 };
+// document.getElementById("menu").onclick = menuOpenClose;
+document.getElementById("show").onclick = menuOpenClose;
