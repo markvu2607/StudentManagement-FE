@@ -23,7 +23,7 @@ const renderMonHoc = () => {
                         </tr>`;
         }
       } else alert("Không có kết quả");
-      document.querySelector("#listKhoa").innerHTML = html;
+      document.querySelector("#listMonHoc").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
 };
