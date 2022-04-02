@@ -521,144 +521,124 @@
                         if (!form.checkValidity()) {
                             form.classList.add('was-validated')
                         } else {
+                            let tenSV = form.hoVaTen.value.trim();
+                            let ngaySinh = form.ngaySinh.value;
+                            let tenBo = form.hoTenBo.value.trim();
+                            let tenMe = form.hoTenMe.value.trim();
+                            let queQuan = form.queQuan.value.trim();
+                            let diaChi = form.diaChi.value.trim();
+                            let sdt = form.soDienThoai.value.trim();
+                            let sdtBo = form.sdtBo.value.trim();
+                            let sdtMe = form.sdtMe.value.trim();
+                            let ngheNghiepBo = form.ngheNghiepBo.value.trim();
+                            let ngheNghiepMe = form.ngheNghiepMe.value.trim();
+                            let cccd = form.CCCD.value.trim();
+                            let tenDangNhap = (form.tenDangNhap)?form.tenDangNhap.value.trim():"";
+                            var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                            if (ngheNghiepBo.length > 255 || ngheNghiepMe.length > 255 || diaChi.length > 255 || queQuan.length > 255 || tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
+                                alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
+                            } else if (format.test(ngheNghiepBo) || format.test(ngheNghiepBo) || format.test(diaChi) || format.test(queQuan) || format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
+                                alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
+                            } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
+                                alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
+                            }
+                            else if (cccd.length < 11 || cccd.length > 13) {
+                                alert('Căn cước công dân không đúng định dạng')
+                            }
+                            else if (tenDangNhap.length > 16) {
+                                alert('Tên đăng nhập không được quá 16 ký tự');
+                            }
                             if (form.id == "formAdd") {
-                                let tenSV = form.hoVaTen.value.trim();
-                                let tenBo = form.hoTenBo.value.trim();
-                                let tenMe = form.hoTenMe.value.trim();
-                                let queQuan = form.queQuan.value.trim();
-                                let diaChi = form.diaChi.value.trim();
-                                let sdt = form.soDienThoai.value.trim();
-                                let sdtBo = form.sdtBo.value.trim();
-                                let sdtMe = form.sdtMe.value.trim();
-                                let cccd = form.CCCD.value.trim();
-                                let tenDangNhap = form.tenDangNhap.value.trim()
-                                var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-                                if (tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
-                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
-                                } else if (format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
-                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
-                                } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
-                                    alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
-                                }
-                                else if (cccd.length < 11 || cccd.length > 13) {
-                                    alert('Căn cước công dân không đúng định dạng')
-                                }
-                                else if (tenDangNhap.length > 16) {
-                                    alert('Tên đăng nhập không được quá 16 ký tự');
-                                }
-                                else {
-                                    fetch(`${HOST}/api/taikhoan/`, {
-                                        method: "POST",
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({
-                                            "tenDangNhap": tenDangNhap,
-                                            "matKhau": form.ngaySinh.value,
-                                            "chucNang": "sinhvien",
-                                            "trangThai": "1"
-                                        }),
-                                    })
-                                        .then(res => res.json())
-                                        .then(data => {
-                                            fetch(`${HOST}/api/sinhvien/`, {
-                                                method: "POST",
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                },
-                                                body: JSON.stringify({
-                                                    "tenSV": tenSV,
-                                                    "ngaySinh": form.ngaySinh.value,
-                                                    "laNam": form.gioiTinh.value,
-                                                    "idKhoa": form.khoa.value,
-                                                    "kyTucXa": form.kyTucXa.value,
-                                                    "queQuan": queQuan,
-                                                    "diaChi": diaChi,
-                                                    "sdt": sdt,
-                                                    "cccd": form.CCCD.value,
-                                                    "tenBo": tenBo,
-                                                    "namSinhBo": getFullYear(form.namSinhBo.value),
-                                                    "ngheNghiepBo": form.ngheNghiepBo.value,
-                                                    "sdtBo": sdtBo,
-                                                    "tenMe": tenMe,
-                                                    "namSinhMe": getFullYear(form.namSinhMe.value),
-                                                    "ngheNghiepMe": form.ngheNghiepMe.value,
-                                                    "sdtMe": sdtMe,
-                                                    "idtk": data.idtk
-                                                }),
+                                fetch(`${HOST}/api/taikhoan/`, {
+                                    method: "POST",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "tenDangNhap": tenDangNhap,
+                                        "matKhau": form.ngaySinh.value,
+                                        "chucNang": "sinhvien",
+                                        "trangThai": "1"
+                                    }),
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        fetch(`${HOST}/api/sinhvien/`, {
+                                            method: "POST",
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                            },
+                                            body: JSON.stringify({
+                                                "tenSV": tenSV,
+                                                "ngaySinh": form.ngaySinh.value,
+                                                "laNam": form.gioiTinh.value,
+                                                "idKhoa": form.khoa.value,
+                                                "kyTucXa": form.kyTucXa.value,
+                                                "queQuan": queQuan,
+                                                "diaChi": diaChi,
+                                                "sdt": sdt,
+                                                "cccd": cccd,
+                                                "tenBo": tenBo,
+                                                "namSinhBo": getFullYear(form.namSinhBo.value),
+                                                "ngheNghiepBo": ngheNghiepBo,
+                                                "sdtBo": sdtBo,
+                                                "tenMe": tenMe,
+                                                "namSinhMe": getFullYear(form.namSinhMe.value),
+                                                "ngheNghiepMe": ngheNghiepMe,
+                                                "sdtMe": sdtMe,
+                                                "idtk": data.idtk
+                                            }),
 
+                                        })
+                                            .then(res => res.json())
+                                            .then(data => {
+                                                console.log(data);
+                                                form.reset()
+                                                alert("Thêm thông tin sinh viên thành công")
+                                                renderSV()
+                                                document.querySelector("#myModalAdd .btn-close").click()
                                             })
-                                                .then(res => res.json())
-                                                .then(data => {
-                                                    console.log(data);
-                                                    form.reset()
-                                                    alert("Thêm thông tin sinh viên thành công")
-                                                    renderSV()
-                                                    document.querySelector("#myModalAdd .btn-close").click()
-                                                })
-                                                .catch(err => console.log("Error: ", err))
+                                            .catch(err => console.log("Error: ", err))
 
-                                        })
-                                        .catch(err => console.log("Error: ", err))
-                                }
-                            } else if (form.id == "formUpdate") {
-                                let tenSV = form.hoVaTen.value.trim();
-                                let tenBo = form.hoTenBo.value.trim();
-                                let tenMe = form.hoTenMe.value.trim();
-                                let queQuan = form.queQuan.value.trim();
-                                let diaChi = form.diaChi.value.trim();
-                                let sdt = form.soDienThoai.value.trim();
-                                let sdtBo = form.sdtBo.value.trim();
-                                let sdtMe = form.sdtMe.value.trim();
-                                let cccd = form.CCCD.value.trim();
-                                var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-                                if (tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
-                                    alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
-                                } else if (format.test(tenSV) || format.test(tenBo) || format.test(tenMe)) {
-                                    alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
-                                } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
-                                    alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
-                                }
-                                else if (cccd.length < 11 || cccd.length > 13) {
-                                    alert('Căn cước công dân không đúng định dạng')
-                                } else {
-                                    fetch(`${HOST}/api/sinhvien/${form.maSinhVien.value}`, {
-                                        method: "PUT",
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({
-                                            "tenSV": form.hoVaTen.value,
-                                            "ngaySinh": form.ngaySinh.value,
-                                            "laNam": form.gioiTinh.value,
-                                            "idKhoa": form.khoa.value,
-                                            "kyTucXa": form.kyTucXa.value,
-                                            "queQuan": form.queQuan.value,
-                                            "diaChi": form.diaChi.value,
-                                            "sdt": form.soDienThoai.value,
-                                            "cccd": form.CCCD.value,
-                                            "tenBo": form.hoTenBo.value,
-                                            "namSinhBo": getFullYear(form.namSinhBo.value),
-                                            "ngheNghiepBo": form.ngheNghiepBo.value,
-                                            "sdtBo": form.sdtBo.value,
-                                            "tenMe": form.hoTenMe.value,
-                                            "namSinhMe": getFullYear(form.namSinhMe.value),
-                                            "ngheNghiepMe": form.ngheNghiepMe.value,
-                                            "sdtMe": form.sdtMe.value,
-                                            "idtk": form.idtk.value
-                                        }),
                                     })
-                                        .then(res => res.json())
-                                        .then(data => {
+                                    .catch(err => console.log("Error: ", err))
+                            } else if (form.id == "formUpdate") {
+                                fetch(`${HOST}/api/sinhvien/${form.maSinhVien.value}`, {
+                                    method: "PUT",
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        "tenSV": tenSV,
+                                        "ngaySinh": form.ngaySinh.value,
+                                        "laNam": form.gioiTinh.value,
+                                        "idKhoa": form.khoa.value,
+                                        "kyTucXa": form.kyTucXa.value,
+                                        "queQuan": queQuan,
+                                        "diaChi": diaChi,
+                                        "sdt": sdt,
+                                        "cccd": cccd,
+                                        "tenBo": tenBo,
+                                        "namSinhBo": getFullYear(form.namSinhBo.value),
+                                        "ngheNghiepBo": ngheNghiepBo,
+                                        "sdtBo": sdtBo,
+                                        "tenMe": tenMe,
+                                        "namSinhMe": getFullYear(form.namSinhMe.value),
+                                        "ngheNghiepMe": ngheNghiepMe,
+                                        "sdtMe": sdtMe,
+                                        "idtk": data.idtk
+                                    }),
+                                })
+                                    .then(res => res.json())
+                                    .then(data => {
 
-                                            console.log('sửa', data.sql);
+                                        console.log('sửa', data.sql);
 
-                                            alert("Sửa thông tin sinh viên thành công")
-                                            renderSV()
-                                            document.querySelector("#myModalUpdate .btn-close").click()
-                                        })
-                                        .catch(err => console.log("Error: ", err))
-                                }
+                                        alert("Sửa thông tin sinh viên thành công")
+                                        renderSV()
+                                        document.querySelector("#myModalUpdate .btn-close").click()
+                                    })
+                                    .catch(err => console.log("Error: ", err))
                             }
                         }
                     }, false)
