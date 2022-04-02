@@ -4,7 +4,6 @@ const renderKhoa = () => {
     .then((res) => res.json())
     .then((data) => {
       let html = "";
-      let i = 1;
       if (data.length > 0) {
         for (i = 0; i < data.length; i++) {
           elm = data[i]

@@ -9,24 +9,19 @@ const renderDiemRenLuyen = () => {
     .then((data) => {
       let html = "";
       let i = 0;
-      if (data.length === 0) {
-        alert("Không có kết quả");
-        document.querySelector("#inputName").value = "";
-        renderDiemRenLuyen();
-      } else {
+      if (data.length > 0) {
         for (i = 0; i < data.length; i++) {
           elm = data[i];
           html += `<tr>
-                      <th scope="row">${i+1}</th>
+                      <th scope="row">${i + 1}</th>
                       <td>${elm.idsv}</td>
                       <td>${elm.tensv}</td>
                       <td>${elm.tenKhoa}</td>
                       <td>${elm.tenKyHoc}</td>
                       <td>${elm.diem}</td>
                   </tr>`;
-        };
-      }
-
+        }
+      } else alert("Không có kết quả");
       document.querySelector("#ListDiemRenLuyen").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));

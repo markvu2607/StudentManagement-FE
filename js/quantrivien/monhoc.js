@@ -4,9 +4,10 @@ const renderMonHoc = () => {
     .then((res) => res.json())
     .then((data) => {
       let html = "";
-      let i = 1;
-      data.forEach((elm) => {
-        html += `<tr>
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
                             <th scope="row">${i++}</th>
                             <td>${elm.tenMon}</td>
                             <td>${elm.soTinChi}</td>
@@ -20,9 +21,9 @@ const renderMonHoc = () => {
                                 </a>
                             </td>
                         </tr>`;
-      });
-
-      document.querySelector("#listMonHoc").innerHTML = html;
+        }
+      } else alert("Không có kết quả");
+      document.querySelector("#listKhoa").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
 };
