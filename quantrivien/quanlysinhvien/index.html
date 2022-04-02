@@ -533,7 +533,7 @@
                             let ngheNghiepBo = form.ngheNghiepBo.value.trim();
                             let ngheNghiepMe = form.ngheNghiepMe.value.trim();
                             let cccd = form.CCCD.value.trim();
-                            let tenDangNhap = (form.tenDangNhap)?form.tenDangNhap.value.trim():"";
+                            let tenDangNhap = (form.tenDangNhap) ? form.tenDangNhap.value.trim() : "";
                             var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                             if (ngheNghiepBo.length > 255 || ngheNghiepMe.length > 255 || diaChi.length > 255 || queQuan.length > 255 || tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
                                 alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
@@ -547,8 +547,7 @@
                             }
                             else if (tenDangNhap.length > 16) {
                                 alert('Tên đăng nhập không được quá 16 ký tự');
-                            }
-                            if (form.id == "formAdd") {
+                            } else if (form.id == "formAdd") {
                                 fetch(`${HOST}/api/taikhoan/`, {
                                     method: "POST",
                                     headers: {
