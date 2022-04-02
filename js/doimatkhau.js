@@ -1,55 +1,37 @@
 function doiMatKhau() {
-  "use strict";
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll(".needs-validation");
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
+  const matKhauCu = document.getElementById("matKhauCu").value;
+  const matKhauMoi = document.getElementById("matKhauMoi").value;
+  const xacThucMatKhauMoi = document.getElementById("xacThucMatKhauMoi").value;
+  const matKhauCuHash = JSON.parse(localStorage.getItem("user")).taiKhoan
+    .matKhau;
+  const idtk = JSON.parse(localStorage.getItem("user")).taiKhoan.idtk;
+  if (matKhauMoi != xacThucMatKhauMoi) {
+    alert("Mật khẩu mới không khớp");
+  } else {
+    fetch(`${HOST}/api/taikhoan/doimatkhau/${idtk}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        matKhauCu: matKhauCu,
+        matKhauCuHash: matKhauCuHash,
+        matKhauMoi: matKhauMoi,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.message === "Nội dung trống!") {
         } else {
-          const matKhauCu = document.getElementById("matKhauCu").value;
-          const matKhauMoi = document.getElementById("matKhauMoi").value;
-          const xacThucMatKhauMoi =
-            document.getElementById("xacThucMatKhauMoi").value;
-          const matKhauCuHash = JSON.parse(localStorage.getItem("user"))
-            .taiKhoan.matKhau;
-          const idtk = JSON.parse(localStorage.getItem("user")).taiKhoan.idtk;
-          if (matKhauMoi != xacThucMatKhauMoi) {
-            alert("Mật khẩu mới không khớp");
+          if (data.message === "Đổi mật khẩu thành công.") {
+            alert(data.message);
+            location.reload();
           } else {
-            fetch(`${HOST}/api/taikhoan/doimatkhau/${idtk}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                matKhauCu: matKhauCu,
-                matKhauCuHash: matKhauCuHash,
-                matKhauMoi: matKhauMoi,
-              }),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.message === "Nội dung trống!") {
-                } else {
-                  if (data.message === "Đổi mật khẩu thành công.") {
-                    alert(data.message);
-                    location.reload();
-                  } else {
-                    alert(data.message);
-                  }
-                }
-              })
-              .catch((err) => console.log("Error: ", err));
+            alert(data.message);
           }
         }
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
+      })
+      .catch((err) => console.log("Error: ", err));
+  }
 }
