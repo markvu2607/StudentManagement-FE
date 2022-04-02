@@ -4,14 +4,10 @@ const renderLop = () => {
   fetch(`${HOST}/api/lophocphan/?tenlop=${tuKhoa}&idky=${idky}`)
     .then((res) => res.json())
     .then((data) => {
+      var html = "";
       if (data.length === 0) {
         alert("Không có kết quả");
-        document.querySelector("#tenLop").value = "";
-        document.querySelector("#kyHoc").value = "";
-
-        renderLop();
       } else {
-        let html = "";
         for (i = 0; i < data.length; i++) {
           elm = data[i];
           html += `<tr>
@@ -43,8 +39,8 @@ const renderLop = () => {
           </td>
       </tr>`;
         }
-        document.querySelector("#listLop").innerHTML = html;
       }
+      document.querySelector("#listLop").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
 };
