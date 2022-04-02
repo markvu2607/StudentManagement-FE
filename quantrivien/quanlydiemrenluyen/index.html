@@ -29,10 +29,10 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body ">
-          <form class="row g-3 needs-validation" id="formAdd">
+          <form class="row g-3 needs-validation" id="formAdd" novalidate>
             <div>
               <label for="inputDataList" class="form-label">Sinh viên*</label>
-              <input class="form-control" list="sinhVien" id="inputDataList" placeholder="Tìm kiếm..."
+              <input class="form-control" list="sinhVien" id="inputDataList" required placeholder="Tìm kiếm..."
                 autocomplete="off">
               <datalist id="sinhVien">
               </datalist>
@@ -42,7 +42,7 @@
             </div>
             <div>
               <label for="kyHoc" class="form-label">Kỳ học*</label>
-              <select id="kyHoc" class="form-select" style="max-width: 467px;">
+              <select id="kyHoc" class="form-select" style="max-width: 467px;" required>
               </select>
               <div class="invalid-feedback">
                 Vui lòng chọn kỳ học
@@ -133,10 +133,11 @@
                   })
                     .then(res => res.json())
                     .then(data => {
-                      if (data.sqlMessage && data.sqlMessage.includes("ER_DUP_ENTRY")) {
-                        alert('Khoa đã tồn tại')
+                      console.log(data)
+                      if (data.message && data.message.includes("ER_DUP_ENTRY")) {
+                        alert('Sinh viên đã có điểm rèn luyện.')
                       }
-                      else if (data.sqlMessage) alert(data.sqlMessage)
+                      else if (data.message || data.sqlMessage) alert(data.message || data.sqlMessage)
                       else {
                         form.reset()
                         alert("Thêm điểm rèn luyện thành công")
