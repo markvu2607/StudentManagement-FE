@@ -29,11 +29,11 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body ">
-          <form class="row g-3 needs-validation" id="formAdd" novalidate>
+          <form class="row g-3 needs-validation" id="formAdd">
             <div>
               <label for="inputDataList" class="form-label">Sinh viên*</label>
               <input class="form-control" list="sinhVien" id="inputDataList" placeholder="Tìm kiếm..."
-                autocomplete="off" required>
+                autocomplete="off">
               <datalist id="sinhVien">
               </datalist>
               <div class="invalid-feedback">
@@ -42,7 +42,7 @@
             </div>
             <div>
               <label for="kyHoc" class="form-label">Học Kỳ*</label>
-              <select id="kyHoc" class="form-select" style="max-width: 467px;" required>
+              <select id="kyHoc" class="form-select" style="max-width: 467px;">
               </select>
               <div class="invalid-feedback">
                 Vui lòng chọn kỳ học
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-12">
               <label for="tenKhoa" class="form-label">Điểm rèn luyện*</label>
-              <input type="number" class="form-control" id="diemRenLuyen" required step="0.1">
+              <input type="number" class="form-control" id="diemRenLuyen" required step="0.1" >
               <div class="invalid-feedback">
                 Vui lòng nhập vào điểm rèn luyện
               </div>
@@ -87,7 +87,7 @@
   getKhoa()
   getKy()
   getSinhVien()
-  renderDiemRenLuyen()
+  //renderDiemRenLuyen()
 </script>
 
 <script>
@@ -114,9 +114,10 @@
                 const diemRenLuyen = form.diemRenLuyen.value;
                 if (diemRenLuyen < 0 || diemRenLuyen > 100) {
                   alert('Điểm rèn luyện phải lớn hơn 0 và nhỏ hơn 100')
-                } else if (parseInt(diemRenLuyen) === diemRenLuyen) {
+                } else if (diemRenLuyen.includes(".")) {
                   alert('Điểm rèn luyện không được nhập số thập phân')
-                } else if (!tensv || !idsv) {
+                } 
+                else if (!tensv || !idsv) {
                   alert('Sinh viên không tồn tại')
                 } else {
                   fetch(`${HOST}/api/diemrenluyen/`, {
@@ -132,12 +133,13 @@
                   })
                     .then(res => res.json())
                     .then(data => {
-                      if (data.message) {
-                        alert("ERROR:" + data.message)
-                      } else {
+                      if (data.sqlMessage && data.sqlMessage.includes("ER_DUP_ENTRY")) {
+                        alert('Khoa đã tồn tại')
+                      }
+                      else if (data.sqlMessage) alert(data.sqlMessage)
+                      else {
                         form.reset()
                         alert("Thêm điểm rèn luyện thành công")
-                        renderDiemRenLuyen()
                         document.querySelector("#myModalAdd .btn-close").click()
                       }
                     })
