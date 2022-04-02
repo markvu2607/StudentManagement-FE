@@ -157,7 +157,7 @@
                                         else {
                                             form.reset()
                                             alert("Thêm điểm thành công")
-                                            renderDiemTheoLop(tenLop)
+                                            renderDiemTheoLop(idLop)
                                             document.querySelector("#myModalAdd .btn-close").click()
                                         }
                                     })
@@ -202,11 +202,13 @@
 
                                         if (data.message) {
                                             alert('Lỗi khi thêm điểm')
+                                            renderDiemTheoLop(idLop)
+
                                         }
                                         else {
                                             form.reset()
                                             alert("cập nhật điểm thành công")
-                                            renderDiemTheoLop(tenLop)
+                                            renderDiemTheoLop(idLop)
                                             document.querySelector("#myModalUpdate .btn-close").click()
                                         }
                                     })

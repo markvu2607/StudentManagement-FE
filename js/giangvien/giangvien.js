@@ -1,15 +1,14 @@
-
 const renderDanhSachLopQLLH = () => {
-    const tenlop = document.querySelector("#tenLop").value;
-    const kyHoc = document.querySelector("#kyHoc").value;
-    const idgv = JSON.parse(localStorage.getItem("user")).idgv;
-    fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
-      .then((res) => res.json())
-      .then((data) => {
-        let html = "";
-        for (i = 0; i < data.length; i++) {
-          elm = data[i];
-          html += `<tr>
+  const tenlop = document.querySelector("#tenLop").value;
+  const kyHoc = document.querySelector("#kyHoc").value;
+  const idgv = JSON.parse(localStorage.getItem("user")).idgv;
+  fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
+    .then((res) => res.json())
+    .then((data) => {
+      let html = "";
+      for (i = 0; i < data.length; i++) {
+        elm = data[i];
+        html += `<tr>
           <th>${i + 1}</th>
           <th>${elm.tenLop}</th>
           <th>${elm.tenKyHoc}</th>
@@ -28,11 +27,11 @@ const renderDanhSachLopQLLH = () => {
               </a>
           </td>
         </tr>`;
-        }
-        document.querySelector("#listLop").innerHTML = html;
-      })
-      .catch((err) => console.log("Error: ", err));
-  };
+      }
+      document.querySelector("#listLop").innerHTML = html;
+    })
+    .catch((err) => console.log("Error: ", err));
+};
 
 const addDiemDanh = () => {
   let thoiGianBd = document.querySelector("#myModalAdd #thoiGianBd").value;
@@ -138,35 +137,6 @@ const addTaiLieu = () => {
     .catch((err) => console.log("Error: ", err));
 };
 
-const renderLopHoc = () => {
-  fetch(`${HOST}/api/lophocphan/`)
-    .then((res) => res.json())
-    .then((data) => {
-      let html = "";
-      for (i = 0; i < data.length; i++) {
-        elm = data[i];
-        html += `
-          <tr>
-          <td>${i + 1}</td>
-          <td>${elm.tenLop}</td>
-          <td>
-          <td>
-            <a style="margin-right: 5px;" type="button" onclick="renderDiemTheoLop('${
-              elm.tenLop
-            }')">
-                <i class="fa-solid fa-eye"></i>
-            </a>
-          </td>
-          </tr>
-          `;
-      }
-      document.querySelectorAll("#getLopHoc").forEach((elm) => {
-        elm.innerHTML = html;
-      });
-    })
-    .catch((err) => console.log("Error: ", err));
-};
-
 const renderChiTieLop = (idLop) => {
   fetch(`${HOST}/api/sinhvien/thongke/${idLop}`)
     .then((res) => res.json())
@@ -204,10 +174,10 @@ const renderDanhSachLopTKSV = () => {
     .then((res) => res.json())
     .then((data) => {
       var html = "";
-      if (data.length>0)
-      for (i = 0; i < data.length; i++) {
-        elm = data[i];
-        html += `<tr>
+      if (data.length > 0)
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
                         <th scope="row">${i + 1}</th>
                         <td>${elm.tenLop}</td>
                         <td>${elm.tenKyHoc}</td>
@@ -219,82 +189,115 @@ const renderDanhSachLopTKSV = () => {
                             </a>
                         </td>
                     </tr>`;
-      }
+        }
       else alert("Không có kết quả");
       document.querySelector("#listLop").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
 };
 
-const renderDiemTheoLop = (tenLop) => {
-  fetch(`${HOST}/api/diem?tenlop=${tenLop}&idky=`)
+const renderLopHoc = () => {
+  fetch(`${HOST}/api/lophocphan/`)
     .then((res) => res.json())
     .then((data) => {
       let html = "";
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `
-        <tr>
+          <tr>
           <td>${i + 1}</td>
-          <td>${elm.tensv}</td>
-          <td>${
-            elm.diemQuaTrinh === null ? "chưa có điểm" : elm.diemQuaTrinh
-          }</td>
-          <td>${elm.diemThi === null ? "chưa có điểm" : elm.diemThi}</td>
-          <td>${
-            elm.diemTrungBinh === null ? "chưa có điểm" : elm.diemTrungBinh
-          }</td>
-          <td>${elm.diemHeSo4 === null ? "chưa có điểm" : elm.diemHeSo4}</td>
+          <td>${elm.tenLop}</td>
           <td>
-            
-            ${
-              elm.diemQuaTrinh !== null && elm.diemThi !== null
-                ? `
-              <a
-              onclick=openUpdateDiem(${elm.idsv})
-              style="margin-right: 10px;"
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#myModalUpdate"
-              data-id-svud="${elm.idsv}"
-              data-id-diemud="${elm.idDiem}"
-            >
-            <i class="fa-solid fa-wrench"></i>
+          <td>
+            <a style="margin-right: 5px;" type="button" onclick="renderDiemTheoLop('${
+              elm.idLop
+            }')">
+                <i class="fa-solid fa-eye"></i>
             </a>
-              `
-                : `
+          </td>
+          </tr>
+          `;
+      }
+      document.querySelectorAll("#getLopHoc").forEach((elm) => {
+        elm.innerHTML = html;
+      });
+    })
+    .catch((err) => console.log("Error: ", err));
+};
+
+const renderDiemTheoLop = (idLop) => {
+  fetch(`${HOST}/api/diem/diemtheolop/${idLop}`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.length === 0) {
+        alert("Không có danh sách sinh viên");
+        renderQLDiem();
+      } else {
+        let html = "";
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `
+          <tr>
+            <td>${i + 1}</td>
+            <td>${elm.tensv}</td>
+            <td>${
+              elm.diemQuaTrinh === null ? "chưa có điểm" : elm.diemQuaTrinh
+            }</td>
+            <td>${elm.diemThi === null ? "chưa có điểm" : elm.diemThi}</td>
+            <td>${
+              elm.diemTrungBinh === null ? "chưa có điểm" : elm.diemTrungBinh
+            }</td>
+            <td>${elm.diemHeSo4 === null ? "chưa có điểm" : elm.diemHeSo4}</td>
+            <td>
+              
+              ${
+                elm.diemQuaTrinh !== null && elm.diemThi !== null
+                  ? `
                 <a
+                onclick=openUpdateDiem(${elm.idsv})
                 style="margin-right: 10px;"
                 type="button"
                 data-bs-toggle="modal"
-                data-bs-target="#myModalAdd"
-                data-id-sv="${elm.idsv}"
-                data-id-diem="${elm.idDiem}"
-  
+                data-bs-target="#myModalUpdate"
+                data-id-svud="${elm.idsv}"
+                data-id-diemud="${elm.idDiem}"
               >
-                <i class="fa-solid fa-plus"></i>
+              <i class="fa-solid fa-wrench"></i>
               </a>
-              `
-            }
-               
-          </td>
-        </tr>
-        
-        `;
+                `
+                  : `
+                  <a
+                  style="margin-right: 10px;"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#myModalAdd"
+                  data-id-sv="${elm.idsv}"
+                  data-id-diem="${elm.idDiem}"
+    
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </a>
+                `
+              }
+                 
+            </td>
+          </tr>
+          
+          `;
+        }
+        document.getElementById("idLopDiem").value = elm.idLop;
+        document.getElementById("tenLopDiem").innerHTML = elm.tenLop;
+        document.getElementById("tenLop").value = elm.tenLop;
+        document.querySelectorAll("#renderDiemTheoLop").forEach((elm) => {
+          elm.innerHTML = html;
+        });
       }
-      document.getElementById("idLopDiem").value = elm.idLop;
-      document.getElementById("tenLopDiem").innerHTML = elm.tenLop;
-      document.getElementById("tenLop").value = elm.tenLop;
-      document.querySelectorAll("#renderDiemTheoLop").forEach((elm) => {
-        elm.innerHTML = html;
-      });
     })
     .catch((err) => console.log("Error: ", err));
   $(".main").load("./quanlydiem/lophocphan.html");
 };
 
 const openUpdateDiem = (id) => {
-  console.log(id);
   fetch(`${HOST}/api/diem/${id}`)
     .then((res) => res.json())
     .then((data) => {
