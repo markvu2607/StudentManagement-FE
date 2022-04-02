@@ -203,7 +203,8 @@ const renderDanhSachLopTKSV = () => {
   fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
     .then((res) => res.json())
     .then((data) => {
-      let html = "";
+      var html = "";
+      if (data.length>0)
       for (i = 0; i < data.length; i++) {
         elm = data[i];
         html += `<tr>
@@ -219,6 +220,7 @@ const renderDanhSachLopTKSV = () => {
                         </td>
                     </tr>`;
       }
+      else alert("Không có kết quả");
       document.querySelector("#listLop").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
