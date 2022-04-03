@@ -5,30 +5,34 @@ const renderDanhSachLopQLLH = () => {
   fetch(`${HOST}/api/lophocphan?tenlop=${tenlop}&idky=${kyHoc}&idgv=${idgv}`)
     .then((res) => res.json())
     .then((data) => {
-      let html = "";
-      for (i = 0; i < data.length; i++) {
-        elm = data[i];
-        html += `<tr>
-          <th>${i + 1}</th>
-          <th>${elm.tenLop}</th>
-          <th>${elm.tenKyHoc}</th>
-          <td>
-              <a style="margin-right: 5px;" type="button" onclick="renderTailieumonhoc(${
-                elm.idLop
-              })">
-                  <i class="fa-solid fa-eye"></i>
-              </a>
-          </td>
-          <td>
-              <a style="margin-right: 5px;" type="button" onclick="renderDiemdanh(${
-                elm.idLop
-              })">
-                  <i class="fa-solid fa-eye"></i>
-              </a>
-          </td>
-        </tr>`;
+      if (data.length === 0) {
+        alert("Không có kết quả");
+      } else {
+        let html = "";
+        for (i = 0; i < data.length; i++) {
+          elm = data[i];
+          html += `<tr>
+            <th>${i + 1}</th>
+            <th>${elm.tenLop}</th>
+            <th>${elm.tenKyHoc}</th>
+            <td>
+                <a style="margin-right: 5px;" type="button" onclick="renderTailieumonhoc(${
+                  elm.idLop
+                })">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+            </td>
+            <td>
+                <a style="margin-right: 5px;" type="button" onclick="renderDiemdanh(${
+                  elm.idLop
+                })">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+            </td>
+          </tr>`;
+        }
+        document.querySelector("#listLop").innerHTML = html;
       }
-      document.querySelector("#listLop").innerHTML = html;
     })
     .catch((err) => console.log("Error: ", err));
 };
@@ -42,6 +46,8 @@ const addDiemDanh = () => {
     alert("Thời gian bắt đầu không được bỏ trống");
   } else if (!thoiGianKt) {
     alert("Thời gian kết thúc không được bỏ trống");
+  } else if (thoiGianBd > thoiGianKt) {
+    alert("Thời gian bắt đầu không được nhỏ hơn thời gian kết thúc");
   } else if ((thoiGianBd, thoiGianKt, idLop))
     fetch(`${HOST}/api/diemdanh/`, {
       method: "POST",
@@ -75,11 +81,12 @@ const updateDiemDanh = () => {
   let thoiGianKt = document.querySelector("#myModalUpdate #thoiGianKt").value;
   let idLop = document.querySelector("#myModalUpdate #idLop").value;
   let idDiemDanh = document.querySelector("#formUpdate #idDiemDanh").value;
-  console.log(idDiemDanh);
   if (!thoiGianBd) {
     alert("Thời gian bắt đầu không được bỏ trống");
   } else if (!thoiGianKt) {
     alert("Thời gian kết thúc không được bỏ trống");
+  } else if (thoiGianBd > thoiGianKt) {
+    alert("Thời gian bắt đầu không được nhỏ hơn thời gian kết thúc");
   } else if ((thoiGianBd, thoiGianKt, idLop))
     fetch(`${HOST}/api/diemdanh/${idDiemDanh}`, {
       method: "PUT",
