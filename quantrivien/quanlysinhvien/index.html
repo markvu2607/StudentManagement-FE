@@ -477,7 +477,7 @@
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (ngheNghiepBo.length > 255 || ngheNghiepMe.length > 255 || diaChi.length > 255 || queQuan.length > 255 || tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
                                     alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
-                                } else if (format.test(ngheNghiepBo) || format.test(ngheNghiepBo) || format.test(diaChi) || format.test(queQuan) || format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
+                                } else if (format.test(ngheNghiepMe) || format.test(ngheNghiepBo) || format.test(diaChi) || format.test(queQuan) || format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
                                 } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
@@ -566,7 +566,7 @@
                                 var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
                                 if (ngheNghiepBo.length > 255 || ngheNghiepMe.length > 255 || diaChi.length > 255 || queQuan.length > 255 || tenSV.length > 255 || tenBo.length > 255 || tenMe.length > 255) {
                                     alert('Bạn đã nhập quá số ký tự cho phép. Mời nhập lại')
-                                } else if (format.test(ngheNghiepBo) || format.test(ngheNghiepBo) || format.test(diaChi) || format.test(queQuan) || format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
+                                } else if (format.test(ngheNghiepMe) || format.test(ngheNghiepBo) || format.test(diaChi) || format.test(queQuan) || format.test(tenSV) || format.test(tenBo) || format.test(tenMe) || format.test(cccd)) {
                                     alert('Không nhập các ký tự đặc biệt như $, %,^ ,&, ,..')
                                 } else if (!checkPhoneNumber(sdt) || !checkPhoneNumber(sdtBo) || !checkPhoneNumber(sdtMe)) {
                                     alert('Nhập số điện thoại không đúng định dạng: 096, 097, 098,...')
